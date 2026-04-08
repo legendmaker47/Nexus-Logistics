@@ -17,7 +17,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--t1);font-family:var(--fb);font-size:14px;line-height:1.6;overflow-x:hidden;min-height:100vh}
+body{background:var(--bg);color:var(--t1);font-family:var(--fb);font-size:14px;line-height:1.6;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--b2);border-radius:2px}
 
 /* NAV */
@@ -61,7 +61,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(6,12,24,.97);backdrop-filt
 .pfill{height:2px;background:var(--acc);transition:width .4s ease;width:0}
 
 /* PAGES */
-.page{display:none;padding:1.8rem 1.5rem;max-width:1200px;margin:0 auto;min-height:60vh}
+.page{display:none;padding:1.8rem 1.5rem;max-width:1200px;margin:0 auto;min-height:60vh;flex:1}
 .page.on{display:block;animation:fadeIn .25s ease}
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
 
@@ -185,7 +185,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(6,12,24,.97);backdrop-filt
 .div{height:1px;background:linear-gradient(90deg,transparent,var(--b1),transparent);margin:1.8rem 0}
 
 /* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;margin-top:3rem}
+footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5rem;margin-top:auto}
 .fi{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem}
 .fl{font-family:var(--fm);font-size:9.5px;color:var(--t3)}
 .fl b{color:var(--acc)}
@@ -380,7 +380,7 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
 @media print{
   /* Hide all UI chrome */
   nav,footer,.sbar,.ticker,.rpt-toolbar,.rpt-btn,.rpt-ci-exclude-btn,
-  .rpt-ci-restore-btn,.rpt-excluded-list,#rpt-exclude-section,
+  .rpt-ci-restore-btn,.rpt-excluded-list,#s5-tab-prospects,#s5-tab-excluded,
   #tb-report,#tb-home,#tb-brief,#tb-freight,#tb-dis,#tb-sigs,
   #tb-ci,#tb-history,#tb-about,.tab,.nav-tabs,.nav-r,.prog,
   .lpill,#rbtn,#rpt-priority-results,#rpt-priority-search,
@@ -774,7 +774,7 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
   <!-- Legend -->
   <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--bg2);border:1px solid var(--b1);border-radius:7px;display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center">
     <div style="font-family:var(--fm);font-size:9px;color:var(--t3);letter-spacing:.08em">HOW NEXUS USES THESE SOURCES</div>
-    <div style="display:flex;align-items:center;gap:6px;font-family:var(--fm);font-size:10px;color:var(--t2)"><span style="background:rgba(0,200,255,.12);color:var(--acc);border:1px solid rgba(0,200,255,.3);padding:2px 7px;border-radius:3px;font-size:8.5px">PRIMARY SOURCE</span> Confirmed data injected before Claude runs</div>
+    <div style="display:flex;align-items:center;gap:6px;font-family:var(--fm);font-size:10px;color:var(--t2)"><span style="background:rgba(0,200,255,.12);color:var(--acc);border:1px solid rgba(0,200,255,.3);padding:2px 7px;border-radius:3px;font-size:8.5px">PRIMARY SOURCE</span> Confirmed data injected before AI processing</div>
     <div style="display:flex;align-items:center;gap:6px;font-family:var(--fm);font-size:10px;color:var(--t2)"><span style="background:rgba(0,200,255,.12);color:var(--acc);border:1px solid rgba(0,200,255,.3);padding:2px 7px;border-radius:3px;font-size:8.5px">SCRAPED AT 6 AM</span> Pre-fetched and injected as confirmed values</div>
     <div style="display:flex;align-items:center;gap:6px;font-family:var(--fm);font-size:10px;color:var(--t2)"><span class="ptag">Tags</span> Claude searches these sources during updates</div>
   </div>
@@ -785,20 +785,56 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
 <!-- ═══ ABOUT ══════════════════════════════════════ -->
 <div class="page" id="pg-about">
   <div class="sh"><div><div class="st">About Nexus Logistics</div></div></div>
+
+  <!-- Mission statement banner -->
+  <div style="background:linear-gradient(135deg,rgba(0,200,255,.07) 0%,rgba(0,200,255,.02) 100%);border:1px solid rgba(0,200,255,.18);border-radius:10px;padding:1.8rem 2rem;margin-bottom:1.8rem">
+    <div style="font-family:var(--fh);font-size:10px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">OUR MISSION</div>
+    <div style="font-family:var(--fh);font-size:20px;font-weight:800;color:var(--t1);line-height:1.35;margin-bottom:.8rem">Get freight professionals the intelligence they need — faster than anyone else.</div>
+    <div style="font-family:var(--fm);font-size:11.5px;color:var(--t3);line-height:1.7">Freight markets don't wait. Diesel spikes overnight. A geopolitical event closes a strait and rates double in a week. By the time most carriers and brokers hear about it, the window is already closing. Nexus Logistics delivers the intelligence that moves the needle — sourced daily, structured for action, and built to keep you ahead of the market instead of reacting to it.</div>
+  </div>
+
   <div class="gside">
     <div>
-      <p style="font-size:13.5px;color:var(--t2);line-height:1.85;margin-bottom:1rem">Nexus Logistics is an AI-powered sector intelligence platform. It uses the Anthropic Claude API with live web search to pull current logistics intelligence from public sources — automatically every day at 8–9 AM Eastern.</p>
-      <p style="font-size:13.5px;color:var(--t2);line-height:1.85;margin-bottom:1rem">Every article, disruption, market signal, and sector development includes the real source links Claude found. When live data isn't available, comprehensive reference intelligence is displayed so the platform is never blank.</p>
-      <p style="font-size:13.5px;color:var(--t2);line-height:1.85">Covers 9 verticals: ocean freight, air cargo, truckload, rail, ports, warehousing, trade policy, fuel markets, and supply chain risk.</p>
+      <p style="font-size:13.5px;color:var(--t2);line-height:1.85;margin-bottom:1.2rem">Nexus Logistics is a daily freight intelligence platform built for carriers, brokers, and supply chain professionals. Every morning we pull current data from across the logistics landscape — rates, disruptions, fuel prices, trade policy, and market signals — and synthesize it into a single, structured briefing.</p>
+
+      <p style="font-size:13.5px;color:var(--t2);line-height:1.85;margin-bottom:1.2rem">Every article, disruption, and market signal includes a real source link so you can verify and dig deeper. When major events are developing — a geopolitical crisis, a fuel spike, a regulatory change — the platform surfaces the intelligence you need before it hits the trade press headlines.</p>
+
+      <p style="font-size:13.5px;color:var(--t2);line-height:1.85;margin-bottom:1.8rem">Coverage spans 9 verticals: ocean freight, air cargo, truckload, rail, ports, warehousing, trade policy, fuel markets, and supply chain risk.</p>
+
+      <!-- Three pillars -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem;margin-bottom:1.8rem">
+        <div style="background:var(--bg2);border:1px solid var(--b1);border-radius:8px;padding:1.1rem">
+          <div style="font-size:22px;margin-bottom:.5rem">📡</div>
+          <div style="font-family:var(--fh);font-size:11px;font-weight:700;color:var(--t1);margin-bottom:.4rem">Daily Intelligence</div>
+          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.65">Fresh market data researched and structured every morning. Never stale. Never blank.</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--b1);border-radius:8px;padding:1.1rem">
+          <div style="font-size:22px;margin-bottom:.5rem">🔗</div>
+          <div style="font-family:var(--fh);font-size:11px;font-weight:700;color:var(--t1);margin-bottom:.4rem">Source-Linked</div>
+          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.65">Every data point links to its source. DAT, EIA, Drewry, FreightWaves — verified and cited.</div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--b1);border-radius:8px;padding:1.1rem">
+          <div style="font-size:22px;margin-bottom:.5rem">🎯</div>
+          <div style="font-family:var(--fh);font-size:11px;font-weight:700;color:var(--t1);margin-bottom:.4rem">Actionable</div>
+          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.65">Built for sales calls, carrier negotiations, and daily operations — not just reading.</div>
+        </div>
+      </div>
     </div>
-    <div class="card">
-      <div style="font-family:var(--fh);font-size:13px;font-weight:700;margin-bottom:.9rem">Platform Details</div>
-      <div class="srow"><div class="sname">Data source</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Live web search</div></div>
-      <div class="srow"><div class="sname">AI engine</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Claude Sonnet</div></div>
-      <div class="srow"><div class="sname">Auto-updates</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">8–9 AM Eastern daily</div></div>
-      <div class="srow"><div class="sname">Verticals</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">9</div></div>
-      <div class="srow"><div class="sname">Source links</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Yes — per item</div></div>
-      <div class="srow"><div class="sname">Fallback data</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Always visible</div></div>
+
+    <div>
+      <div class="card" style="margin-bottom:1rem">
+        <div style="font-family:var(--fh);font-size:13px;font-weight:700;margin-bottom:.9rem">Platform Details</div>
+        <div class="srow"><div class="sname">Data source</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Live web research</div></div>
+        <div class="srow"><div class="sname">Technology</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">AI + Live Web Search</div></div>
+        <div class="srow"><div class="sname">Update frequency</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Daily at 8–9 AM Eastern</div></div>
+        <div class="srow"><div class="sname">Verticals covered</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">9</div></div>
+        <div class="srow"><div class="sname">Source links</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Yes — per item</div></div>
+        <div class="srow"><div class="sname">Archive</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Daily snapshots</div></div>
+      </div>
+      <div class="card">
+        <div style="font-family:var(--fh);font-size:13px;font-weight:700;margin-bottom:.9rem">Sources We Monitor</div>
+        <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.8">DAT Freight &amp; Analytics &nbsp;·&nbsp; FreightWaves &nbsp;·&nbsp; Drewry &nbsp;·&nbsp; EIA &nbsp;·&nbsp; Supply Chain Dive &nbsp;·&nbsp; Transport Topics &nbsp;·&nbsp; Freightos &nbsp;·&nbsp; Air Cargo Week &nbsp;·&nbsp; gCaptain &nbsp;·&nbsp; ISM &nbsp;·&nbsp; FTR Transportation Intelligence &nbsp;·&nbsp; Journal of Commerce &nbsp;·&nbsp; The Loadstar &nbsp;·&nbsp; Maritime Executive &nbsp;·&nbsp; and more</div>
+      </div>
     </div>
   </div>
 </div>
@@ -806,11 +842,9 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
 <!-- ═══ LANE INTELLIGENCE ══════════════════════════════ -->
 <div class="page" id="pg-history">
   <div class="sh">
-    <div><div class="st">Archive & Network</div><div class="ss">INTELLIGENCE ARCHIVE · ARTICLE LIBRARY · PARTNER SYNDICATION</div></div>
+    <div><div class="st">Archive & Network</div><div class="ss">INTELLIGENCE ARCHIVE · ARTICLE LIBRARY</div></div>
     <div style="display:flex;gap:8px;align-items:center">
       <button id="arch-tab-snap" onclick="archTab('snapshots',this)" style="background:var(--acc);color:#060C18;border:none;border-radius:4px;padding:5px 14px;font-family:var(--fm);font-size:10px;font-weight:500;cursor:pointer">Daily Snapshots</button>
-      <button id="arch-tab-lib" onclick="archTab('library',this)" style="background:var(--bg3);color:var(--t2);border:1px solid var(--b2);border-radius:4px;padding:5px 14px;font-family:var(--fm);font-size:10px;cursor:pointer">Article Library</button>
-      <button id="arch-tab-sources" onclick="archTab('sources',this)" style="background:var(--bg3);color:var(--t2);border:1px solid var(--b2);border-radius:4px;padding:5px 14px;font-family:var(--fm);font-size:10px;cursor:pointer">Sources</button>
       <span class="tspill" id="hist-count">0 saved</span>
     </div>
   </div>
@@ -834,46 +868,6 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
     </div>
   </div>
 
-  <!-- PANEL: ARTICLE LIBRARY -->
-  <div id="arch-panel-library" style="display:none">
-    <div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;align-items:center">
-      <div style="font-family:var(--fm);font-size:10px;color:var(--t3)">RETIRED ARTICLES — no longer active in daily feed · available to share</div>
-      <div style="flex:1"></div>
-      <button onclick="archSyndicateAll()" style="background:var(--acc);color:#060C18;border:none;border-radius:4px;padding:5px 14px;font-family:var(--fm);font-size:10px;font-weight:500;cursor:pointer">Push All to Partner →</button>
-      <span id="arch-lib-status" style="font-family:var(--fm);font-size:10px;color:var(--t3)"></span>
-    </div>
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem">
-      <button class="fbtn on" onclick="archLibFilter('all',this)">All</button>
-      <button class="fbtn" onclick="archLibFilter('shipping',this)">Shipping</button>
-      <button class="fbtn" onclick="archLibFilter('trucking',this)">Trucking</button>
-      <button class="fbtn" onclick="archLibFilter('port',this)">Ports</button>
-      <button class="fbtn" onclick="archLibFilter('air',this)">Air</button>
-      <button class="fbtn" onclick="archLibFilter('trade',this)">Trade</button>
-    </div>
-    <div id="arch-lib-grid" class="g3"></div>
-    <div id="arch-lib-empty" style="display:none;padding:3rem;text-align:center;font-family:var(--fm);font-size:11px;color:var(--t3)">
-      No retired articles yet. Articles cycle out of the daily feed after 48 hours and appear here automatically.
-    </div>
-  </div>
-
-  <!-- PANEL: SOURCES (the 20 sites) -->
-  <div id="arch-panel-sources" style="display:none">
-    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.2rem" id="net-filters">
-      <button class="fbtn on" onclick="netFilter('all',this)">All 20</button>
-      <button class="fbtn" onclick="netFilter('trucking',this)">Trucking</button>
-      <button class="fbtn" onclick="netFilter('ocean',this)">Ocean</button>
-      <button class="fbtn" onclick="netFilter('supply-chain',this)">Supply Chain</button>
-      <button class="fbtn" onclick="netFilter('data',this)">Rate Data</button>
-      <button class="fbtn" onclick="netFilter('maritime',this)">Maritime</button>
-      <button class="fbtn" onclick="netFilter('air',this)">Air Cargo</button>
-    </div>
-    <div class="g3" id="net-grid-inner"></div>
-    <div style="margin-top:1.2rem;padding:.9rem 1.1rem;background:var(--bg2);border:1px solid var(--b1);border-radius:7px;display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center">
-      <div style="font-family:var(--fm);font-size:9px;color:var(--t3);letter-spacing:.08em">HOW NEXUS USES THESE SOURCES</div>
-      <div style="font-family:var(--fm);font-size:10px;color:var(--t2)"><span style="background:rgba(0,200,255,.12);color:var(--acc);border:1px solid rgba(0,200,255,.3);padding:2px 6px;border-radius:3px;font-size:8.5px">PRIMARY</span> Confirmed data injected before Claude runs</div>
-      <div style="font-family:var(--fm);font-size:10px;color:var(--t2)"><span style="background:rgba(0,200,255,.12);color:var(--acc);border:1px solid rgba(0,200,255,.3);padding:2px 6px;border-radius:3px;font-size:8.5px">SCRAPED 6 AM</span> Pre-fetched and injected as hard values</div>
-    </div>
-  </div>
 
 </div>
 
@@ -1144,43 +1138,13 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
     <span id="rpt-excluded-count" style="font-family:var(--fh);font-size:11px;font-weight:700;color:var(--red)">0</span>
   </div>
 
-  <!-- ── EXCLUSION MANAGER ── -->
-  <div id="rpt-exclude-section" style="margin-bottom:1.5rem">
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
-      <div>
-        <div style="font-family:var(--fh);font-size:11px;font-weight:700">Partner Exclusion Manager</div>
-        <div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:2px">Search and exclude companies already partnered — they are removed from the printed report</div>
-      </div>
-      <div style="display:flex;gap:6px;align-items:center">
-        <span style="font-family:var(--fm);font-size:9px;color:var(--t3)">Excluded:</span>
-        <span id="rpt-excl-badge" style="font-family:var(--fh);font-size:11px;font-weight:800;color:var(--red)">0</span>
-        <button onclick="rptExclClearAll()" style="background:rgba(255,69,69,.1);border:1px solid rgba(255,69,69,.25);border-radius:4px;padding:4px 10px;font-family:var(--fm);font-size:9px;color:var(--red);cursor:pointer">Clear All</button>
-      </div>
-    </div>
-    <div style="display:flex;gap:8px;align-items:center;margin-bottom:.8rem;flex-wrap:wrap">
-      <input id="rpt-excl-search" class="ci-search" placeholder="Search company to exclude — name, industry, or freight type..." oninput="rptExclSearch()" style="flex:1;min-width:220px;max-width:500px">
-      <select id="rpt-excl-industry" class="ci-select" onchange="rptExclSearch()" style="min-width:150px">
-        <option value="">All Industries</option>
-        <option>Food &amp; Beverage</option><option>Manufacturing</option>
-        <option>Retail &amp; E-Commerce</option><option>Automotive</option>
-        <option>Pharma &amp; Healthcare</option><option>Agriculture</option>
-        <option>Chemical &amp; Petrochemical</option><option>Construction &amp; Materials</option>
-        <option>Technology &amp; Electronics</option><option>Energy &amp; Oil/Gas</option>
-      </select>
-    </div>
-    <div id="rpt-excl-results" style="display:none;background:var(--bg2);border:1px solid var(--b2);border-radius:6px;margin-bottom:.8rem;max-height:240px;overflow-y:auto"></div>
-    <div id="rpt-excluded-list" class="rpt-excluded-list">
-      <div style="font-family:var(--fm);font-size:10px;color:var(--t3)">No companies excluded yet. Search above to find and exclude existing partners.</div>
-    </div>
-  </div>
-
   <!-- ══════════ REPORT BODY ══════════ -->
   <div id="rpt-body">
 
     <!-- § 1 EXECUTIVE SUMMARY -->
     <div class="rpt-section" id="rpt-s1">
       <div class="rpt-section-title">§1 — Executive Summary</div>
-      <div class="rpt-section-sub">MARKET OVERVIEW · APRIL 8, 2026</div>
+      <div class="rpt-section-sub">MARKET OVERVIEW · APRIL 9, 2026</div>
       <div id="rpt-exec-summary" class="rpt-chart-box" style="font-family:var(--fm);font-size:11px;color:var(--t2);line-height:1.8"></div>
     </div>
 
@@ -1208,44 +1172,70 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
 
     <!-- § 5 CUSTOMER INTELLIGENCE — TOP PROSPECTS -->
     <div class="rpt-section" id="rpt-s5">
-      <div class="rpt-section-title">§5 — Top Freight Customer Prospects</div>
-      <div class="rpt-section-sub">SEARCH ALL 180 COMPANIES · CLICK ANY ROW TO VIEW FULL INTELLIGENCE · EXCLUDE EXISTING PARTNERS</div>
+      <div class="rpt-section-title">§5 — Freight Prospect Database</div>
+      <div class="rpt-section-sub">SEARCH ALL 254 COMPANIES · EXCLUDE EXISTING PARTNERS · CLICK ANY ROW FOR FULL INTEL</div>
       <div id="rpt-ci-mix" class="rpt-2col" style="margin-bottom:1.2rem"></div>
-      <div style="background:var(--bg2);border:1px solid var(--b2);border-radius:8px;padding:1.1rem">
-        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:.8rem">
-          <div>
-            <div style="font-family:var(--fh);font-size:11px;font-weight:700">Freight Prospect Database</div>
-            <div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:2px">Click any company to view full intelligence · Exclude to remove existing partners from printed report</div>
+
+      <!-- Unified card -->
+      <div style="background:var(--bg2);border:1px solid var(--b2);border-radius:8px;overflow:hidden">
+
+        <!-- Card header with tab toggle and counts -->
+        <div style="background:var(--bg3);border-bottom:1px solid var(--b1);padding:.85rem 1.1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+          <div style="display:flex;gap:6px">
+            <button id="s5-tab-prospects" onclick="s5Tab('prospects')" style="background:var(--acc);color:#060C18;border:none;border-radius:4px;padding:4px 14px;font-family:var(--fm);font-size:9.5px;font-weight:600;cursor:pointer">🔍 Prospect Search</button>
+            <button id="s5-tab-excluded" onclick="s5Tab('excluded')" style="background:var(--bg2);color:var(--t2);border:1px solid var(--b2);border-radius:4px;padding:4px 14px;font-family:var(--fm);font-size:9.5px;cursor:pointer">🚫 Partner Exclusions &nbsp;<span id="rpt-excl-badge" style="background:rgba(255,69,69,.2);color:var(--red);border-radius:10px;padding:1px 6px;font-size:8.5px;font-weight:700">0</span></button>
           </div>
-          <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
-            <span style="font-family:var(--fm);font-size:9px;color:var(--t3)">In report:</span>
-            <span id="rpt-s5-count" style="font-family:var(--fh);font-size:11px;font-weight:800;color:var(--grn)">—</span>
-            <span style="font-family:var(--fm);font-size:9px;color:var(--t3)">Excluded:</span>
-            <span id="rpt-s5-excl" style="font-family:var(--fh);font-size:11px;font-weight:800;color:var(--red)">0</span>
-            <button onclick="rptExclClearAll()" style="background:rgba(255,69,69,.1);border:1px solid rgba(255,69,69,.25);border-radius:4px;padding:4px 10px;font-family:var(--fm);font-size:9px;color:var(--red);cursor:pointer">Clear All</button>
+          <div style="display:flex;gap:10px;align-items:center">
+            <span style="font-family:var(--fm);font-size:9px;color:var(--t3)">In report: <b id="rpt-s5-count" style="color:var(--grn)">—</b></span>
+            <span style="font-family:var(--fm);font-size:9px;color:var(--t3)">Excluded: <b id="rpt-s5-excl" style="color:var(--red)">0</b></span>
           </div>
         </div>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:.7rem">
-          <input id="rpt-s5-search" class="ci-search" placeholder="Search company, industry, freight type, location..." oninput="rptS5Filter()" style="flex:1;min-width:200px">
-          <select id="rpt-s5-industry" class="ci-select" onchange="rptS5Filter()">
-            <option value="">All Industries</option>
-            <option>Food &amp; Beverage</option><option>Manufacturing</option>
-            <option>Retail &amp; E-Commerce</option><option>Automotive</option>
-            <option>Pharma &amp; Healthcare</option><option>Agriculture</option>
-            <option>Chemical &amp; Petrochemical</option><option>Construction &amp; Materials</option>
-            <option>Technology &amp; Electronics</option><option>Energy &amp; Oil/Gas</option>
-          </select>
-          <select id="rpt-s5-score" class="ci-select" onchange="rptS5Filter()">
-            <option value="">All Scores</option>
-            <option value="high">High (90+)</option>
-            <option value="med">Moderate (80–89)</option>
-            <option value="low">Low (&lt;80)</option>
-          </select>
+
+        <!-- TAB: PROSPECT SEARCH -->
+        <div id="s5-panel-prospects" style="padding:.9rem 1.1rem">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:.7rem">
+            <input id="rpt-s5-search" class="ci-search" placeholder="Search company, industry, freight type, location..." oninput="rptS5Filter()" style="flex:1;min-width:200px">
+            <select id="rpt-s5-industry" class="ci-select" onchange="rptS5Filter()">
+              <option value="">All Industries</option>
+              <option>Food &amp; Beverage</option><option>Manufacturing</option>
+              <option>Retail &amp; E-Commerce</option><option>Automotive</option>
+              <option>Pharma &amp; Healthcare</option><option>Agriculture</option>
+              <option>Chemical &amp; Petrochemical</option><option>Construction &amp; Materials</option>
+              <option>Technology &amp; Electronics</option><option>Energy &amp; Oil/Gas</option>
+            </select>
+            <select id="rpt-s5-score" class="ci-select" onchange="rptS5Filter()">
+              <option value="">All Scores</option>
+              <option value="high">High (90+)</option>
+              <option value="med">Moderate (80–89)</option>
+              <option value="low">Low (&lt;80)</option>
+            </select>
+          </div>
+          <div id="rpt-s5-results" style="border:1px solid var(--b1);border-radius:6px;background:var(--bg1);max-height:460px;overflow-y:auto">
+            <div style="padding:1rem;font-family:var(--fm);font-size:10px;color:var(--t3);text-align:center">Loading...</div>
+          </div>
         </div>
-        <div id="rpt-s5-results" style="border:1px solid var(--b1);border-radius:6px;background:var(--bg1);max-height:460px;overflow-y:auto">
-          <div style="padding:1rem;font-family:var(--fm);font-size:10px;color:var(--t3);text-align:center">Loading...</div>
+
+        <!-- TAB: PARTNER EXCLUSIONS -->
+        <div id="s5-panel-excluded" style="display:none;padding:.9rem 1.1rem">
+          <div style="display:flex;gap:8px;align-items:center;margin-bottom:.8rem;flex-wrap:wrap">
+            <input id="rpt-excl-search" class="ci-search" placeholder="Search company to exclude — name, industry, or freight type..." oninput="rptExclSearch()" style="flex:1;min-width:220px">
+            <select id="rpt-excl-industry" class="ci-select" onchange="rptExclSearch()" style="min-width:150px">
+              <option value="">All Industries</option>
+              <option>Food &amp; Beverage</option><option>Manufacturing</option>
+              <option>Retail &amp; E-Commerce</option><option>Automotive</option>
+              <option>Pharma &amp; Healthcare</option><option>Agriculture</option>
+              <option>Chemical &amp; Petrochemical</option><option>Construction &amp; Materials</option>
+              <option>Technology &amp; Electronics</option><option>Energy &amp; Oil/Gas</option>
+            </select>
+            <button onclick="rptExclClearAll()" style="background:rgba(255,69,69,.1);border:1px solid rgba(255,69,69,.25);border-radius:4px;padding:5px 12px;font-family:var(--fm);font-size:9px;color:var(--red);cursor:pointer;flex-shrink:0">Clear All</button>
+          </div>
+          <div id="rpt-excl-results" style="display:none;background:var(--bg2);border:1px solid var(--b2);border-radius:6px;margin-bottom:.8rem;max-height:240px;overflow-y:auto"></div>
+          <div id="rpt-excluded-list" class="rpt-excluded-list">
+            <div style="font-family:var(--fm);font-size:10px;color:var(--t3)">No companies excluded yet. Search above to find and exclude existing partners.</div>
+          </div>
         </div>
-      </div>
+
+      </div><!-- end unified card -->
       <div id="rpt-s5-excl-list" style="display:none;margin-top:.6rem"></div>
     </div>
 
@@ -1298,7 +1288,7 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
       <div class="hex"></div>
       <span style="font-family:var(--fh);font-weight:700;font-size:15px">Nexus<b style="color:var(--acc)">.</b>Logistics</span>
     </div>
-    <span class="fl">&copy; 2025 Nexus Logistics Intelligence Platform &middot; Powered by <b>Claude AI + Live Web Search</b> &middot; Updates daily at 8–9 AM Eastern</span>
+    <span class="fl">&copy; 2026 Nexus Logistics Intelligence Platform &middot; Powered by <b>AI + Live Web Search</b> &middot; Updated daily at 8–9 AM Eastern</span>
   </div>
 </footer>
 
@@ -1307,14 +1297,14 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:2rem 1.5rem;
 
 
 <script>var CACHE_KEY='nxl_v9',CACHE_TTL=11*60*60*1000,KEY_STORE='nxl_apikey';
-var PARTNER_KEY='nxl_partner_v1',RETIRED_KEY='nxl_retired_v1';
+
 var HIST_KEY='nxl_history_v1';
 
 // ── FILE-BASED ARCHIVE INDEX ───────────────────────────────
 // Add a new entry here each time a daily update is run.
 // Files must be in the same folder as this HTML file.
 var ARCHIVE_INDEX = [
-  // { date: '2026-04-08', label: 'Wednesday, April 8, 2026', file: '2026-04-08.html', disruptions: 5, articles: 8 },
+  { date: '2026-04-08', label: 'Wednesday, April 8, 2026', file: '2026-04-08.html', disruptions: 5, articles: 8 },
 ];
 // ─────────────────────────────────────────────────────────
 var busy=false,D=null;
@@ -1578,7 +1568,7 @@ function renderFreight(f){
     out+=kpi('Diesel','$5.64/gal','▲ EIA Apr 7 confirmed; ceasefire may bring few cents/day relief; diesel lags gasoline; next reading Apr 14','var(--red)','EIA Apr 7 Confirmed');
     out+=kpi('Flatbed Spot','$2.95/mi LH','▲ March final +8.5% MoM; L/T 73.75; 10-yr low truck posts','var(--grn)','DAT Mar 2026');
     out+=kpi('Reefer Spot','$2.88/mi LH','▲ March final; cap 120% tighter YoY; produce pull','var(--grn)','DAT Mar 2026');
-    out+=kpi('Brent Crude','~$94/bbl','▼ -16% ceasefire crash stabilizing; WTI $94.55; Nikkei +5.4%, Kospi +6.9%; UK PM Starmer to Gulf','var(--grn)','Apr 8 2026');
+    out+=kpi('Brent Crude','~$94/bbl','▼ -16% ceasefire crash stabilizing; WTI $94.55; Nikkei +5.4%, Kospi +6.9%; UK PM Starmer to Gulf','var(--grn)','Apr 9 2026');
     out+=kpi('ISM PMI','52.7','3rd expansion month; Prices Paid 78.3 (Jun 2022 high); Supplier Deliveries slowing 4th month; Iran war cited','var(--grn)','Mar 2026 Final · Apr 1');
     out+='</div>';
 
@@ -1948,27 +1938,39 @@ function histRefreshUI(){
   var countEl=document.getElementById('hist-count');
   if(!list) return;
 
-  if(!ARCHIVE_INDEX || !ARCHIVE_INDEX.length){
+  // Filter out entries older than 30 days
+  var cutoff = Date.now() - (30 * 24 * 60 * 60 * 1000);
+  var active = (ARCHIVE_INDEX||[]).filter(function(e){
+    return new Date(e.date).getTime() >= cutoff;
+  });
+
+  if(!active.length){
     list.innerHTML='<div style="padding:1.5rem;text-align:center;font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.7">No archive snapshots yet.<br><br>After each daily update, a dated file is added here. Every visitor sees the same archive.</div>';
     if(countEl) countEl.textContent='0 saved';
     return;
   }
 
-  if(countEl) countEl.textContent=ARCHIVE_INDEX.length+' snapshot'+(ARCHIVE_INDEX.length===1?'':'s');
+  if(countEl) countEl.textContent=active.length+' snapshot'+(active.length===1?'':'s');
 
-  list.innerHTML=ARCHIVE_INDEX.map(function(e,i){
+  list.innerHTML=active.map(function(e,i){
     var dayLabel=e.label||e.date;
     var meta=[];
     if(e.disruptions) meta.push(e.disruptions+' disruptions');
     if(e.articles) meta.push(e.articles+' articles');
+    // Show days remaining
+    var daysLeft=Math.ceil((new Date(e.date).getTime()+(30*24*60*60*1000)-Date.now())/(24*60*60*1000));
+    var expiring=daysLeft<=7;
     return '<div class="hist-date-item hitem" onclick="histView('+i+')" style="padding:.75rem 1rem;border-bottom:1px solid var(--b1);cursor:pointer;transition:background .1s" onmouseover="this.style.background=\'rgba(0,200,255,.05)\'" onmouseout="this.style.background=\'\'">'
       +'<div style="font-family:var(--fh);font-size:11px;font-weight:600;color:var(--t1)">'+esc(dayLabel)+'</div>'
       +(meta.length?'<div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:2px">'+meta.join(' &nbsp;·&nbsp; ')+'</div>':'')
+      +'<div style="font-family:var(--fm);font-size:8.5px;margin-top:3px;color:'+(expiring?'var(--red)':'var(--t3)')+'">⏱ '+(expiring?daysLeft+'d left — expiring soon':daysLeft+'d remaining')+'</div>'
       +'</div>';
   }).join('');
 }
 function histView(i){
-  var entry=ARCHIVE_INDEX[i];
+  var cutoff = Date.now() - (30 * 24 * 60 * 60 * 1000);
+  var active = (ARCHIVE_INDEX||[]).filter(function(e){ return new Date(e.date).getTime() >= cutoff; });
+  var entry=active[i];
   if(!entry) return;
 
   // Highlight active
@@ -1998,204 +2000,22 @@ function histView(i){
     +'</div>'
   +'</div>';
 }
-function histLoad(){
-  try{return JSON.parse(localStorage.getItem(HIST_KEY)||'[]');}catch(e){return[];}
-}
-function histRefreshUI(){
-  var arr=histLoad();
-  tx('hist-count',arr.length+' saved');
-  var list=$('hist-datelist');
-  if(!list)return;
-  if(!arr.length){list.innerHTML='<div style="padding:1.5rem;text-align:center;font-family:var(--fm);font-size:10px;color:var(--t3)">No history yet.<br>Updates save automatically.</div>';return;}
-  list.innerHTML=arr.map(function(e,i){
-    var dt=new Date(e.ts).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric'});
-    var tm=new Date(e.ts).toLocaleString('en-US',{hour:'2-digit',minute:'2-digit'});
-    var d=e.d||{};
-    var crit=(d.disruptions||[]).filter(function(x){return x.severity==='critical';}).length;
-    var arts=(d.articles||[]).length;
-    return'<div class="hist-date-item hitem" onclick="histView('+i+')">'
-      +'<div class="hist-d-label">'+dt+'</div>'
-      +'<div class="hist-d-sub">'+tm+(crit?' &nbsp;·&nbsp; '+crit+' critical':'')+(arts?' &nbsp;·&nbsp; '+arts+' articles':'')+'</div>'
-      +'</div>';
-  }).join('');
-}
-function histView(i){
-  var arr=histLoad();if(!arr[i])return;
-  // highlight active item in sidebar
-  document.querySelectorAll('#hist-datelist .hitem').forEach(function(el,idx){
-    el.classList.toggle('active',idx===i);
-  });
-  var v=$('hist-viewer');if(!v)return;
-  var d=arr[i].d;
-  var dt=new Date(arr[i].ts).toLocaleString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
-  var arts=Array.isArray(d.articles)?d.articles:[];
-  var dis=Array.isArray(d.disruptions)?d.disruptions:[];
-  var sigs=Array.isArray(d.signals)?d.signals:[];
-  var brf=Array.isArray(d.brief)?d.brief:[];
-
-  function sevCls(s){return s==='critical'?'bc':s==='elevated'?'bw':'br';}
-  function dirArrow(dir){return dir==='up'?'\u25b2 ':dir==='down'?'\u25bc ':'\u2192 ';}
-  function dirCol(dir){return dir==='up'?'var(--red)':dir==='down'?'var(--grn)':'var(--t3)';}
-
-  var h='<div style="background:var(--bg2);border:1px solid var(--b1);border-radius:7px;overflow:hidden">';
-
-  // ── HEADER ────────────────────────────────────────────────
-  h+='<div style="background:var(--bg3);border-bottom:1px solid var(--b1);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between">';
-  h+='<div>';
-  h+='<div style="font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1)">'+esc(dt)+'</div>';
-  h+='<div style="font-family:var(--fm);font-size:9.5px;color:var(--t3);margin-top:3px">'+arts.length+' articles &nbsp;&middot;&nbsp; '+dis.length+' disruptions &nbsp;&middot;&nbsp; '+sigs.length+' signals'+(brf.length?' &nbsp;&middot;&nbsp; '+brf.length+' brief items':'')+'</div>';
-  h+='</div>';
-  h+='<div style="font-family:var(--fh);font-size:10px;color:var(--t3);text-align:right">ARCHIVED SNAPSHOT</div>';
-  h+='</div>';
-
-  h+='<div style="padding:1.2rem;display:flex;flex-direction:column;gap:1.4rem">';
-
-  // ── SIGNALS KPI ROW ───────────────────────────────────────
-  if(sigs.length){
-    h+='<div>';
-    h+='<div style="font-family:var(--fh);font-size:10px;font-weight:700;color:var(--acc);letter-spacing:.08em;margin-bottom:.5rem">MARKET SIGNALS</div>';
-    h+='<div style="display:flex;flex-wrap:wrap;gap:6px">';
-    h+=sigs.map(function(s){
-      return '<div style="background:var(--bg3);border:1px solid var(--b1);border-radius:5px;padding:5px 10px;min-width:90px">'
-        +'<div style="font-family:var(--fm);font-size:8px;color:var(--t3);margin-bottom:2px">'+esc(s.name)+'</div>'
-        +'<div style="font-family:var(--fh);font-size:12px;font-weight:700;color:'+dirCol(s.direction)+'">'+esc(s.value+(s.unit||''))+'</div>'
-        +'<div style="font-family:var(--fm);font-size:8px;color:var(--t3);margin-top:1px">'+esc(s.date||'')+'</div>'
-        +'</div>';
-    }).join('');
-    h+='</div></div>';
-  }
-
-  // ── DISRUPTIONS ───────────────────────────────────────────
-  if(dis.length){
-    h+='<div>';
-    h+='<div style="font-family:var(--fh);font-size:10px;font-weight:700;color:var(--acc);letter-spacing:.08em;margin-bottom:.5rem">ACTIVE DISRUPTIONS ('+dis.length+')</div>';
-    h+=dis.map(function(d){
-      var isCrit=d.severity==='critical';
-      var bc=isCrit?'rgba(255,69,69,.25)':'rgba(255,179,0,.2)';
-      var tc=isCrit?'var(--red)':'var(--amb)';
-      return '<div style="border:1px solid '+bc+';border-left:3px solid '+tc+';border-radius:0 5px 5px 0;padding:.6rem .9rem;margin-bottom:.4rem;background:'+(isCrit?'rgba(255,69,69,.03)':'rgba(255,179,0,.02)')+'">'
-        +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:.25rem">'
-        +'<span class="bdg '+sevCls(d.severity)+'">'+esc((d.severity||'').toUpperCase())+'</span>'
-        +(d.dayCount?'<span style="font-family:var(--fm);font-size:9px;color:var(--t3)">Day '+d.dayCount+'</span>':'')
-        +'<span style="font-family:var(--fm);font-size:10.5px;font-weight:600;color:var(--t1)">'+esc(d.title)+'</span>'
-        +'</div>'
-        +'<div style="font-family:var(--fm);font-size:10px;color:var(--t2);line-height:1.6">'+esc((d.description||'').slice(0,240))+(d.description&&d.description.length>240?'...':'')+'</div>'
-        +(d.rateImpact?'<div style="font-family:var(--fm);font-size:9px;color:var(--amb);margin-top:4px">Rate Impact: '+esc(d.rateImpact)+'</div>':'')
-        +'</div>';
-    }).join('');
-    h+='</div>';
-  }
-
-  // ── ARTICLES ──────────────────────────────────────────────
-  if(arts.length){
-    h+='<div>';
-    h+='<div style="font-family:var(--fh);font-size:10px;font-weight:700;color:var(--acc);letter-spacing:.08em;margin-bottom:.5rem">TOP ARTICLES ('+arts.length+')</div>';
-    h+=arts.map(function(a){
-      var isCrit=a.severity==='critical';
-      var bc=isCrit?'rgba(255,69,69,.25)':'rgba(255,179,0,.2)';
-      var tc=isCrit?'var(--red)':'var(--amb)';
-      var srcs=Array.isArray(a.sources)?a.sources:[];
-      return '<div style="border:1px solid var(--b1);border-left:3px solid '+tc+';border-radius:0 5px 5px 0;padding:.65rem .9rem;margin-bottom:.4rem;background:var(--bg3)">'
-        +'<div style="display:flex;align-items:center;gap:7px;margin-bottom:.3rem">'
-        +'<span class="bdg '+sevCls(a.severity||'routine')+'">'+esc((a.severity||'routine').toUpperCase())+'</span>'
-        +(a.date?'<span style="font-family:var(--fm);font-size:9px;color:var(--t3)">'+esc(a.date)+'</span>':'')
-        +(a.region?'<span style="font-family:var(--fm);font-size:9px;color:var(--t3)">'+esc(a.region)+'</span>':'')
-        +'</div>'
-        +'<div style="font-family:var(--fm);font-size:10.5px;font-weight:600;color:var(--t1);margin-bottom:.3rem">'+esc(a.title)+'</div>'
-        +'<div style="font-family:var(--fm);font-size:10px;color:var(--t2);line-height:1.6">'+esc((a.summary||'').slice(0,300))+(a.summary&&a.summary.length>300?'...':'')+'</div>'
-        +(srcs.length?'<div style="margin-top:5px;display:flex;flex-wrap:wrap;gap:5px">'+srcs.map(function(s){return'<a href="'+esc(s.url||'#')+'" target="_blank" style="font-family:var(--fm);font-size:8.5px;color:var(--acc);text-decoration:none;background:rgba(0,200,255,.08);border:1px solid rgba(0,200,255,.2);border-radius:3px;padding:2px 7px">'+esc(s.name)+'</a>';}).join('')+'</div>':'')
-        +'</div>';
-    }).join('');
-    h+='</div>';
-  }
-
-  // ── BRIEF ─────────────────────────────────────────────────
-  if(brf.length){
-    h+='<div>';
-    h+='<div style="font-family:var(--fh);font-size:10px;font-weight:700;color:var(--acc);letter-spacing:.08em;margin-bottom:.5rem">DAILY BRIEF ('+brf.length+')</div>';
-    h+=brf.map(function(b){
-      var isCrit=b.priority==='critical';
-      return '<div style="border:1px solid var(--b1);border-radius:5px;padding:.6rem .9rem;margin-bottom:.35rem;background:var(--bg3)">'
-        +'<div style="display:flex;align-items:center;gap:7px;margin-bottom:.3rem">'
-        +'<span class="bdg '+sevCls(b.priority||'routine')+'">'+esc((b.priority||'routine').toUpperCase())+'</span>'
-        +(b.age?'<span style="font-family:var(--fm);font-size:9px;color:var(--t3)">'+esc(b.age)+'</span>':'')
-        +'</div>'
-        +'<div style="font-family:var(--fm);font-size:10.5px;font-weight:600;color:var(--t1);margin-bottom:.3rem">'+esc(b.title)+'</div>'
-        +'<div style="font-family:var(--fm);font-size:10px;color:var(--t2);line-height:1.6">'+esc((b.body||'').slice(0,250))+(b.body&&b.body.length>250?'...':'')+'</div>'
-        +'</div>';
-    }).join('');
-    h+='</div>';
-  }
-
-  h+='</div></div>'; // close padding div + outer card
-  v.innerHTML=h;
-}
 
 // ── ARCHIVE TAB ───────────────────────────────────────────────
 function archTab(tab,btn){
-  ['snapshots','library','sources'].forEach(function(p){
-    var el=$('arch-panel-'+p);if(el)el.style.display=p===tab?'':'none';
+  ['snapshots'].forEach(function(p){
+    var el=document.getElementById('arch-panel-'+p);if(el)el.style.display=p===tab?'':'none';
   });
-  document.querySelectorAll('#pg-history .tab, #pg-history button[id^="arch-tab"]').forEach(function(b){
+  document.querySelectorAll('#pg-history button[id^="arch-tab"]').forEach(function(b){
     b.style.background='var(--bg3)';b.style.color='var(--t2)';b.style.border='1px solid var(--b2)';
   });
   if(btn){btn.style.background='var(--acc)';btn.style.color='#060C18';btn.style.border='none';}
-  if(tab==='library')archRenderLibrary();
+  if(tab==='history') setTimeout(histRefreshUI,50);
   if(tab==='sources'){
     var g=$('net-grid-inner');
     var src=$('net-grid');
     if(g&&src)g.innerHTML=src.innerHTML;
   }
-}
-function archLoadRetired(){try{return JSON.parse(localStorage.getItem(RETIRED_KEY)||'[]');}catch(e){return[];}}
-function archRenderLibrary(){
-  var arr=archLoadRetired();
-  var grid=$('arch-lib-grid'),empty=$('arch-lib-empty');
-  if(!grid)return;
-  if(!arr.length){if(grid)grid.innerHTML='';if(empty)empty.style.display='block';return;}
-  if(empty)empty.style.display='none';
-  grid.innerHTML=arr.map(function(a,i){
-    return'<div class="card '+cardCls(a.priority||'routine')+'" data-cat="'+(a.category||'')+'">'+
-      '<div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:6px">'+
-      '<span class="bdg '+priCls(a.priority||'routine')+'">'+cap(a.priority||'routine')+'</span>'+
-      '<button onclick="archSyndicateOne('+i+')" style="background:var(--bg3);border:1px solid var(--b2);border-radius:3px;padding:2px 8px;font-family:var(--fm);font-size:9px;color:var(--t2);cursor:pointer">Push →</button></div>'+
-      '<div class="ctitle">'+ss(a.title)+'</div>'+
-      '<div class="cbody">'+ss(a.body||a.summary||'').slice(0,180)+'...</div>'+
-      srcHTML(a.sources)+'</div>';
-  }).join('');
-}
-function archLibFilter(cat,btn){
-  document.querySelectorAll('#arch-lib-grid .card').forEach(function(c){
-    c.style.display=(cat==='all'||c.dataset.cat===cat)?'':'none';
-  });
-  document.querySelectorAll('#arch-panel-library .fbtn').forEach(function(b){b.classList.remove('on');});
-  if(btn)btn.classList.add('on');
-}
-function archSyndicateOne(i){
-  var arr=archLoadRetired();if(!arr[i])return;
-  var url=localStorage.getItem(PARTNER_KEY)||'';
-  if(!url){return;}
-  fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'article',article:arr[i]})})
-    .then(function(){var s=$('arch-lib-status');if(s)s.textContent='Pushed!';setTimeout(function(){if(s)s.textContent='';},3000);})
-    .catch(function(){alert('Push failed. Check partner URL.');});
-}
-function archSyndicateAll(){
-  var arr=archLoadRetired();if(!arr.length){alert('No retired articles.');return;}
-  var url=localStorage.getItem(PARTNER_KEY)||'';
-  if(!url){alert('No partner URL set.');return;}
-  Promise.all(arr.map(function(a){return fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({type:'article',article:a})}).catch(function(){});}))
-    .then(function(){var s=$('arch-lib-status');if(s)s.textContent='All pushed!';setTimeout(function(){if(s)s.textContent='';},3000);});
-}
-function archRetireFromUpdate(arts){
-  if(!Array.isArray(arts)||!arts.length)return;
-  try{
-    var ret=archLoadRetired();
-    arts.forEach(function(a){
-      if(!ret.find(function(r){return r.title===a.title;}))ret.unshift(a);
-    });
-    ret=ret.slice(0,100);
-    localStorage.setItem(RETIRED_KEY,JSON.stringify(ret));
-  }catch(e){}
 }
 
 // ── NETWORK FILTER ────────────────────────────────────────────
@@ -2404,7 +2224,7 @@ function doUpdate(manual){
   busy=true;
   var rbtn=$('rbtn');if(rbtn)rbtn.disabled=true;
   setStatus('Fetching live logistics intelligence...','Searching web sources...','sbar-l');
-  setProg(15,'Connecting to Claude API...');
+  setProg(15,'Connecting to intelligence feed...');
   setTimeout(function(){setProg(40,'Searching logistics sources...');},2000);
   setTimeout(function(){setProg(70,'Processing intelligence...');},6000);
   fetchLive(key).then(function(parsed){
@@ -2415,7 +2235,7 @@ function doUpdate(manual){
     stamp(new Date());
     histSave(D);
     histRefreshUI();
-    if(D.articles)archRetireFromUpdate(D.articles.slice(3));
+
     try{localStorage.setItem(CACHE_KEY,JSON.stringify({d:D,ts:new Date().toISOString()}));}catch(e){}
     setProg(0,'');
     setStatus('Live data loaded ✓ · '+new Date().toLocaleTimeString(),'Next: 8–9 AM Eastern','sbar-l');
@@ -5396,62 +5216,62 @@ function ciToggleAuto(){
 // ── FALLBACK DATA ─────────────────────────────────────────────
 
 var FALLBACK = {
-  date: 'Wednesday, April 8, 2026',
+  date: 'Thursday, April 9, 2026',
   articles: [
     {
-      title: 'Hormuz Day 40: Ceasefire Holds — Maersk Cautious, Islamabad Talks Friday; Brent Stabilizes at $94',
-      summary: 'Day 2 of the US-Iran ceasefire: Brent crude stabilizes at ~$94/bbl (WTI $94.55) after Tuesday\'s 16% crash. Maersk issued a statement Wednesday confirming it is "not making any changes to specific services" and taking a cautious approach despite the ceasefire — no Gulf route resumptions yet. UK PM Keir Starmer is traveling to the Gulf to support ceasefire efforts. Global equity markets surging: Nikkei +5.4%, Kospi +6.9%, S&P 500 futures +2.7%. Islamabad talks scheduled Friday Apr 10. Iran\'s 10-point proposal remains a high bar. Infrastructure damage to Gulf energy facilities will delay physical supply normalization for months even if the strait fully reopens.',
-      severity: 'critical', category: 'energy / geopolitical', region: 'Global / Strait of Hormuz', date: 'Apr 8, 2026',
-      sources: [{name:'Maersk Statement Apr 8', url:'https://www.marinelink.com/news/maersk-maintains-caution-hormuz-shipping-537796'},{name:'UPI Apr 8', url:'https://www.upi.com/Top_News/World-News/2026/04/08/Iran-cease-deal-sends-oil-prices-lower/9141775636246/'},{name:'BNN Bloomberg Apr 8', url:'https://www.bnnbloomberg.ca/markets/2026/04/08/global-markets-jump-and-oil-prices-decline-as-iran-ceasefire-agreement-reached/'}]
+      title: 'Hormuz Day 41: Tanker Traffic Barely Moving — Iran Vetting Ships; Ceasefire Fragile; Islamabad Talks Tomorrow',
+      summary: 'Despite the US-Iran ceasefire, tanker traffic through the Strait of Hormuz remains near zero. Kpler data shows only 10-15 vessels per day — similar to the pace during active conflict — as Iran continues vetting which ships may transit. Maersk stated it is "working with urgency" to clarify conditions but has made no service changes. Analysts at Jefferies say "uncertainty has likely peaked" but oil will remain above pre-war levels for months. A critical new wrinkle: reports indicate Iran and Oman may charge transit fees on vessels, marking a break from Hormuz\'s historical status as a toll-free route. Eurasia Group predicts tanker operators will take at least two months to resume normal operations even if the ceasefire holds. Gulf LNG infrastructure damage in Qatar may take years to fully repair. Islamabad talks tomorrow (Apr 10) are the next major milestone.',
+      severity: 'critical', category: 'energy / geopolitical', region: 'Global / Strait of Hormuz', date: 'Apr 9, 2026',
+      sources: [{name:'Axios Apr 8', url:'https://www.axios.com/2026/04/08/iran-ceasefire-oil-shipping-impact-prices'},{name:'Euronews Apr 8', url:'https://www.euronews.com/business/2026/04/08/shipping-companies-see-opportunities-but-seek-clarity-on-strait-of-hormuz-reopening'},{name:'CBS News Apr 7', url:'https://www.cbsnews.com/news/iran-war-strait-of-hormuz-oil-prices-trump/'}]
     },
     {
-      title: 'USPS 8% Parcel Surcharge Approved for April 26 — Fuel Cost Shock Hits Final-Mile Carriers',
-      summary: 'The Postal Regulatory Commission cleared the USPS 8% temporary fuel surcharge affecting Priority Mail Express, Priority Mail, USPS Ground Advantage, and Parcel Select, effective April 26 through January 2027. USPS cites the Iran war-driven fuel spike: diesel at $5.64/gal, gasoline near $4/gal. Big parcel carriers (UPS, FedEx) already carry fuel surcharges of 21-34% of base rates — UPS imposed its third 2026 fuel surcharge hike on March 9. Retail DEF prices are holding steady but analysts warn sustained diesel pressure could force additional carrier fee adjustments in Q2.',
-      severity: 'elevated', category: 'trucking / parcel / fuel', region: 'USA', date: 'Apr 8, 2026',
-      sources: [{name:'FreightWaves Apr 8', url:'https://www.freightwaves.com/news/postal-service-can-proceed-with-8-parcel-surcharge-regulator-says'},{name:'Q2 Logistics Outlook', url:'https://miamialliance3pl.com/blog/q2-2026-logistics-outlook-hormuz-carrier-surcharges-miami.html'}]
+      title: 'Maersk: Hormuz "Creates Transit Opportunities" But No Certainty — Costing $55M/Week; No Service Changes Yet',
+      summary: 'Maersk confirmed it sees the ceasefire as creating "transit opportunities" but says it does not yet provide "full maritime certainty." The carrier is working to understand the conditions Iran may impose on transit coordination. The conflict has cost Maersk approximately $55 million per week. A substantial backlog of stranded vessels in the region is expected to make any resumption of Hormuz traffic significantly harder to manage. Insurance for tankers still needs to be reestablished. Analysts note that restarting Gulf oil production — cut by 7.5 million barrels/day in March and 9.1 million b/d in April — is a "minor engineering feat" that still requires weeks to months per RSM US chief economist Joe Brusuelas.',
+      severity: 'critical', category: 'ocean / shipping', region: 'Persian Gulf', date: 'Apr 9, 2026',
+      sources: [{name:'Euronews Apr 8', url:'https://www.euronews.com/business/2026/04/08/shipping-companies-see-opportunities-but-seek-clarity-on-strait-of-hormuz-reopening'},{name:'Axios Apr 8', url:'https://www.axios.com/2026/04/08/iran-ceasefire-oil-shipping-impact-prices'}]
     },
     {
-      title: 'DAT March Finals: Van $2.47, Flatbed $2.95, Reefer $2.88 — Spot-Contract Spread Tightest Since 2022',
-      summary: 'DAT Freight & Analytics March 2026 final data confirms van spot at $2.47/mi LH (7th straight monthly gain), flatbed at $2.95/mi (+8.5% MoM, highest since Apr 2025), reefer at $2.88/mi (cap 120% tighter YoY). The spot-contract spread on van narrowed to just $0.05/mi — the tightest since March 2022, signaling the freight market is moving toward structural balance. Week 13 truck posts hit 10-year lows across all equipment types. U.S. Bank/DAT report shows spot linehaul pricing up 23%+ from March 2025 through February 2026 while contract rates rose only 5%, with the spread compressed from $0.39 to $0.11/mi. DAT forecast: dry van contract +8% and spot +12% for 2026.',
-      severity: 'elevated', category: 'trucking / rates', region: 'USA', date: 'Apr 8, 2026',
-      sources: [{name:'DAT Truckload Monthly Mar 2026', url:'https://www.dat.com/company/news-events/news-releases/dat-truckload-spot-rates-post-seventh-straight-monthly-gain'},{name:'Trucking Dive / U.S. Bank Mar 2026', url:'https://www.truckingdive.com/news/trucking-spot-contract-rates-us-bank-dat-2026-spread/816351/'}]
+      title: 'Drewry WCI Apr 9 Update: $2,287/FEU Unchanged — Ceasefire Optimism Not Yet Reflected in Rates',
+      summary: 'Drewry\'s World Container Index published its April 9 update holding flat at $2,287/FEU for the second consecutive week, unchanged from April 2. The index shows Asia-Europe and Transpacific trade routes remain stable despite ceasefire news — rate softening is not yet materializing in weekly data. The Apr 2 reading confirmed rates held steady amid ongoing Hormuz tensions. Analysts note any ceasefire-driven rate relief will lag by 1-2 weeks as carriers reassess surcharge levels. Maersk\'s $400/FEU emergency bunker surcharge and CMA CGM\'s $300/FEU fuel surcharge remain in effect. 38 blank sailings for weeks 14-18 remain locked in carrier schedules.',
+      severity: 'elevated', category: 'ocean / rates', region: 'Global', date: 'Apr 9, 2026',
+      sources: [{name:'Drewry WCI Apr 9', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'}]
     },
     {
-      title: 'Air Cargo Rates Elevated Post-Ceasefire: China-US Above $7/kg; Jet Fuel Still 90%+ Above Pre-War',
-      summary: 'Despite the ceasefire announcement, air cargo rates remain structurally elevated. Freightos Air Index is 22% above year-ago levels; China-US rates are above $7/kg (up ~20%); China-Europe exceeded $4.80/kg (+75% vs pre-conflict). South Asia-Europe rates surged 62% from pre-conflict. Jet fuel costs remain 90%+ above pre-war baseline — the ceasefire crash in crude oil will take weeks to filter into aviation fuel spot prices. Qatar Airways Cargo and Emirates SkyCargo are gradually restoring capacity but global air cargo capacity remains constrained as Gulf carriers rebuild schedules. Supply Chain Dive reports air cargo contract negotiations are being heavily disrupted by the fuel cost shock.',
-      severity: 'elevated', category: 'air cargo / fuel', region: 'Global', date: 'Apr 8, 2026',
-      sources: [{name:'Air Cargo Week Apr 7', url:'https://aircargoweek.com/how-fuel-shortages-and-war-driven-disruption-reshape-air-cargo-flows/'},{name:'Freightos Mar 31 Update', url:'https://www.freightos.com/freight-industry-updates/weekly-freight-updates/still-no-ocean-rate-spike-though-more-increases-set-for-april-march-31-2026-update/'},{name:'Supply Chain Dive Apr 7', url:'https://www.supplychaindive.com/news/iran-war-sways-air-cargo-rates-contract-negotiations-xeneta/816610/'}]
+      title: 'Oil Supply Won\'t Normalize for Months Even With Open Strait — Eurasia Group, RSM Analysis',
+      summary: 'New analyses from Eurasia Group and RSM US both warn that physical oil supply normalization through Hormuz will take 2-6 months even if the ceasefire holds. Eurasia Group\'s Henning Gloystein notes tanker operators need at least two months to resume normal operations. Vessels anchored near Singapore take 4 weeks to reach the Gulf, meaning new supply deliveries to Asia are 8 weeks away at best. Gulf oil producers cut output by 9.1 million barrels/day in April — restarting production requires engineering work at damaged facilities. Qatar\'s LNG exporting infrastructure damage may take years to repair fully. Jefferies advises: "oil prices likely remaining above pre-war levels for months but with limited upside risk from here."',
+      severity: 'critical', category: 'energy / supply chain', region: 'Global', date: 'Apr 9, 2026',
+      sources: [{name:'CBS News Apr 7', url:'https://www.cbsnews.com/news/iran-war-strait-of-hormuz-oil-prices-trump/'},{name:'Axios Apr 8', url:'https://www.axios.com/2026/04/08/iran-ceasefire-oil-shipping-impact-prices'}]
     },
     {
-      title: 'Drewry WCI Apr 9 Update Due Today — Ceasefire Rate Relief Expected; 38 Blank Sailings Wks 14-18 Still Active',
-      summary: 'Drewry\'s World Container Index weekly update is due today (Apr 9). The Apr 2 reading held at $2,287/FEU — the first weekly reading since the ceasefire announcement is expected to show early rate softening signals. However, 38 confirmed blank sailings for weeks 14-18 (through early May) remain in the schedule. Maersk\'s $400/FEU emergency bunker surcharge and CMA CGM\'s $300/FEU fuel surcharge both went into effect in late March and are still active. Transpacific rates are up ~40% since before the conflict and Asia-Europe rates ~20%. UNCTAD warned global merchandise trade growth will halve in 2026 (from 4.7% to 1.5-2.5%) due to Hormuz disruption.',
-      severity: 'elevated', category: 'ocean / rates', region: 'Global', date: 'Apr 8, 2026',
-      sources: [{name:'Drewry WCI Apr 2', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'},{name:'Container Mag Apr 5', url:'https://container-mag.com/2026/04/05/hormuz-workaround-economy-ports-carriers-rerouting-cargo/'}]
+      title: 'USPS 8% Parcel Surcharge Effective April 26 — Carrier Cost Stack Now Highest in Decades',
+      summary: 'With the USPS 8% surcharge approved and effective April 26 through January 2027, the carrier cost stack for e-commerce shippers has reached its highest level in decades. USPS joins UPS (FSC 21-34%, 3 hikes in 2026) and FedEx with surcharges on top of January GRIs. Q2 2026 e-commerce shipping budgets need to factor in a cumulative 12-20% cost increase. The surcharge covers Priority Mail Express, Priority Mail, USPS Ground Advantage, and Parcel Select. Retail DEF prices have remained steady since the war started — analysts warn any softening will take 2-4 weeks to filter through to carrier fuel tables.',
+      severity: 'elevated', category: 'parcel / last mile', region: 'USA', date: 'Apr 9, 2026',
+      sources: [{name:'FreightWaves Apr 8', url:'https://www.freightwaves.com/news/postal-service-can-proceed-with-8-parcel-surcharge-regulator-says'}]
     },
     {
-      title: 'IEEPA Tariff Refund Scramble: $166B in Claims; CBP CAPE System 70% Complete, Launch ~April 20',
-      summary: 'Major importers including FedEx, Costco, Nissan, and L\'Oreal are racing to recover tariff payments following the Supreme Court\'s February 20 ruling striking down IEEPA tariffs (6-3). CBP says $166B was collected across ~53M entries. The new CAPE refund portal is ~70% complete (March 12 update) with a target launch around April 20. CBP said manual recalculation would require 4.4 million labor hours — interest on refunds is accruing at ~$650M/month. Trump replaced IEEPA tariffs with a 10% Section 122 global tariff (expires July 24) and has signaled intent to raise to 15%. Freight impact: Importers racing to file protests before 180-day liquidation windows close; supply chain sourcing decisions are being re-evaluated.',
-      severity: 'elevated', category: 'trade policy / tariffs', region: 'USA', date: 'Apr 8, 2026',
-      sources: [{name:'PwC Feb 26', url:'https://www.pwc.com/us/en/services/tax/library/pwc-sc-decision-on-ieepa-tariffs-reshapes-trade-auth-and-introduces-potential-refund-op.html'},{name:'SCOTUSblog Mar 2026', url:'https://www.scotusblog.com/2026/03/the-remaining-questions-after-the-supreme-courts-tariffs-ruling/'},{name:'Flexport Mar 2026', url:'https://www.flexport.com/blog/the-supreme-courts-ieepa-tariff-ruling-next-steps-potential-refunds-and/'}]
+      title: 'Agriculture Freight Holding — USDA: 33 Gulf Export Vessels Loaded; Japan Rates Ease Slightly',
+      summary: 'Despite the Hormuz ceasefire turbulence, US grain export activity is running ahead of last year. USDA data shows 33 vessels loaded at Gulf export terminals with more scheduled. Ocean freight rates to Japan declined slightly — a positive signal that agricultural export demand is holding despite global energy uncertainty. Farm input costs remain elevated however: ceasefire-driven crude oil relief will take weeks to flow into fertilizer and fuel costs at the farm level. RFD News reports the ceasefire is "easing oil markets but key cost pressures for agriculture remain in place."',
+      severity: 'routine', category: 'agriculture / ocean', region: 'USA — Gulf Coast', date: 'Apr 9, 2026',
+      sources: [{name:'RFD News Apr 9', url:'https://www.rfdtv.com/ceasefire-eases-oil-markets-but-farm-costs-stay-elevated'}]
     },
     {
-      title: 'FreightWaves April State of Industry: Intermodal +3% YoY; Manufacturing PMI 52.7; Container Demand Soft',
-      summary: 'FreightWaves April 2026 State of Industry white paper confirms: domestic intermodal volumes up ~3% YoY driven by strong service and cost advantage over truckload; manufacturing PMI at 52.7 (3rd straight expansion month, strongest since Aug 2022); container demand remains soft with declining import volumes and excess vessel capacity. Key risks: rising fuel costs, softening labor conditions, and uneven consumer spending creating economic uncertainty. AAR weekly rail data shows freight volumes posting robust weekly gains led by energy and metals. ISM Prices Paid index jumped to 78.3 in March — highest since June 2022 — signaling input cost inflation returning to supply chains.',
-      severity: 'routine', category: 'market intelligence', region: 'USA', date: 'Apr 8, 2026',
-      sources: [{name:'FreightWaves April 2026 State of Industry', url:'https://www.freightwaves.com/news/white-paper-state-of-the-industry-april-2026'},{name:'ISM PMI March 2026', url:'https://www.prnewswire.com/news-releases/manufacturing-pmi-at-52-7-march-2026-ism-manufacturing-pmi-report-302730721.html'}]
+      title: 'FreightWaves: Tender Rejections at 13%+ in Some Lanes; Nationwide OTRI at 11.5%',
+      summary: 'FreightWaves reports carrier tender rejection rates exceeding 13% in certain lanes, with the nationwide OTRI sitting at approximately 11.5% — the highest sustained level since 2022. The divergence between lane-level and national OTRI reflects regional capacity tightening rather than uniform market recovery. DAT March finals confirmed Week 13 truck posts hit 10-year lows across all equipment types. FreightWaves notes that pallet Producer Price Index and American Forest & Paper Association packaging data are forward-looking signals most truckers aren\'t watching — both are showing early tightening pressure heading into Q2.',
+      severity: 'elevated', category: 'trucking / capacity', region: 'USA', date: 'Apr 9, 2026',
+      sources: [{name:'FreightWaves Apr 9', url:'https://www.freightwaves.com/'}]
     },
     {
-      title: 'Dalilah\'s Law CDL Reform Clears House Committee — Could Remove 200K-250K Drivers from Market',
-      summary: 'H.R. 5688 (Dalilah\'s Law) advanced through the House Transportation & Infrastructure Committee on March 18. The bill targets foreign nationals operating CMVs — English language proficiency enforcement and CDL reform provisions could remove an estimated 200,000-250,000 non-domiciled drivers from the US trucking market if enacted. FreightWaves CEO Craig Fuller called this a potential "trucking super cycle" trigger with overnight rate surges. ATA president Chris Spear at TMC 2026 in Nashville cited the bill as the most significant capacity risk factor of 2026. Carriers and brokers are watching the Senate calendar closely as summer capacity season approaches.',
-      severity: 'elevated', category: 'trucking / regulation / capacity', region: 'USA', date: 'Apr 8, 2026',
-      sources: [{name:'FreightWaves Mar 2026', url:'https://www.freightwaves.com/news/category/news/trucking'},{name:'Transport Topics Mar 17', url:'https://www.ttnews.com/'}]
+      title: 'Supply Chain Dive: B2B Logistics in Structural Reset — "Shippers Aren\'t Buying a Discount, They\'re Buying Risk"',
+      summary: 'Supply Chain Dive\'s 2026 outlook coverage features DAT iQ Principal Analyst Dean Croke\'s key insight: shippers in 2026 are deprioritizing rock-bottom rates and prioritizing reliable capacity, because carrier survivability is now a real concern. "Shippers aren\'t buying a discount, they are buying risk," Croke said. Several carriers filed for bankruptcy in early 2026 including Texas International Enterprises, STG Logistics, and family-owned Illinois carrier Bulmaks. If the trucking market doesn\'t improve in 6 months, M&A activity is expected to accelerate for freight brokers and motor carriers. The B2B logistics reset is being driven by Amazon\'s expanding logistics footprint reshaping market structure.',
+      severity: 'elevated', category: 'trucking / market structure', region: 'USA', date: 'Apr 9, 2026',
+      sources: [{name:'Supply Chain Dive Jan 2026', url:'https://www.supplychaindive.com/news/2026-logistics-outlook-ai-bankruptcies-ocean-air-last-mile-rail-trucking-operational-volatility/810429/'}]
     }
   ],
   disruptions: [
     {
       title: 'Strait of Hormuz — Day 40: CEASEFIRE DAY 2 — Maersk Cautious; Islamabad Talks Friday Apr 10',
       description: 'The US-Iran ceasefire holds into Day 2. Maersk confirmed Wednesday it is "not making any changes to specific services" and will not resume Gulf operations until there is sufficient security certainty — meaning carrier surcharges, blank sailings, and Cape routing remain fully in effect. Brent crude has stabilized at ~$94/bbl (WTI ~$94.55) after Tuesday\'s 16% crash. UK PM Starmer traveling to Gulf. Iran\'s 10-point proposal still demands US military withdrawal, sanctions relief, and full war damage compensation — a very difficult bar to meet in the 2-week window. Islamabad talks Friday Apr 10 are the next critical checkpoint. Physical supply chain normalization is months away even if the strait reopens — Gulf energy infrastructure was severely damaged in strikes.',
-      severity: 'critical', type: 'maritime', region: 'Strait of Hormuz / Persian Gulf', dayCount: 40,
+      severity: 'critical', type: 'maritime', region: 'Strait of Hormuz / Persian Gulf', dayCount: 41,
       trend: 'de-escalating',
       rateImpact: 'Brent ~$94; WTI ~$94.55; diesel $5.64/gal EIA; carrier surcharges still active (Maersk $400/FEU, CMA CGM $300/FEU)',
       transitImpact: 'No carrier resumptions yet; 2-week window; Cape routing standard; 38 blank sailings wks 14-18',
@@ -5470,7 +5290,7 @@ var FALLBACK = {
     {
       title: 'Red Sea / Houthis — Day 124: Ceasefire Reduces Near-Term Threat; Cape Routing Continues',
       description: 'With the US-Iran ceasefire in place, the immediate threat of Iran activating Houthis against Bab al-Mandeb is reduced. However, Houthis remain an independent force and have not announced a stand-down. Cape of Good Hope routing is still standard for all major carriers. The ceasefire does not automatically restore Red Sea security — carriers require sustained safety confirmation and renewed P&I insurance coverage before considering any return to Suez. Sea-Intelligence Feb 2026 data shows global schedule reliability at 62-64% — well below the pre-COVID 75% benchmark. 38 confirmed blank sailings for weeks 14-18 remain in carrier schedules regardless of ceasefire status.',
-      severity: 'elevated', type: 'maritime', region: 'Red Sea / Gulf of Aden / Yemen', dayCount: 124,
+      severity: 'elevated', type: 'maritime', region: 'Red Sea / Gulf of Aden / Yemen', dayCount: 125,
       trend: 'de-escalating',
       rateImpact: 'Cape routing adds 10-14 days Asia-Europe; 38 blank sailings still scheduled wks 14-18',
       transitImpact: 'No carrier Red Sea resumptions; route normalization weeks away at minimum if ceasefire holds',
@@ -5485,7 +5305,7 @@ var FALLBACK = {
     {
       title: 'US Diesel $5.64/gal — EIA Apr 7 Confirmed; GasBuddy: Pump Relief Expected Within 48 Hours',
       description: 'EIA confirmed the national average on-highway diesel at $5.64/gal for the week of April 7 — nearing the all-time high of $5.82 set in 2022. The EIA STEO (April 7) forecast diesel peaking above $5.80/gal in April with a full-year average of $4.80/gal. However, the ceasefire and oil price crash changes the near-term outlook: GasBuddy analyst Patrick De Haan stated prices could ease a few cents per day within 48 hours post-ceasefire, with diesel prices likely lagging gasoline by several days. Next EIA weekly diesel reading: April 14. FSC impact: at $5.64/gal, fuel surcharges add approximately $0.80+/mi vs pre-war baseline — a major cost shock for shippers on per-mile contracts.',
-      severity: 'elevated', type: 'trucking', region: 'USA', dayCount: 40,
+      severity: 'elevated', type: 'trucking', region: 'USA', dayCount: 41,
       trend: 'de-escalating',
       rateImpact: 'Diesel $5.64/gal (EIA Apr 7); ceasefire may bring relief; next reading Apr 14',
       transitImpact: 'FSC adds ~$0.80+/mi vs pre-war; USPS 8% surcharge effective Apr 26',
@@ -5586,7 +5406,7 @@ var FALLBACK = {
   ],
   brief: [
     {
-      title: 'Hormuz Day 40: Ceasefire Holds — Maersk No Changes; Brent $94; Islamabad Talks Friday',
+      title: 'Hormuz Day 41: Ceasefire Holds — Maersk No Changes; Brent $94; Islamabad Talks Friday',
       body: 'The US-Iran 2-week ceasefire entered Day 2. Maersk formally stated Wednesday: "not making any changes to specific services" and taking a cautious approach — carrier surcharges, blank sailings, and Cape routing remain fully active. Brent stabilizing at ~$94/bbl (WTI $94.55) after Tuesday\'s 16% crash. UK PM Starmer traveling to Gulf. Global equity markets surged: Nikkei +5.4%, Kospi +6.9%, S&P 500 futures +2.7%. Iran\'s 10-point proposal demands US military withdrawal, sanctions lifting, and full war damages — a very high bar for a 2-week window. Islamabad talks Friday Apr 10 are the next critical checkpoint. Physical supply chain normalization is months away regardless of the strait reopening due to Gulf energy infrastructure damage.',
       priority: 'critical', category: 'energy / geopolitical', age: 'Apr 8 — Live',
       tags: ['Hormuz', 'Ceasefire Day 2', 'Maersk', 'Islamabad'],
@@ -5768,11 +5588,11 @@ var FALLBACK = {
 };
 
 FALLBACK.signals = [
-  {name:'SCFI',         value:'3,400+',   unit:'',     direction:'up',   change:'\u25b2 War Day 40; ceasefire holds; Drewry WCI Apr 9 update today may show rate softening', source:'SSE est.', date:'Apr 8'},
+  {name:'SCFI',         value:'3,400+',   unit:'',     direction:'up',   change:'\u25b2 War Day 41; ceasefire holds; Drewry WCI Apr 9 update today may show rate softening', source:'SSE est.', date:'Apr 8'},
   {name:'Drewry WCI',  value:'$2,287',   unit:'/FEU', direction:'flat', change:'\u2192 Apr 2 last; Apr 9 update today — ceasefire may ease rates; 38 blank sailings wks 14-18 active', source:'Drewry Apr 2', date:'Apr 9 pending'},
   {name:'BDI',          value:'1,882',    unit:'',     direction:'down', change:'\u25bc Dry bulk softening on ceasefire relief expectations; infrastructure damage limits near-term supply recovery', source:'Baltic Exchange', date:'Apr 8'},
-  {name:'Brent Crude',  value:'$94',      unit:'/bbl', direction:'down', change:'\u25bc -16% ceasefire crash stabilizing; was $111.51 intraday Apr 7; still +31% vs pre-war $72/bbl', source:'CNBC/AFP Apr 8', date:'Apr 8'},
-  {name:'WTI',          value:'$94.55',   unit:'/bbl', direction:'down', change:'\u25bc -16% on ceasefire; stabilizing; Nikkei +5.4%, Kospi +6.9%, S&P futures +2.7% Apr 8 relief rally', source:'NBC/CNBC Apr 8', date:'Apr 8'},
+  {name:'Brent Crude',  value:'$94',      unit:'/bbl', direction:'down', change:'\u25bc -16% ceasefire crash stabilizing; was $111.51 intraday Apr 7; still +31% vs pre-war $72/bbl', source:'CNBC/Axios Apr 9', date:'Apr 9'},
+  {name:'WTI',          value:'$94.55',   unit:'/bbl', direction:'down', change:'\u25bc -16% on ceasefire; stabilizing; Nikkei +5.4%, Kospi +6.9%, S&P futures +2.7% Apr 8 relief rally', source:'CNBC Apr 9', date:'Apr 9'},
   {name:'US Diesel',    value:'$5.64',    unit:'/gal', direction:'up',   change:'\u25b2 EIA Apr 7 confirmed; GasBuddy: few cents/day relief expected within 48hrs; diesel lags gasoline', source:'EIA Apr 7', date:'Apr 8'},
   {name:'Van Spot',     value:'$2.47 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final locked — 7th straight monthly gain; contract spread $0.05/mi tightest since 2022', source:'DAT Mar 2026 Final', date:'Apr 8'},
   {name:'Reefer Spot',  value:'$2.88 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final; cap 120% tighter YoY; produce season accelerating; Florida lanes tightening', source:'DAT Mar 2026 Final', date:'Apr 8'},
@@ -5828,12 +5648,25 @@ function init(){
 
 
 var RPT_EXCL_KEY='nxl_rpt_excluded_v1';var rptExcluded=[];
+
+function s5Tab(tab){
+  var isProspects = tab === 'prospects';
+  document.getElementById('s5-panel-prospects').style.display = isProspects ? 'block' : 'none';
+  document.getElementById('s5-panel-excluded').style.display  = isProspects ? 'none' : 'block';
+  document.getElementById('s5-tab-prospects').style.background = isProspects ? 'var(--acc)' : 'var(--bg2)';
+  document.getElementById('s5-tab-prospects').style.color      = isProspects ? '#060C18' : 'var(--t2)';
+  document.getElementById('s5-tab-prospects').style.border     = isProspects ? 'none' : '1px solid var(--b2)';
+  document.getElementById('s5-tab-excluded').style.background  = isProspects ? 'var(--bg2)' : 'var(--bg3)';
+  document.getElementById('s5-tab-excluded').style.color       = isProspects ? 'var(--t2)' : 'var(--t1)';
+  document.getElementById('s5-tab-excluded').style.border      = isProspects ? '1px solid var(--b2)' : '1px solid var(--acc)';
+  if(!isProspects) rptExclSearch();
+}
 function rptLoad(){try{rptExcluded=JSON.parse(localStorage.getItem(RPT_EXCL_KEY)||'[]');}catch(e){rptExcluded=[];}}
 function rptSave(){try{localStorage.setItem(RPT_EXCL_KEY,JSON.stringify(rptExcluded));}catch(e){}}
 function rptExclude(id){if(rptExcluded.indexOf(id)<0){rptExcluded.push(id);rptSave();rptRender();rptS5Filter();}}
 function rptRestore(id){rptExcluded=rptExcluded.filter(function(x){return x!==id;});rptSave();rptRender();rptS5Filter();}
 function rptRefresh(){rptRender();}
-function rptExclClearAll(){rptExcluded=[];rptSave();rptRender();rptExclSearch();}
+function rptExclClearAll(){rptExcluded=[];rptSave();rptRender();rptExclSearch();s5Tab('excluded');}
 
 function rptExclSearch(){
   var q=((document.getElementById('rpt-excl-search')||{}).value||'').toLowerCase().trim();
@@ -6001,7 +5834,7 @@ function rptRender(){
   var crit=dis.filter(function(d){return d.severity==='critical';}).length;
   function sig(n){return sigs.find(function(s){return s.name===n;})||{value:'\u2014',change:'',direction:'flat'};}
   var exec=$('rpt-exec-summary');
-  if(exec)exec.innerHTML='<b style="font-family:var(--fh);font-size:12px">'+today+'</b><br><br>Hormuz Day 40 — Ceasefire announced. Brent <b>'+esc(sig('Brent Crude').value)+'/bbl</b> (crashed 13% on news). Diesel <b>'+esc(sig('US Diesel').value)+'/gal</b> (EIA Apr peak forecast). Tender rejections <b>'+esc(sig('OTRI').value)+'</b>. Van spot <b>'+esc(sig('Van Spot').value)+'/mi</b> (Mar final). <b>'+crit+' critical disruptions</b> active.<br><br><b>Pipeline:</b> '+prospects.length+' qualified companies'+(rptExcluded.length?' ('+rptExcluded.length+' excluded as existing partners)':'')+'.';
+  if(exec)exec.innerHTML='<b style="font-family:var(--fh);font-size:12px">'+today+'</b><br><br>Hormuz Day 41 — Ceasefire announced. Brent <b>'+esc(sig('Brent Crude').value)+'/bbl</b> (crashed 13% on news). Diesel <b>'+esc(sig('US Diesel').value)+'/gal</b> (EIA Apr peak forecast). Tender rejections <b>'+esc(sig('OTRI').value)+'</b>. Van spot <b>'+esc(sig('Van Spot').value)+'/mi</b> (Mar final). <b>'+crit+' critical disruptions</b> active.<br><br><b>Pipeline:</b> '+prospects.length+' qualified companies'+(rptExcluded.length?' ('+rptExcluded.length+' excluded as existing partners)':'')+'.';
   var kpiEl=$('rpt-kpis');
   if(kpiEl){var kd=[{v:esc(sig('Brent Crude').value),l:'BRENT CRUDE',c:sig('Brent Crude').direction==='down'?'var(--grn)':'var(--red)'},{v:esc(sig('US Diesel').value),l:'US DIESEL /GAL',c:'var(--red)'},{v:esc(sig('Van Spot').value),l:'VAN SPOT LH/MI',c:'var(--grn)'},{v:esc(sig('Flatbed Spot').value),l:'FLATBED LH/MI',c:'var(--grn)'},{v:esc(sig('Reefer Spot').value),l:'REEFER LH/MI',c:'var(--amb)'},{v:esc(sig('OTRI').value),l:'TENDER REJECTION',c:'var(--amb)'},{v:esc(sig('SCFI').value),l:'SCFI INDEX',c:'var(--red)'},{v:esc(sig('Drewry WCI').value),l:'DREWRY WCI',c:'var(--red)'}];kpiEl.innerHTML=kd.map(function(k){return'<div class="rpt-kpi"><div class="rpt-kpi-v" style="color:'+k.c+'">'+k.v+'</div><div class="rpt-kpi-l">'+k.l+'</div></div>';}).join('');}
   var sparkEl=$('rpt-sparks'),td=((data.freight&&data.freight.trends)||{});
@@ -6091,7 +5924,7 @@ function rptRender(){
 
     // ── SECTION A: MARKET CONTEXT ─────────────────────────
     h+='<div style="background:rgba(255,69,69,.07);border:1px solid rgba(255,69,69,.2);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1rem">';
-    h+='<div style="font-family:var(--fh);font-size:11px;font-weight:800;color:var(--red);margin-bottom:.5rem">\u26a0\ufe0f Market Conditions \u2014 '+(data.date||today)+' \u00b7 Hormuz Day 40 \u00b7 Ceasefire Announced</div>';
+    h+='<div style="font-family:var(--fh);font-size:11px;font-weight:800;color:var(--red);margin-bottom:.5rem">\u26a0\ufe0f Market Conditions \u2014 '+(data.date||today)+' \u00b7 Hormuz Day 41 \u00b7 Ceasefire Announced</div>';
     h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.5rem">';
     h+='<div>\u26bd Brent Crude: <b>'+esc(brentVal)+'</b> — UN Security Council votes today on Hormuz resolution</div>';
     h+='<div>\u26fd Diesel: <b>'+esc(dieselVal)+'</b> — largest 3-wk spike ever recorded; +$1.31 in 3 weeks</div>';
