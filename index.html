@@ -1502,13 +1502,13 @@ function renderFreight(f){
 
     // § 1 KPI STRIP
     out+='<div class="fw-kpi-strip" style="margin-bottom:1.2rem">';
-    out+=kpi('SCFI','3,400+','▲ War Day 38; ~5% pre-war volume transiting Hormuz','var(--red)','SSE est. Apr 6');
+    out+=kpi('SCFI','3,400+','↔ Ceasefire announced; Drewry WCI Apr 9 update may show rate easing','var(--amb)','SSE est. Apr 7');
     out+=kpi('Drewry WCI','$2,287/FEU','→ Unchanged WoW; 38 blank sailings wks 14-18','var(--amb)','Drewry Apr 2');
     out+=kpi('Van Spot','$2.47/mi LH','▲ March final; cap 93% tighter YoY; spread $0.05/mi','var(--grn)','DAT Mar 2026');
-    out+=kpi('Diesel','$5.40/gal','▲ EIA Mar 31; next Apr 7; diesel +55% YTD; crude $110+','var(--red)','EIA Mar 31');
+    out+=kpi('Diesel','$5.80+/gal','▲ EIA STEO Apr 7 forecast April peak; full-yr avg $4.80/gal; next reading Apr 14','var(--red)','EIA STEO Apr 7');
     out+=kpi('Flatbed Spot','$2.95/mi LH','▲ March final +8.5% MoM; L/T 73.75; 10-yr low truck posts','var(--grn)','DAT Mar 2026');
     out+=kpi('Reefer Spot','$2.88/mi LH','▲ March final; cap 120% tighter YoY; produce pull','var(--grn)','DAT Mar 2026');
-    out+=kpi('Brent Crude','$109.90/bbl','▲ Tuesday deadline; Iran rejects ceasefire; volatile','var(--red)','Apr 6 2026');
+    out+=kpi('Brent Crude','~$95/bbl','▼ -13% ceasefire crash; was $111.51 intraday; Dated Brent record $144.42','var(--grn)','Apr 7 2026');
     out+=kpi('ISM PMI','52.4','2nd month expanding; New Orders component strong','var(--grn)','Mar 2026 · >50 = expansion');
     out+='</div>';
 
@@ -5391,223 +5391,217 @@ function ciToggleAuto(){
 // ── FALLBACK DATA ─────────────────────────────────────────────
 
 var FALLBACK = {
-  date: 'Monday, April 6, 2026',
+  date: 'Tuesday, April 7, 2026',
   articles: [
     {
-      title: 'Iran Rejects Ceasefire, Trump Sets Tuesday 8 PM Deadline — Strikes on Iran, Israel, Gulf; Bab al-Mandeb Threatened',
-      summary: 'Day 38 of the Iran-US-Israel war. Iran rejected the 45-day ceasefire proposal submitted by Egypt, Pakistan, and Turkey, calling it incompatible with ultimatums. Trump issued a Tuesday 8 PM ET deadline to reopen Hormuz or face strikes on power plants, bridges, and "the entire country." Iran threatened closure of Bab al-Mandeb Strait — through which 4.1M bpd transits — via Houthi proxies. US and Israeli jets struck Iranian petrochemical facilities, steel plants, and infrastructure. Iran hit Gulf oil refineries and Israeli cities. Only ~5% of pre-war shipping volume is transiting Hormuz. WTI spiked to $114/bbl during Trump\'s press conference before settling near $110-112. 45-day proposal deemed "significant step, but not enough" by Trump.',
-      severity: 'critical', category: 'energy / geopolitical', region: 'Global / Strait of Hormuz', date: 'Apr 6, 2026',
-      sources: [{name:'NBC News Live Apr 6', url:'https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-war-trump-deadline-hormuz-oil-ceasefire-israel-rcna266833'},{name:'CNN Live Apr 6', url:'https://www.cnn.com/2026/04/06/world/live-news/iran-war-us-trump-oil'},{name:'NPR Apr 6', url:'https://www.npr.org/2026/04/06/nx-s1-5775383/iran-war-updates'}]
+      title: 'BREAKING: US-Iran 2-Week Ceasefire — Hormuz Reopening Begins; Oil Crashes 13% to ~$95 Brent',
+      summary: 'Day 39. Trump announced a two-week ceasefire with Iran at 8 PM ET Tuesday, just before his strike deadline, contingent on Iran immediately reopening the Strait of Hormuz. Iran accepted and Foreign Minister Araghchi posted that "safe passage through the Strait will be possible for two weeks via coordination with Iranian Armed Forces." Negotiations will resume Friday in Islamabad, brokered by Pakistan PM Shehbaz Sharif. Brent crude plunged ~13% to ~$95/bbl on the announcement — but remains 30%+ above pre-war levels. WTI fell to ~$96. Dated Brent (physical delivery) had reached a record $144.42 earlier Tuesday. EIA STEO released today forecasts April diesel peak above $5.80/gal, full-year diesel average $4.80/gal. Iran\'s 10-point peace proposal includes: controlled Hormuz passage with Iran retaining authority, lifting all sanctions, US military withdrawal from the region, and full war damage compensation — a comprehensive list that could derail talks.',
+      severity: 'critical', category: 'energy / geopolitical', region: 'Global / Strait of Hormuz', date: 'Apr 7, 2026',
+      sources: [{name:'Al Jazeera Apr 7', url:'https://www.aljazeera.com/news/2026/4/7/trump-suspends-iran-bombing-for-two-weeks-following-dire-threats'},{name:'NBC Live Apr 7', url:'https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-war-trump-deadline-hormuz-infrastructure-ceasefire-rcna267039'},{name:'Axios Apr 7', url:'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump'}]
     },
     {
-      title: 'Iran Threatens Bab al-Mandeb — If Closed, 30% of Global Trade at Risk; Oil Could Hit $150+',
-      summary: 'Iranian Supreme Leader adviser Ali Akbar Velayati warned the Houthi-controlled Bab al-Mandeb Strait "views Hormuz with the same intensity" — a direct threat to close the second major chokepoint. The Red Sea passage carries ~4.1M bpd and ~10% of global trade. Saudi Arabia has been diverting ~7M bpd through the East-West Pipeline to Yanbu, then through Bab al-Mandeb to Asian markets — the primary alternative to Hormuz. Closure of both straits would block ~30% of global traded energy. JPMorgan analysts: $150/bbl if disruptions persist past mid-May. WTI today ranged $108.95–$115.37/bbl.',
-      severity: 'critical', category: 'energy / maritime', region: 'Global / Red Sea / Bab al-Mandeb', date: 'Apr 6, 2026',
-      sources: [{name:'Al Jazeera Apr 6', url:'https://www.aljazeera.com/news/2026/4/6/iran-threatens-bab-al-mandeb-how-would-that-affect-world-trade'},{name:'Forbes / Yahoo News Apr 6', url:'https://www.yahoo.com/news/articles/iranian-officials-now-threatening-close-181240887.html'},{name:'Bloomberg Apr 6', url:'https://www.bloomberg.com/news/articles/2026-04-05/latest-oil-market-news-and-analysis-for-april-6'}]
+      title: 'EIA STEO April 7: Diesel to Peak $5.80+/gal in April; Brent Averaged $103 in March; 9.1M bpd Shut-In April',
+      summary: 'EIA\'s April 7 Short-Term Energy Outlook: Brent averaged $103/bbl in March. Production shut-ins in Iraq, Saudi Arabia, Kuwait, UAE, Qatar, and Bahrain rose from 7.5M bpd in March to 9.1M bpd in April. Diesel forecast to peak above $5.80/gal in April — full-year average $4.80/gal. Gasoline forecast to peak ~$4.30/gal in April. EIA assumes the conflict does not persist past April and Hormuz gradually reopens — with shut-ins falling to 6.7M bpd in May and near pre-conflict levels by late 2026. Brent forecast to peak at $115/bbl in Q2 before falling below $90 in Q4. Goldman Sachs Q4 2026 base case is $71 Brent / $67 WTI if ceasefire holds.',
+      severity: 'critical', category: 'energy / fuel', region: 'USA / Global', date: 'Apr 7, 2026',
+      sources: [{name:'EIA STEO April 7 2026', url:'https://www.eia.gov/outlooks/steo/'},{name:'Goldman Sachs via Madres Travels', url:'https://wp.madrestravels.com/2026/04/07/why-oil-prices-are-rising-wti-near-112-can-it-hit-150-new-oil-price-predictions/'}]
     },
     {
-      title: 'March 2026 Spot Rates: Van $2.47/mi, Flatbed $2.95/mi, Reefer $2.88/mi; Diesel $5.40/gal (EIA Next Apr 7)',
-      summary: 'Per DAT Trendlines (March 2026 final): Van spot $2.47/mi (+2.5% MoM, capacity 93% tighter YoY), Flatbed $2.95/mi (+8.5% MoM, L/T ratio 73.75, capacity 90% tighter YoY), Reefer $2.88/mi (capacity 120% tighter YoY). Contract van at $2.52/mi — spread vs spot now just $0.05/mi, tightest since 2022. EIA diesel $5.40/gal through March 31; next EIA release April 7. DC Velocity: diesel surged 55% YTD, squeezing carriers. TD Cowen: TL carriers feel largest negative effect in Q1, one-way TL most exposed.',
-      severity: 'elevated', category: 'trucking / fuel', region: 'USA', date: 'Apr 6, 2026',
-      sources: [{name:'Dynamic Logistix DAT Mar 2026', url:'https://dynamiclogistix.com/trucking-freight-rates/'},{name:'DC Velocity Apr 2', url:'https://www.dcvelocity.com/transportation/trucking/truck-freight-rates-tick-up-slightly-to-start-2026'},{name:'EIA Diesel', url:'https://www.eia.gov/petroleum/gasdiesel/'}]
+      title: 'Before Ceasefire: WTI Hit $115.86, Brent $111.51 Intraday; Dated Brent Record $144.42; US/Israel Struck Kharg Island',
+      summary: 'Before the ceasefire announcement, Tuesday saw the war reach its most dangerous point. WTI surged to $115.86 and Brent to $111.51 intraday. Dated Brent — the physical oil benchmark — reached a record $144.42/bbl, surpassing the 2008 all-time high of $147 on a physical delivery basis. US and Israeli jets struck Kharg Island (90% of Iran\'s oil export hub), Iranian railways, and bridges. Iran called citizens to form human chains around power plants. Brent settled $109.27 before ceasefire news dropped prices further. Saudi Aramco raised Arab Light official selling price for May Asia delivery to a record $19.50/bbl premium. Seven ballistic missiles intercepted over Saudi Arabia\'s Eastern Region near energy facilities.',
+      severity: 'critical', category: 'energy / geopolitical', region: 'Global', date: 'Apr 7, 2026',
+      sources: [{name:'Reuters via BOE Report Apr 7', url:'https://boereport.com/2026/04/07/oil-prices-climb-as-hormuz-stays-shut-ahead-of-trump-deadline/amp/'},{name:'CBS News Live Apr 7', url:'https://www.cbsnews.com/live-updates/iran-war-trump-deadline-power-plants-human-chains-israel-train-strikes/'},{name:'Axios Apr 7', url:'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump'}]
     },
     {
-      title: 'Drewry WCI $2,287/FEU Flat — Iraq Crude Exempt from Hormuz; Only 5% Pre-War Volume Transiting',
-      summary: 'Drewry WCI flat at $2,287/FEU (Apr 2 reading; Apr 9 update pending). Iraq exempted by Iran from Hormuz restrictions — SOMO told traders Iraqi shipments are now exempt. Bloomberg: Iraqi buyers told to collect crude cargoes. Iran charges up to $2M per vessel for passage through IRGC-controlled Larak corridor. Only ~5% of pre-war shipping volume transiting per CNN/Windward tracking. Two LNG tankers (Rasheed, Al Dayeen) turned back before transiting Monday. Three Turkish vessels have exited Persian Gulf since war began. China, India, Pakistan, Turkey negotiating bilateral passage with Iran.',
-      severity: 'elevated', category: 'ocean', region: 'Global / Persian Gulf', date: 'Apr 6, 2026',
-      sources: [{name:'Drewry Apr 2', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'},{name:'Bloomberg Iraq Apr 6', url:'https://www.bloomberg.com/news/articles/2026-04-06/iraq-tells-buyers-to-collect-crude-as-its-oil-can-cross-hormuz'},{name:'CNN Live Apr 6', url:'https://www.cnn.com/2026/04/06/world/live-news/iran-war-us-trump-oil'}]
+      title: 'Trucking Impact: EIA Forecasts Diesel $5.80+/gal Peak April — FSC Escalation Imminent; Carriers Tightest in Years',
+      summary: 'The EIA April 7 STEO forecasts diesel peaking above $5.80/gal in April (vs $5.40/gal on March 31), then averaging $4.80/gal for full year 2026. The ceasefire may bring gasoline relief by Friday per analyst projections, but analysts warn infrastructure damage means supply normalization could take months. DAT March finals: van $2.47/mi, flatbed $2.95/mi, reefer $2.88/mi. Week 13 truck posts hit 10-year lows across all equipment types. Contract-spot spread now just $0.05/mi. Next EIA diesel release April 14. FSC tables at $5.80/gal diesel add ~$0.85+/mi vs pre-war baseline — a massive cost shock for shippers on per-mile contract.',
+      severity: 'elevated', category: 'trucking / fuel', region: 'USA', date: 'Apr 7, 2026',
+      sources: [{name:'EIA STEO April 7', url:'https://www.eia.gov/outlooks/steo/'},{name:'Dynamic Logistix DAT Mar 2026', url:'https://dynamiclogistix.com/trucking-freight-rates/'}]
     },
     {
-      title: 'Global Energy Rationing Spreads — EU Airports Cut Jet Fuel; Bangladesh Shuts at 6PM; Gas $4+ USA',
-      summary: 'Hormuz crisis has triggered global energy rationing. Italy: airports in Bologna, Milan, Treviso, Venice restricting jet fuel due to Air BP shortage. Ryanair CEO warned 5-10% of summer flights may cancel if Hormuz stays closed. Jet fuel averaged $195/bbl last week (IATA), US jet fuel +95% since war began. Bangladesh cut office hours and market closure to 6 PM to conserve fuel. Australia PM Albanese urged citizens to use public transit. US gas above $4/gal nationally. Gas $6+ in California. The Time/Bloomberg report: OECD commercial crude inventories to draw 166M barrels in April, hitting operational minimums.',
-      severity: 'elevated', category: 'energy / global impact', region: 'Global', date: 'Apr 6, 2026',
-      sources: [{name:'Time Magazine Apr 5', url:'https://time.com/article/2026/04/05/strait-of-hormuz-fuel-rationing-oil/'},{name:'CNBC Apr 5', url:'https://www.cnbc.com/2026/04/05/crude-oil-prices-iran-war-strait-hormuz.html'},{name:'Rigzone Apr 3', url:'https://www.rigzone.com/news/why_has_the_wti_oil_price_surpassed_brent-03-apr-2026-183367-article/'}]
+      title: 'Drewry WCI April 9 Update Expected — Ceasefire May Signal Rate Relief; But Infrastructure Damage Delays Recovery',
+      summary: 'Drewry WCI held at $2,287/FEU through April 2 — next update expected April 9. The ceasefire and Hormuz reopening signal could trigger rate normalization, but analysts warn damage to Gulf energy infrastructure means physical supply recovery will take months. Iran charged up to $2M/vessel for transit during the closure. 38 blank sailings remain confirmed for weeks 14-18. Carriers have been slow steaming and adding emergency bunker surcharges. Maersk\'s $200/TEU emergency surcharge request is now in question given the ceasefire. Shipper note: wait for confirmed Hormuz traffic data before canceling war risk surcharge negotiations.',
+      severity: 'elevated', category: 'ocean', region: 'Global', date: 'Apr 7, 2026',
+      sources: [{name:'Drewry Apr 2', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'},{name:'Axios Ceasefire Apr 7', url:'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump'}]
     }
   ],
   disruptions: [
     {
-      title: 'Strait of Hormuz — Day 38: Tuesday 8 PM Deadline; Iran Rejects Ceasefire; Bab al-Mandeb Threatened',
-      description: 'Day 38. Trump issued Tuesday 8 PM ET final deadline: reopen Hormuz or face strikes on power plants, bridges — "the entire country can be taken out in one night." Iran rejected 45-day ceasefire proposal (Egypt/Pakistan/Turkey-brokered), demanding permanent end to war, sanctions lifting, and reconstruction payments. Iran adviser Velayati threatened Bab al-Mandeb closure via Houthis — would block Saudi Arabia\'s alternative 7M bpd export route through Yanbu. US and Israeli jets struck Iran\'s petrochemical industry, steel plants, and infrastructure. Iran hit Gulf refineries and Israeli cities. Only ~5% of pre-war shipping volume transiting. Iraq exempted by Iran from restrictions. Two LNG tankers turned back Monday. Iran charging up to $2M/vessel for IRGC-controlled Larak corridor passage. WTI $108.95–$115.37 today.',
-      severity: 'critical', type: 'maritime', region: 'Strait of Hormuz / Persian Gulf', dayCount: 38,
-      trend: 'escalating',
-      rateImpact: 'WTI $108.95–$115.37 today; Brent $109.90; JPMorgan $150+ if closed past mid-May; $1,500–$3,000/FEU war risk surcharges; ocean rates +160%+',
-      transitImpact: '+10-14 days via Cape of Good Hope; ~5% pre-war volume transiting',
+      title: 'Strait of Hormuz — Day 39: CEASEFIRE — 2-Week Reopening Agreed; Oil -13%; Talks Resume Islamabad Friday',
+      description: 'MAJOR DEVELOPMENT: Trump announced a two-week ceasefire at 8 PM ET Tuesday, hours before planned strikes on Iranian power plants and bridges. Iran accepted and FM Araghchi confirmed "safe passage through the Strait will be possible for two weeks via coordination with Iran\'s Armed Forces." Pakistan PM Sharif brokered the deal. Negotiations resume Friday in Islamabad. Brent crashed ~13% to ~$95/bbl. WTI fell to ~$96. Before the announcement: WTI reached $115.86, Brent $111.51 intraday; Dated Brent hit a record $144.42 physical delivery price. US and Israel struck Kharg Island, Iranian railways, and bridges. Iran\'s 10-point peace proposal demands include: US military withdrawal from the region, lifting all sanctions, full war damage compensation, and Iran retaining Hormuz authority — a list that will be extremely difficult to negotiate in two weeks. Infrastructure damage means physical supply recovery will take months even with Hormuz open.',
+      severity: 'critical', type: 'maritime', region: 'Strait of Hormuz / Persian Gulf', dayCount: 39,
+      trend: 'de-escalating',
+      rateImpact: 'Brent ~$95 post-ceasefire (was $111.51 intraday); WTI ~$96; Dated Brent record $144.42 earlier today; 13% price drop on announcement',
+      transitImpact: '2-week coordinated reopening via Iran Armed Forces — actual resumption timeline TBD; infrastructure damage may limit capacity',
       carriers: ['Maersk', 'MSC', 'Hapag-Lloyd', 'CMA CGM', 'Evergreen'],
-      tags: ['Iran', 'Hormuz', 'Energy', 'Ocean', 'Tuesday Deadline'],
+      tags: ['Iran', 'Hormuz', 'Ceasefire', 'Islamabad Talks', 'Oil Crash'],
       cascadeEffects: [
-        { icon: '⚡', sector: 'Energy Markets', detail: 'WTI $108.95–$115.37 today; Brent $109.90; OPEC+ 206K bpd hike "academic"; OECD inventories at critical draw', impact: 'CRITICAL' },
-        { icon: '🚢', sector: 'Ocean Freight', detail: '+150%+ spot rates; ~5% pre-war volume transiting; Cape standard; WCI $2,287/FEU', impact: 'CRITICAL' },
-        { icon: '✈', sector: 'Air Cargo', detail: 'Jet fuel $195/bbl; EU airports rationing; US jet fuel +95% YoY; Ryanair warns 5-10% summer cancellations', impact: 'CRITICAL' },
-        { icon: '🌊', sector: 'Bab al-Mandeb Risk', detail: 'Iran threatened closure via Houthis — Saudi 7M bpd alternate route at risk; would block 30% global energy', impact: 'CRITICAL' },
-        { icon: '🛢', sector: 'LNG Markets', detail: 'LNG tankers turned back Monday; Qatar South Pars offline; LNG $28/MMBtu; European winter reserves at risk', impact: 'CRITICAL' },
-        { icon: '🚛', sector: 'US Trucking / Diesel', detail: 'Diesel $5.40/gal Mar 31; next EIA Apr 7; van $2.47, flatbed $2.95, reefer $2.88/mi; capacity multi-year lows', impact: 'ELEVATED' },
-        { icon: '🏭', sector: 'Petrochemicals / Fertilizer', detail: 'Iran struck Kuwait petrochem; Gulf fertilizer trade interrupted; spring planting costs elevated', impact: 'ELEVATED' },
-        { icon: '🌍', sector: 'Global Rationing', detail: 'Bangladesh 6PM closure; EU jet fuel restrictions; Australia PM urges transit use; US gas $4+/gal', impact: 'ELEVATED' }
+        { icon: '🕊', sector: 'Ceasefire Terms', detail: '2-week window; Iran\'s 10-point plan demands US withdrawal, sanctions lifting, war damages — very difficult bar', impact: 'CRITICAL' },
+        { icon: '⚡', sector: 'Energy Markets', detail: 'Brent ~$95 post-ceasefire; WTI ~$96; EIA STEO: diesel peaks $5.80+/gal April; full-year avg $4.80/gal', impact: 'CRITICAL' },
+        { icon: '🚢', sector: 'Ocean Freight', detail: 'WCI $2,287/FEU (Apr 2); ceasefire may trigger rate decline; infrastructure damage limits near-term recovery', impact: 'ELEVATED' },
+        { icon: '🛢', sector: 'Physical Supply', detail: 'Dated Brent hit record $144.42 earlier today; 9.1M bpd shut-in April; recovery months away even with Hormuz open', impact: 'CRITICAL' },
+        { icon: '🚛', sector: 'US Trucking / Diesel', detail: 'EIA forecasts $5.80+/gal April peak; ceasefire may bring relief by Friday; truck posts at 10-yr lows', impact: 'ELEVATED' },
+        { icon: '🛣', sector: 'Islamabad Talks', detail: 'Friday Apr 10 negotiations in Pakistan; 10-point Iran plan vs US positions; 2-week window very tight', impact: 'ELEVATED' }
       ],
-      sources: [{ name: 'NBC Live Apr 6', url: 'https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-war-trump-deadline-hormuz-oil-ceasefire-israel-rcna266833' }, { name: 'Wikipedia Hormuz Crisis', url: 'https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis' }, { name: 'CNN Live Apr 6', url: 'https://www.cnn.com/2026/04/06/world/live-news/iran-war-us-trump-oil' }]
+      sources: [{ name: 'Al Jazeera Apr 7', url: 'https://www.aljazeera.com/news/2026/4/7/trump-suspends-iran-bombing-for-two-weeks-following-dire-threats' }, { name: 'NBC Live Apr 7', url: 'https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-war-trump-deadline-hormuz-infrastructure-ceasefire-rcna267039' }]
     },
     {
-      title: 'Bab al-Mandeb — NEW THREAT: Iran Threatens Houthi Closure; Saudi 7M bpd Alt Route at Risk',
-      description: 'Iranian Supreme Leader adviser Ali Akbar Velayati posted Sunday that the "unified command of the Resistance front views Bab al-Mandeb as it does Hormuz." The Houthis, Iran\'s Yemeni ally, control the strait. Saudi Arabia has been routing ~7M bpd through the East-West Pipeline to Yanbu and out through Bab al-Mandeb — the primary alternative to Hormuz. Closure of both straits would block approximately 30% of globally traded energy. The Houthis previously blocked Bab al-Mandeb Nov 2023–Jan 2025 during Gaza war, attacking 100+ merchant vessels. They fired missiles at Israel in late March — first direct involvement in the Iran-US war.',
-      severity: 'critical', type: 'maritime', region: 'Red Sea / Bab al-Mandeb / Yemen', dayCount: 1,
-      trend: 'escalating',
-      rateImpact: 'Closure would block Saudi 7M bpd alt route; JPMorgan: $150+ if both straits closed; 10% of global trade at risk',
-      transitImpact: 'Asia-Europe Suez routing fully eliminated if Bab al-Mandeb closes; Cape of Good Hope only option',
+      title: 'Red Sea / Houthis — Day 123: Ceasefire Pauses Escalation; Bab al-Mandeb Threat Reduced Near-Term',
+      description: 'With the US-Iran ceasefire in place, Bab al-Mandeb closure threat is reduced in the near term — but not eliminated. Iran adviser Velayati\'s threat to activate Houthis against Bab al-Mandeb was tied to continued US military action against Iran. With strikes suspended, Houthi escalation in the Red Sea is less imminent. However, the Houthis remain an active force — they fired missiles at Israel in late March. Cape of Good Hope routing remains standard for all major carriers. Red Sea market recovery is now contingent on the ceasefire holding through Islamabad talks.',
+      severity: 'elevated', type: 'maritime', region: 'Red Sea / Gulf of Aden / Yemen', dayCount: 123,
+      trend: 'de-escalating',
+      rateImpact: 'Cape routing ongoing; Bab al-Mandeb threat reduced if ceasefire holds; 38 blank sailings wks 14-18 still in effect',
+      transitImpact: '+10-14 days Asia-Europe; potential route normalization in weeks if Hormuz reopens fully',
       carriers: ['All major carriers'],
-      tags: ['Houthis', 'Bab al-Mandeb', 'Red Sea', 'Saudi Arabia'],
+      tags: ['Houthis', 'Red Sea', 'Bab al-Mandeb', 'Ceasefire'],
       cascadeEffects: [
-        { icon: '🛢', sector: 'Saudi Oil Exports', detail: 'East-West Pipeline at 7M bpd (full capacity) — only viable export route if Hormuz stays closed', impact: 'CRITICAL' },
-        { icon: '🚢', sector: 'Asia-Europe Ocean', detail: 'Suez routing already abandoned; Bab closure eliminates Cape routing benefit entirely', impact: 'CRITICAL' },
-        { icon: '⛽', sector: 'Oil Prices', detail: '$150+ analyst target if both straits closed through mid-May per JPMorgan', impact: 'CRITICAL' }
+        { icon: '🚢', sector: 'Asia-Europe Ocean', detail: 'Cape routing continues; early signals of rate normalization if ceasefire holds through talks', impact: 'ELEVATED' },
+        { icon: '⚓', sector: 'Blank Sailings', detail: '38 blank sailings wks 14-18 still scheduled; carriers may adjust if traffic resumes', impact: 'ELEVATED' }
       ],
-      sources: [{ name: 'Al Jazeera Apr 6', url: 'https://www.aljazeera.com/news/2026/4/6/iran-threatens-bab-al-mandeb-how-would-that-affect-world-trade' }, { name: 'Forbes/Yahoo Apr 6', url: 'https://www.yahoo.com/news/articles/iranian-officials-now-threatening-close-181240887.html' }]
+      sources: [{ name: 'Fox News Live Apr 7', url: 'https://www.foxnews.com/live-news/trump-iran-deadline-israel-hormuz-april-7' }, { name: 'Al Jazeera Bab Apr 6', url: 'https://www.aljazeera.com/news/2026/4/6/iran-threatens-bab-al-mandeb-how-would-that-affect-world-trade' }]
     },
     {
-      title: 'Red Sea / Houthis — Day 122: Entering Iran War; Missiles at Israel; Cape Routing Standard',
-      description: 'Houthis fired ballistic missiles at Israeli military targets in late March — first direct involvement in the US-Iran war. Virtually all major carriers continue Cape of Good Hope routing. The dual-chokepoint reality (Hormuz + Bab al-Mandeb threat) creates an unprecedented global shipping crisis. Saudi Arabia cranked East-West Pipeline to full 7M bpd in March as Hormuz alternative — but now that route is threatened. Red Sea market recovery pushed back indefinitely.',
-      severity: 'critical', type: 'maritime', region: 'Red Sea / Gulf of Aden / Yemen / Israel', dayCount: 122,
-      trend: 'escalating',
-      rateImpact: '+10-14 days transit; +$600-1,200/FEU vs pre-Houthi baseline; Cape surcharges active',
-      transitImpact: '+10-14 days Asia-Europe; Bab al-Mandeb closure would eliminate Cape option entirely',
-      carriers: ['All major carriers'],
-      tags: ['Houthis', 'Red Sea', 'Cape Route', 'Bab al-Mandeb'],
-      cascadeEffects: [
-        { icon: '🚢', sector: 'Asia-Europe Ocean', detail: 'All carriers via Cape; Bab threat could eliminate this workaround too', impact: 'CRITICAL' },
-        { icon: '⚓', sector: 'Port Congestion', detail: 'European ports under Cape schedule strain; Singapore fluid; Colombo on WATCH', impact: 'ELEVATED' },
-        { icon: '🔄', sector: 'Blank Sailings', detail: 'Drewry: 38 blank sailings wks 14-18 of 706 scheduled', impact: 'ELEVATED' }
-      ],
-      sources: [{ name: 'Drewry Mar 26', url: 'https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices' }, { name: 'Al Jazeera Apr 6', url: 'https://www.aljazeera.com/news/2026/4/6/iran-threatens-bab-al-mandeb-how-would-that-affect-world-trade' }]
-    },
-    {
-      title: 'Section 122 Tariff — Day 42: 10% Global Surcharge Active; IEEPA Refund Process Underway',
-      description: 'Section 122 10% global import surcharge continues. IEEPA refunds ordered by CIT — CBP needs 45 days to build new ACE system functionality. Average US tariff rate ~12% per Tax Policy Center. USMCA joint review begins July 1. FedEx refund class action in progress. USTR launched 60 forced-labor probes. Supply chain compliance complexity at multi-decade high as companies navigate Section 122 + IEEPA transition simultaneously.',
-      severity: 'elevated', type: 'trade', region: 'USA / North America', dayCount: 42,
+      title: 'Section 122 Tariff — Day 43: 10% Global Surcharge Active; IEEPA Refund Process Underway',
+      description: 'Section 122 10% global import surcharge continues. IEEPA refunds ordered by CIT — CBP building new ACE system (45-day timeline). Average US tariff rate ~12% per Tax Policy Center. USMCA joint review begins July 1. FedEx refund class action in progress. USTR launched 60 forced-labor probes. Ceasefire does not affect Section 122 — tariff pressure remains regardless of Hormuz outcome.',
+      severity: 'elevated', type: 'trade', region: 'USA / North America', dayCount: 43,
       trend: 'stable',
-      rateImpact: '+10% import surcharge on most goods; average US tariff ~12%; IEEPA refunds in process',
+      rateImpact: '+10% import surcharge on most goods; IEEPA refunds in process; average US tariff ~12%',
       transitImpact: 'Supply chain compliance complexity at multi-decade high',
       carriers: ['CBP', 'All importers'],
       tags: ['Section 122', 'Tariffs', 'IEEPA'],
       cascadeEffects: [
-        { icon: '⚖', sector: 'Importers', detail: 'IEEPA refunds ordered; CBP 45-day build timeline; file protective claims now', impact: 'CRITICAL' },
-        { icon: '🔄', sector: 'Supply Chains', detail: 'Section 122 replaces IEEPA; classification reviews required across import portfolios', impact: 'ELEVATED' },
-        { icon: '🇲🇽', sector: 'USMCA / Nearshoring', detail: 'USMCA joint review July 1; Mexico nearshoring accelerating; USTR 60 forced-labor probes', impact: 'ELEVATED' }
+        { icon: '⚖', sector: 'Importers', detail: 'IEEPA refunds ordered; CBP 45-day build; file protective claims now', impact: 'CRITICAL' },
+        { icon: '🔄', sector: 'Supply Chains', detail: 'Section 122 unaffected by ceasefire; tariff compliance remains high-complexity', impact: 'ELEVATED' }
       ],
-      sources: [{ name: 'Tax Policy Center', url: 'https://taxpolicycenter.org/features/tracking-trump-tariffs' }, { name: 'FreightWaves', url: 'https://www.freightwaves.com/news/category/news' }]
+      sources: [{ name: 'Tax Policy Center', url: 'https://taxpolicycenter.org/features/tracking-trump-tariffs' }]
     },
     {
-      title: 'South Pars LNG — Day 19: LNG Tankers Turned Back Monday; Qatar $28/MMBtu; EU Winter Risk',
-      description: 'Two LNG tankers (Rasheed and Al Dayeen) anchored off Qatar set sail Sunday, then turned back Monday before transiting Hormuz — indicating continued practical closure for LNG. Qatar LNG capacity ~17% reduced from South Pars damage. LNG spot at $28/MMBtu. Europe receives 12-14% of LNG from Qatar through Hormuz. Three-to-five year repair timeline for full restoration. Iranian petrochemical and steel infrastructure now being struck by US/Israeli jets, potentially adding to supply disruption.',
-      severity: 'critical', type: 'energy', region: 'Persian Gulf / Iran / Qatar', dayCount: 19,
-      trend: 'escalating',
-      rateImpact: 'LNG $28/MMBtu; Qatar 17% capacity hit; tankers turning back; EU winter reserves risk',
-      transitImpact: 'LNG tankers unable to transit; Asian buyers securing alternatives at premium',
+      title: 'South Pars LNG — Day 20: Ceasefire Allows Tanker Resumption; But 3-5yr Repair for Full Capacity',
+      description: 'The ceasefire and Hormuz reopening allows LNG tankers to resume transit — two tankers (Rasheed, Al Dayeen) that turned back Monday may now proceed. However, physical damage to South Pars gas field and Qatar pipeline infrastructure means LNG supply capacity cannot return to pre-war levels quickly. Qatar LNG capacity remains ~17% reduced. Repair timeline is 3-5 years for full restoration. European winter reserves remain a risk if ceasefire breaks down. LNG spot prices may ease from $28/MMBtu if tankers resume, but infrastructure damage caps recovery speed.',
+      severity: 'elevated', type: 'energy', region: 'Persian Gulf / Iran / Qatar', dayCount: 20,
+      trend: 'de-escalating',
+      rateImpact: 'LNG tankers may resume within days; spot $28/MMBtu may ease; infrastructure damage limits recovery to months',
+      transitImpact: 'Tanker resumption imminent if ceasefire holds; coordination with Iran Armed Forces required per FM statement',
       carriers: ['QatarEnergy', 'LNG tanker operators'],
-      tags: ['South Pars', 'LNG', 'Qatar'],
+      tags: ['South Pars', 'LNG', 'Qatar', 'Ceasefire'],
       cascadeEffects: [
-        { icon: '🔥', sector: 'LNG Supply', detail: 'South Pars offline; Qatar 17% hit; two tankers turned back Monday; 3-5yr repair', impact: 'CRITICAL' },
-        { icon: '🇪🇺', sector: 'European Energy', detail: 'Europe gets 12-14% LNG via Hormuz; winter reserves at risk if disruption extends', impact: 'CRITICAL' },
-        { icon: '⚡', sector: 'Power Generation', detail: 'Gas-fired power plants in Asia and Europe facing acute input cost shock', impact: 'ELEVATED' }
+        { icon: '🔥', sector: 'LNG Supply', detail: 'Tanker resumption possible within days; Qatar 17% capacity still impaired; 3-5yr full repair', impact: 'ELEVATED' },
+        { icon: '🇪🇺', sector: 'European Energy', detail: 'Winter reserves risk reduced if ceasefire holds; spot prices may ease from $28/MMBtu', impact: 'ELEVATED' }
       ],
-      sources: [{ name: 'CNN Live Apr 6', url: 'https://www.cnn.com/2026/04/06/world/live-news/iran-war-us-trump-oil' }, { name: 'CNBC Apr 5', url: 'https://www.cnbc.com/2026/04/05/crude-oil-prices-iran-war-strait-hormuz.html' }]
+      sources: [{ name: 'Axios Apr 7', url: 'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump' }, { name: 'EIA STEO Apr 7', url: 'https://www.eia.gov/outlooks/steo/' }]
     },
     {
-      title: 'US Diesel & Trucking — EIA $5.40/gal (Apr 7 Update Due); Van $2.47, Flatbed $2.95, Reefer $2.88/mi',
-      description: 'EIA diesel $5.40/gal as of March 31 — next update April 7. Diesel up 55% YTD. March DAT final: van $2.47/mi (cap 93% tighter YoY), flatbed $2.95/mi (cap 90% tighter YoY, L/T 73.75), reefer $2.88/mi (cap 120% tighter YoY). Week 13 truck posts at 10-year lows across all three equipment types. Contract van $2.52/mi — spot/contract spread just $0.05/mi, tightest since 2022. DC Velocity: diesel squeeze most severe for one-way TL carriers. April 7 EIA release expected to show continued elevated pricing.',
-      severity: 'elevated', type: 'trucking', region: 'USA', dayCount: 35,
+      title: 'US Diesel & Trucking — EIA Forecasts $5.80+/gal April Peak; Ceasefire May Bring Relief by Friday',
+      description: 'EIA April 7 STEO: diesel forecast to peak above $5.80/gal in April — a new record — with full-year 2026 average $4.80/gal. Last confirmed reading: $5.40/gal (March 31). Next weekly release April 14. Ceasefire announcement may provide pump price relief within days per analyst estimates, but infrastructure damage means diesel prices remain elevated well above pre-war levels through 2026. DAT March finals locked: van $2.47/mi, flatbed $2.95/mi, reefer $2.88/mi. Week 13 truck posts at 10-year lows. Contract-spot spread $0.05/mi. FSC at $5.80/gal diesel adds ~$0.85+/mi vs pre-war baseline.',
+      severity: 'elevated', type: 'trucking', region: 'USA', dayCount: 36,
       trend: 'escalating',
-      rateImpact: 'FSC escalating; van $2.47, flatbed $2.95, reefer $2.88/mi; contract at $2.52/mi',
-      transitImpact: 'Carrier capacity at multi-year lows; attrition compressing supply',
+      rateImpact: 'EIA forecasts $5.80+/gal April peak; next reading Apr 14; ceasefire may provide partial relief',
+      transitImpact: 'Carrier capacity at multi-year lows; even with rate relief, infrastructure recovery takes months',
       carriers: ['All TL carriers'],
-      tags: ['Diesel', 'FSC', 'DAT', 'Carrier Costs'],
+      tags: ['Diesel', 'EIA STEO', 'FSC', 'Ceasefire Relief'],
       cascadeEffects: [
-        { icon: '⛽', sector: 'Fuel Cost', detail: 'Diesel $5.40/gal national; CA $6.82; next EIA April 7; diesel up 55% YTD', impact: 'CRITICAL' },
-        { icon: '🚛', sector: 'Carrier Margins', detail: 'Week 13 truck posts 10-yr lows; contract/spot spread $0.05/mi; capacity tightest since 2022', impact: 'ELEVATED' },
-        { icon: '📈', sector: 'Spot Rates', detail: 'Flatbed +8.5% MoM; reefer capacity 120% tighter YoY; spring produce pull intensifying', impact: 'ELEVATED' }
+        { icon: '⛽', sector: 'Fuel Cost', detail: 'EIA Apr 7 STEO: diesel peaks $5.80+/gal April; avg $4.80/gal FY2026; next reading Apr 14', impact: 'CRITICAL' },
+        { icon: '🚛', sector: 'Carrier Margins', detail: 'Truck posts 10-yr lows; contract/spot spread $0.05/mi; ceasefire relief weeks away at best', impact: 'ELEVATED' },
+        { icon: '📈', sector: 'Rate Outlook', detail: 'Rates may soften if diesel eases post-ceasefire; but infrastructure damage limits speed of normalization', impact: 'ELEVATED' }
       ],
-      sources: [{ name: 'EIA Mar 31', url: 'https://www.eia.gov/petroleum/gasdiesel/' }, { name: 'Dynamic Logistix DAT Mar 2026', url: 'https://dynamiclogistix.com/trucking-freight-rates/' }, { name: 'DC Velocity Apr 2', url: 'https://www.dcvelocity.com/transportation/trucking/truck-freight-rates-tick-up-slightly-to-start-2026' }]
+      sources: [{ name: 'EIA STEO Apr 7', url: 'https://www.eia.gov/outlooks/steo/' }, { name: 'Dynamic Logistix DAT Mar 2026', url: 'https://dynamiclogistix.com/trucking-freight-rates/' }]
+    },
+    {
+      title: 'Gulf Ports / Jebel Ali — Day 35: Ceasefire Opens Path to Resumption; Carriers Begin Assessing Re-Entry',
+      description: 'With the ceasefire announced and Hormuz reopening beginning, Gulf port operators and carriers are beginning to assess re-entry timelines. Jebel Ali (UAE) has been under booking suspension. Carriers will need to coordinate with Iran Armed Forces per the FM statement. War risk insurance premiums remain elevated — the Joint War Committee included Oman waters in its high-risk list. Actual vessel traffic resumption is expected to begin within days but will be gradual. Colombo (Sri Lanka) congestion may ease as Cape routing pressure reduces.',
+      severity: 'elevated', type: 'port', region: 'Persian Gulf / UAE / South Asia', dayCount: 35,
+      trend: 'de-escalating',
+      rateImpact: 'War risk surcharges remain in effect pending insurance market reassessment; Jebel Ali resumption timeline TBD',
+      transitImpact: 'Gradual Gulf port re-entry expected; Colombo congestion to ease as Cape routing pressure reduces',
+      carriers: ['DP World', 'All Gulf port operators'],
+      tags: ['Jebel Ali', 'UAE', 'Gulf Ports', 'Ceasefire'],
+      cascadeEffects: [
+        { icon: '⚓', sector: 'Gulf Transshipment', detail: 'Jebel Ali re-entry assessment underway; war risk insurance reassessment needed before bookings resume', impact: 'ELEVATED' },
+        { icon: '🌏', sector: 'South Asia Ports', detail: 'Colombo congestion to ease; Singapore fluid; Cape routing pressure reducing', impact: 'ELEVATED' }
+      ],
+      sources: [{ name: 'Al Jazeera Apr 7', url: 'https://www.aljazeera.com/news/2026/4/7/trump-suspends-iran-bombing-for-two-weeks-following-dire-threats' }]
     }
   ],
   sectors: [
     {
-      title: 'Trump Tuesday Deadline — Iran Defiant; Strikes Escalate; WTI Spiked to $114 During Press Conference',
-      summary: 'Trump held a White House press conference Monday saying "the entire country can be taken out in one night, and that night might be tomorrow night." WTI spiked from $112 to $114 during his remarks. Iran rejected the 45-day ceasefire proposal, calling direct talks "incompatible with ultimatums." Iranian official: "The Strait of Hormuz will open when all war damages are fully compensated." Trump called the proposal "significant, but not enough." Egypt, Pakistan, Turkey brokered proposal; Oman engaging on safe transit. European Council President Costa: striking power plants would be illegal and unacceptable. Iran also executed strikes on Gulf refineries and Israeli cities Monday.',
+      title: 'CEASEFIRE: Trump Suspends Iran Strikes — Hormuz Reopening Begins; Oil Crashes 13%; Talks Friday Islamabad',
+      summary: 'The defining moment: Trump announced a two-week ceasefire with Iran at 8 PM ET Tuesday, suspending strikes contingent on a "COMPLETE, IMMEDIATE, and SAFE OPENING" of the Strait of Hormuz. Iran\'s FM Araghchi accepted, stating safe passage will be "possible for two weeks via coordination with Iran\'s Armed Forces." Brent plunged ~13% to ~$95/bbl. WTI fell to ~$96. Before the ceasefire: WTI reached $115.86, Brent $111.51 intraday; Dated Brent hit a record $144.42 physical delivery price. Pakistan PM Sharif brokered the deal. Islamabad negotiations begin Friday April 10. Iran\'s 10-point demands include US military withdrawal, sanctions removal, war damage compensation — a very difficult bar for 2 weeks.',
       sector: 'fuel', region: 'Global', priority: 'critical',
-      sources: [{ name: 'NBC Live Apr 6', url: 'https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-war-trump-deadline-hormuz-oil-ceasefire-israel-rcna266833' }, { name: 'CNN Live Apr 6', url: 'https://www.cnn.com/2026/04/06/world/live-news/iran-war-us-trump-oil' }]
+      sources: [{ name: 'Al Jazeera Apr 7', url: 'https://www.aljazeera.com/news/2026/4/7/trump-suspends-iran-bombing-for-two-weeks-following-dire-threats' }, { name: 'Axios Apr 7', url: 'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump' }]
     },
     {
-      title: 'Bab al-Mandeb Closure Threat — Dual Chokepoint Would Block 30% of Global Energy; Saudi Alt Route at Risk',
-      summary: 'Iran\'s Velayati threatened Monday that the Houthis "view Bab al-Mandeb as they do Hormuz." Saudi Arabia has been running the East-West Pipeline at full 7M bpd capacity since March — the primary alternative to Hormuz — which exits at Yanbu on the Red Sea and transits Bab al-Mandeb to Asia. Closure of Bab al-Mandeb would eliminate this bypass. JPMorgan: $150+ oil if both straits closed through mid-May. The Houthis previously conducted 100+ maritime attacks during the Gaza war. They have been firing missiles at Israel since late March. Al Jazeera notes about 4.1M bpd and 10% of global trade transit Bab al-Mandeb annually.',
-      sector: 'ocean', region: 'Red Sea / Global', priority: 'critical',
-      sources: [{ name: 'Al Jazeera Apr 6', url: 'https://www.aljazeera.com/news/2026/4/6/iran-threatens-bab-al-mandeb-how-would-that-affect-world-trade' }, { name: 'Yahoo/Forbes Apr 6', url: 'https://www.yahoo.com/news/articles/iranian-officials-now-threatening-close-181240887.html' }]
+      title: 'EIA STEO April 7: Diesel Peaks $5.80+/gal April; 9.1M bpd Shut-In; Brent Peaked Q2 $115; Goldman Q4 $71',
+      summary: 'EIA\'s April 7 Short-Term Energy Outlook: Brent averaged $103/bbl in March, expected to peak at $115/bbl in Q2 before falling below $90 in Q4 2026. Production shut-ins rise from 7.5M bpd (March) to 9.1M bpd (April) across Iraq, Saudi Arabia, Kuwait, UAE, Qatar, and Bahrain. Diesel retail forecast to peak above $5.80/gal in April, full-year average $4.80/gal. Gasoline peaks ~$4.30/gal April. Model assumes conflict ends in April and Hormuz gradually resumes — which the ceasefire now supports. Goldman Sachs Q4 2026 base case: $71 Brent, $67 WTI. But infrastructure damage to Gulf facilities means physical supply takes months to normalize even after waterway reopens.',
+      sector: 'fuel', region: 'USA / Global', priority: 'critical',
+      sources: [{ name: 'EIA STEO Apr 7 2026', url: 'https://www.eia.gov/outlooks/steo/' }, { name: 'Goldman via Madres Travels', url: 'https://wp.madrestravels.com/2026/04/07/why-oil-prices-are-rising-wti-near-112-can-it-hit-150-new-oil-price-predictions/' }]
     },
     {
-      title: 'Global Energy Rationing Intensifying — EU Airports, Bangladesh, Australia All Restricting Fuel',
-      summary: 'Time magazine and Bloomberg detail the spreading global rationing. Italy: 4 airports restricting jet fuel (Air BP shortage). Ryanair CEO: 5-10% summer flight cancellations possible. Jet fuel $195/bbl (IATA). US jet fuel +95% since war. Bangladesh: markets close at 6 PM, office hours cut. Australia PM Albanese told citizens to use public transit to reserve fuel for farms and mining. US gasoline over $4/gal nationally. J.P. Morgan: OECD commercial crude inventories will draw 166M barrels in April, another 67M in early May before hitting operational minimums.',
-      sector: 'fuel', region: 'Global', priority: 'critical',
-      sources: [{ name: 'Time Apr 5', url: 'https://time.com/article/2026/04/05/strait-of-hormuz-fuel-rationing-oil/' }, { name: 'Rigzone Apr 3', url: 'https://www.rigzone.com/news/why_has_the_wti_oil_price_surpassed_brent-03-apr-2026-183367-article/' }]
+      title: 'Dated Brent Hit Record $144.42 Before Ceasefire — Saudi Aramco Arab Light to Asia +$19.50 Premium Record',
+      summary: 'Before the ceasefire announcement, physical oil markets reached historic extremes. Dated Brent — the benchmark for real physical barrels — hit $144.42/bbl, surpassing the 2008 financial crisis record of $147 on a physical delivery basis. Saudi Aramco raised Arab Light official selling price for May Asia delivery to a record $19.50/bbl premium. Saudi Arabia intercepted 7 ballistic missiles over its Eastern Region near energy facilities. US and Israeli jets struck Kharg Island (Iran\'s primary oil export hub, 90% of exports) and Iranian railways and bridges. The ceasefire announcement brought Brent futures down ~13%, but physical market recovery depends on actual infrastructure repair timelines.',
+      sector: 'fuel', region: 'Global / Middle East', priority: 'critical',
+      sources: [{ name: 'Reuters via BOE Report', url: 'https://boereport.com/2026/04/07/oil-prices-climb-as-hormuz-stays-shut-ahead-of-trump-deadline/amp/' }, { name: 'Axios Apr 7', url: 'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump' }]
     },
     {
-      title: 'DAT Final March: Flatbed $2.95/mi +8.5% MoM; Reefer Cap 120% Tighter YoY; EIA Diesel Apr 7',
-      summary: 'DAT Trendlines March 2026 final data shows unprecedented tightening across all equipment types. Flatbed $2.95/mi, +8.5% MoM, L/T ratio 73.75 — highest since 2022. Reefer $2.88/mi, capacity 120% tighter YoY. Van $2.47/mi, capacity 93% tighter YoY. All three equipment types hit 10-year low truck post counts in Week 13 per DC Velocity. Contract van at $2.52/mi — just $0.05 over spot, tightest spread in 4 years. EIA next diesel release April 7 — expected to show further increase above $5.40/gal given crude surge.',
+      title: 'Ceasefire Shipper Playbook: Don\'t Cancel War Risk Surcharge Talks Yet — Infrastructure Recovery Takes Months',
+      summary: 'Analysts urge shippers not to immediately abandon war risk surcharge negotiations. While Brent futures fell ~13%, physical supply normalization depends on: (1) actual Hormuz traffic resuming (coordinated with Iran Armed Forces), (2) Gulf port operators reopening (Jebel Ali assessment underway), (3) war risk insurance market reassessment (still includes Oman waters), and (4) damaged Gulf infrastructure repairs. EIA assumes pre-conflict production levels return only by "late 2026." Goldman Sachs warns even a two-month disruption scenario puts Q4 Brent at $93. Diesel may provide "pump price relief by Friday" per some analysts — but $4.80/gal full-year average means FSC pressure persists throughout 2026.',
+      sector: 'ocean', region: 'Global / USA', priority: 'elevated',
+      sources: [{ name: 'EIA STEO Apr 7', url: 'https://www.eia.gov/outlooks/steo/' }, { name: 'Financial Content', url: 'https://markets.financialcontent.com/stocks/article/marketminute-2026-4-6-oil-prices-pare-gains-as-45-day-us-iran-ceasefire-negotiations-begin' }]
+    },
+    {
+      title: 'EIA STEO: US LNG Exports at Near-Peak 18 Bcf/d in March; Henry Hub Unaffected; Europe TTF Nearly Doubled',
+      summary: 'EIA April 7 STEO highlights US LNG exports running at near-record 18 Bcf/d in March, absorbing global demand displaced by Qatar LNG disruption. US Henry Hub spot price largely unaffected (relatively low due to mild winter temperatures and high storage). European Dutch TTF gas nearly doubled to over €60/MWh by mid-March as Qatar LNG disruption hit already-low 30% storage levels. ECB postponed rate cuts and raised 2026 inflation forecast. UK inflation forecast to breach 5%. Ceasefire opens path to LNG tanker resumption within days, but South Pars damage caps Qatar\'s recovery timeline at months to years.',
+      sector: 'ocean', region: 'Global / USA / Europe', priority: 'elevated',
+      sources: [{ name: 'EIA STEO Apr 7', url: 'https://www.eia.gov/outlooks/steo/' }, { name: 'Wikipedia Economic Impact', url: 'https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war' }]
+    },
+    {
+      title: 'Trucking: EIA Diesel $5.80+/gal April Peak Forecast — DAT March Finals Locked; Islamabad Outcome Key for Relief',
+      summary: 'EIA April 7 STEO forecasts diesel peaking above $5.80/gal in April. DAT March finals are now locked: van $2.47/mi, flatbed $2.95/mi, reefer $2.88/mi. Flatbed L/T ratio 73.75. All equipment types at 10-year low truck post counts in Week 13. Contract-spot spread $0.05/mi — tightest since 2022. Next DAT weekly data expected to show continued tightening even as ceasefire was just announced. Next EIA diesel reading April 14. Islamabad talks (April 10) are the key indicator — a permanent deal would bring meaningful diesel relief; a breakdown would send prices back toward $115+. For shippers: lock in contracts now while market uncertainty is highest.',
       sector: 'trucking', region: 'USA', priority: 'elevated',
-      sources: [{ name: 'Dynamic Logistix DAT Mar 2026', url: 'https://dynamiclogistix.com/trucking-freight-rates/' }, { name: 'DC Velocity Apr 2', url: 'https://www.dcvelocity.com/transportation/trucking/truck-freight-rates-tick-up-slightly-to-start-2026' }]
-    },
-    {
-      title: 'Iraq Oil Exempt from Hormuz Restrictions — SOMO Notifies Buyers; Confidence in Security Guarantee Tested',
-      summary: 'Iran exempted Iraqi oil from Hormuz restrictions — Iran\'s military spokesman confirmed "Brotherly Iraq is exempt from any restrictions." SOMO notified traders and refiners they can collect Iraqi cargoes. Bloomberg: about 2/3 of oil leaving the Gulf in the week to Saturday was bound for China. Iraq produces ~4.5M bpd. Analysts noted this tests buyers\' confidence in the security guarantee given ongoing strikes. Turkey\'s Ocean Thunder crossed the strait Sunday bound for Malaysia — third Turkish vessel to exit since the war began. China, India, Pakistan, Turkey have all negotiated bilateral passage.',
-      sector: 'ocean', region: 'Persian Gulf / Iraq', priority: 'elevated',
-      sources: [{ name: 'Bloomberg Apr 6', url: 'https://www.bloomberg.com/news/articles/2026-04-06/iraq-tells-buyers-to-collect-crude-as-its-oil-can-cross-hormuz' }, { name: 'Bloomberg Apr 4', url: 'https://www.bloomberg.com/news/articles/2026-04-04/iran-says-iraqi-ships-are-allowed-to-use-strait-of-hormuz' }]
-    },
-    {
-      title: 'Drewry WCI $2,287/FEU Flat — Apr 9 Update Expected; 38 Blank Sailings Wks 14-18; Bunker Pressures Growing',
-      summary: 'Drewry WCI flat at $2,287/FEU through April 2 — next update expected April 9. Fuel pressures growing as Singapore and Chinese hub fuel supplies tighten due to Hormuz bunker fuel disruption. Carriers adopting slow steaming and emergency fuel surcharges. Maersk still seeking $200/TEU emergency bunker surcharge. 38 blank sailings confirmed weeks 14-18 (706 scheduled). WCI up ~16% vs Jan 1 and up ~$600 vs 12 months ago. Iran charging up to $2M/vessel for Larak corridor passage.',
-      sector: 'ocean', region: 'Global', priority: 'elevated',
-      sources: [{ name: 'Drewry Apr 2', url: 'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry' }, { name: 'Drewry Latest', url: 'https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices' }]
+      sources: [{ name: 'EIA STEO Apr 7', url: 'https://www.eia.gov/outlooks/steo/' }, { name: 'DAT March 2026', url: 'https://dynamiclogistix.com/trucking-freight-rates/' }]
     }
   ],
   brief: [
     {
-      title: 'Trump Tuesday 8 PM Deadline — Iran Defiant, Bab al-Mandeb Threatened, WTI $114 Spike',
-      body: 'Trump set a final Tuesday 8 PM ET deadline for Iran to reopen Hormuz, threatening power plant strikes and saying "the entire country can be taken out in one night." WTI spiked to $114/bbl during his press conference. Iran rejected the 45-day ceasefire proposal brokered by Egypt, Pakistan, and Turkey — Foreign Ministry said negotiation is "incompatible with ultimatums." Iran adviser Velayati then threatened Bab al-Mandeb closure via Houthis, which would block Saudi Arabia\'s 7M bpd alternate export route. Trump told reporters there was a "good chance" of a deal Monday but said "if they don\'t, I am blowing up everything." Iran\'s response: "The Strait will open when war damages are fully compensated." US and Israeli jets struck Iranian petrochemical plants and steel infrastructure. Iran hit Gulf refineries and Israeli cities. Only ~5% of pre-war shipping volume transiting Hormuz.',
-      priority: 'critical', category: 'energy / geopolitical', age: 'Apr 6', tags: ['Tuesday Deadline','Iran','WTI','Hormuz','Bab al-Mandeb'],
-      sources: [{ name: 'NBC Live Apr 6', url: 'https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-war-trump-deadline-hormuz-oil-ceasefire-israel-rcna266833' }, { name: 'CNN Live Apr 6', url: 'https://www.cnn.com/2026/04/06/world/live-news/iran-war-us-trump-oil' }]
+      title: 'CEASEFIRE: Trump-Iran 2-Week Deal — Hormuz Reopening; Brent Crashes $95; Talks Resume Islamabad Friday',
+      body: 'The war\'s defining moment: Trump announced a two-week ceasefire at 8 PM ET Tuesday, just before his planned infrastructure strike deadline. Iran accepted. FM Araghchi posted: "For two weeks, safe passage through the Strait of Hormuz will be possible via coordination with Iran\'s Armed Forces." Pakistan PM Sharif brokered the deal after Trump said the country "displayed remarkable wisdom." Negotiations resume Friday April 10 in Islamabad. Brent crashed ~13% to ~$95/bbl on the news — but still 30%+ above pre-war levels. WTI fell to ~$96. Before the announcement: WTI hit $115.86, Brent $111.51 intraday; Dated Brent reached a record $144.42 physical delivery price. US and Israel struck Kharg Island, railways, and bridges. Iran formed human chains around power plants. Iran\'s 10-point peace demands include US military withdrawal, all sanctions lifted, full war damage compensation, and Iran retaining Hormuz authority. Two weeks is a very short window to resolve these positions.',
+      priority: 'critical', category: 'energy / geopolitical', age: 'Apr 7', tags: ['Ceasefire','Hormuz','Brent Crash','Islamabad','Pakistan'],
+      sources: [{ name: 'Al Jazeera Apr 7', url: 'https://www.aljazeera.com/news/2026/4/7/trump-suspends-iran-bombing-for-two-weeks-following-dire-threats' }, { name: 'NBC Live Apr 7', url: 'https://www.nbcnews.com/world/iran/live-blog/live-updates-iran-war-trump-deadline-hormuz-infrastructure-ceasefire-rcna267039' }]
     },
     {
-      title: 'Bab al-Mandeb — NEW: Iran Threatens Second Chokepoint; Would Block Saudi 7M bpd Alt Route',
-      body: 'Iranian Supreme Leader adviser Ali Akbar Velayati posted Sunday that Iran views Bab al-Mandeb "with the same intensity as Hormuz." The Houthis, Iran\'s Yemeni proxy, control the strait. Saudi Arabia has been routing 7M bpd through the East-West Pipeline to Yanbu and through Bab al-Mandeb — the main alternative to the closed Strait of Hormuz. Closure would block approximately 30% of globally traded energy and eliminate the last viable shipping workaround. The Houthis previously conducted over 100 maritime attacks in this exact waterway from Nov 2023–Jan 2025. They have already entered the current conflict by firing missiles at Israel in late March. JPMorgan: $150+ per barrel if both straits close through mid-May.',
-      priority: 'critical', category: 'maritime / energy', age: 'Apr 6', tags: ['Bab al-Mandeb','Houthis','Saudi Arabia','Second Chokepoint'],
-      sources: [{ name: 'Al Jazeera Apr 6', url: 'https://www.aljazeera.com/news/2026/4/6/iran-threatens-bab-al-mandeb-how-would-that-affect-world-trade' }, { name: 'Yahoo News Apr 6', url: 'https://www.yahoo.com/news/articles/iranian-officials-now-threatening-close-181240887.html' }]
+      title: 'EIA STEO April 7: Diesel Peaks $5.80+/gal in April; Brent Q2 Peak $115; Goldman Q4 Base $71',
+      body: 'EIA\'s first STEO since the ceasefire was released April 7. Key numbers: Brent averaged $103/bbl in March. Production shut-ins rise to 9.1M bpd in April across Gulf states. Diesel forecast to peak above $5.80/gal in April — full-year average $4.80/gal. Gasoline peaks ~$4.30/gal in April. EIA now models conflict ending in April with Hormuz gradually resuming — which the ceasefire supports. Brent peaks at $115/bbl in Q2, falls below $90 in Q4, averages $76/bbl in 2027. Goldman Sachs Q4 2026 base case: $71 Brent, $67 WTI if ceasefire holds. Goldman risk scenario (2-month disruption): Q4 Brent $93. Ceasefire may bring gasoline pump price relief by Friday per analysts — but infrastructure damage means full normalization is months away.',
+      priority: 'critical', category: 'energy / fuel', age: 'Apr 7', tags: ['EIA STEO','Diesel $5.80','Brent $115','Goldman Sachs'],
+      sources: [{ name: 'EIA STEO Apr 7', url: 'https://www.eia.gov/outlooks/steo/' }]
     },
     {
-      title: 'Global Energy Rationing: EU Airports Cutting Jet Fuel, Bangladesh 6PM Shutdown, US Gas $4+',
-      body: 'The Hormuz crisis is now triggering direct consumer-level rationing worldwide. Italy: 4 airports (Bologna, Milan, Treviso, Venice) restricting jet fuel due to Air BP shortage. Ryanair CEO warned 5-10% of summer flights could be canceled. Global jet fuel averaged $195/bbl (IATA); US jet fuel costs +95% since the war. Bangladesh cut office hours and enforced 6 PM market closures to conserve electricity. Australia PM urged citizens to use public transit to preserve fuel for critical industries. US national average gasoline above $4/gal; California above $6/gal. J.P. Morgan: OECD crude inventories will draw 166M barrels in April alone, hitting operational minimums.',
-      priority: 'critical', category: 'energy / global', age: 'Apr 5–6', tags: ['EU Rationing','Jet Fuel','Bangladesh','Gas Prices','JPMorgan'],
-      sources: [{ name: 'Time Apr 5', url: 'https://time.com/article/2026/04/05/strait-of-hormuz-fuel-rationing-oil/' }, { name: 'CNBC Apr 5', url: 'https://www.cnbc.com/2026/04/05/crude-oil-prices-iran-war-strait-hormuz.html' }]
+      title: 'Before Ceasefire: Dated Brent Record $144.42; Kharg Island Struck; Saudi Intercepts 7 Missiles Near Oil Facilities',
+      body: 'Before the 8 PM ceasefire announcement, Tuesday was the most extreme day of the war for energy markets. Dated Brent — the physical oil benchmark — hit $144.42/bbl, a new all-time record surpassing the 2008 crisis high. WTI futures reached $115.86, Brent $111.51 intraday. Saudi Aramco raised Arab Light May Asia official selling price to a record $19.50/bbl premium. US and Israeli jets struck Kharg Island (90% of Iran\'s oil exports), Iranian railways, and bridges. Saudi Arabia intercepted 7 ballistic missiles near Eastern Region energy facilities. Iran called citizens to form human chains around power plants. Brent settled $109.27 before ceasefire news sent prices down ~13%. The physical supply damage from Kharg Island strikes means Gulf export capacity is impaired even with Hormuz technically open.',
+      priority: 'critical', category: 'energy / geopolitical', age: 'Apr 7', tags: ['Dated Brent Record','Kharg Island','Saudi Missiles','Physical Oil'],
+      sources: [{ name: 'Reuters via BOE Report Apr 7', url: 'https://boereport.com/2026/04/07/oil-prices-climb-as-hormuz-stays-shut-ahead-of-trump-deadline/amp/' }, { name: 'Axios Apr 7', url: 'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump' }]
     },
     {
-      title: 'DAT March Final: Flatbed $2.95/mi, Reefer $2.88/mi, Van $2.47/mi — EIA Diesel April 7',
-      body: 'March 2026 final DAT data confirms the tightest trucking market in years. Flatbed $2.95/mi, +8.5% MoM — highest since 2025 and capacity 90% tighter YoY with L/T ratio of 73.75. Reefer $2.88/mi, capacity an extraordinary 120% tighter YoY. Van $2.47/mi, capacity 93% tighter YoY. Contract van at just $2.52/mi — spread vs spot only $0.05, tightest since 2022. All three equipment types hit 10-year low truck post counts in Week 13 per DAT data. EIA diesel at $5.40/gal through March 31; next release April 7 expected to show continued elevation as crude prices remain above $108/bbl.',
-      priority: 'elevated', category: 'trucking / fuel', age: 'Apr 6', tags: ['DAT','Flatbed','Reefer','Diesel','EIA'],
-      sources: [{ name: 'Dynamic Logistix DAT', url: 'https://dynamiclogistix.com/trucking-freight-rates/' }, { name: 'DC Velocity', url: 'https://www.dcvelocity.com/transportation/trucking/truck-freight-rates-tick-up-slightly-to-start-2026' }]
+      title: 'EIA Forecasts Diesel $5.80+/gal April Peak — Shipper Playbook: Don\'t Cancel War Risk Talks Yet',
+      body: 'EIA April 7 STEO forecasts diesel peaking above $5.80/gal in April, full-year average $4.80/gal. While ceasefire may bring pump relief by Friday, physical supply normalization takes months: Kharg Island damaged, Gulf port operations still suspended, war risk insurance includes Oman waters, infrastructure repairs take years. Shippers should not immediately cancel war risk surcharge negotiations — wait for confirmed Hormuz traffic data and insurance market reassessment. DAT March finals locked: van $2.47/mi, flatbed $2.95/mi, reefer $2.88/mi. Next EIA diesel reading April 14. Next key event: Islamabad talks April 10. A permanent deal brings meaningful diesel relief; a breakdown sends prices back toward $115+. Strategic recommendation: lock in contracts now while uncertainty is highest and carriers are still motivated.',
+      priority: 'elevated', category: 'trucking / fuel', age: 'Apr 7', tags: ['Diesel $5.80','Shipper Playbook','War Risk','Islamabad Apr 10'],
+      sources: [{ name: 'EIA STEO Apr 7', url: 'https://www.eia.gov/outlooks/steo/' }, { name: 'Financial Content', url: 'https://markets.financialcontent.com/stocks/article/marketminute-2026-4-6-oil-prices-pare-gains-as-45-day-us-iran-ceasefire-negotiations-begin' }]
     },
     {
-      title: 'Iraq Oil Exempted; 5% Volume Transiting; $2M/Vessel Toll; China/India/Turkey Securing Bilateral Passage',
-      body: 'Iran formally exempted Iraqi oil from Hormuz restrictions. Iraq\'s SOMO notified buyers they can collect crude. About 2/3 of oil leaving the Gulf this week was bound for China per Windward data. Iran is charging up to $2M per vessel for passage through the IRGC-controlled Larak corridor. Countries that have successfully negotiated bilateral passage: China, India, Pakistan, Turkey. Turkey\'s Ocean Thunder crossed Sunday bound for Malaysia — the 3rd Turkish vessel to exit since the war. Two LNG tankers (Rasheed, Al Dayeen) set sail Sunday but turned back Monday before transiting — highlighting ongoing uncertainty.',
-      priority: 'elevated', category: 'ocean / energy', age: 'Apr 6', tags: ['Iraq','Larak Corridor','China','$2M Toll','LNG Tankers'],
-      sources: [{ name: 'Bloomberg Apr 6', url: 'https://www.bloomberg.com/news/articles/2026-04-06/iraq-tells-buyers-to-collect-crude-as-its-oil-can-cross-hormuz' }, { name: 'CNN Live Apr 6', url: 'https://www.cnn.com/2026/04/06/world/live-news/iran-war-us-trump-oil' }]
+      title: 'Asian Countries Making Bilateral Hormuz Deals; Many Countries Made Deals by April 7 per Wikipedia',
+      body: 'Wikipedia\'s Hormuz crisis tracker notes that as of April 7, many Asian countries have made bilateral deals with Iran for ship passage. China, India, Pakistan, and Turkey have all secured transit rights. Iraq was formally exempted. Iran charged up to $2M per vessel for Larak corridor passage. The ceasefire changes this dynamic — passage should become available to all vessels via Iran Armed Forces coordination. However, technical limitations mentioned by FM Araghchi remain undefined. The 2-week window gives shippers and carriers a narrow period to normalize routing before the next diplomatic deadline. Watch: will major carriers (Maersk, MSC, Hapag-Lloyd) announce Gulf service resumption before Islamabad talks conclude?',
+      priority: 'elevated', category: 'ocean / geopolitical', age: 'Apr 7', tags: ['Asian Bilateral Deals','Larak Corridor','Carrier Resumption','Technical Limitations'],
+      sources: [{ name: 'Wikipedia Hormuz Crisis Apr 7', url: 'https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis' }, { name: 'CBS News Live Apr 7', url: 'https://www.cbsnews.com/live-updates/iran-war-trump-deadline-power-plants-human-chains-israel-train-strikes/' }]
     }
   ],
   briefCounts: { critical: 3, elevated: 2, routine: 0 },
   freight: {
     oceanRates: [
-      { lane: 'Shanghai → Europe', rate: '$4,800+', barPct: 92, color: '#FF4545' },
-      { lane: 'Shanghai → US West', rate: '$3,200+', barPct: 75, color: '#FF4545' },
-      { lane: 'Shanghai → US East', rate: '$4,100+', barPct: 85, color: '#FF4545' },
-      { lane: 'Shanghai → ME/Gulf', rate: 'SUSPENDED', barPct: 8, color: '#FF4545' },
-      { lane: 'Europe → US East', rate: '$1,800', barPct: 42, color: '#FFB300' },
-      { lane: 'Asia → Australia', rate: '$1,400', barPct: 32, color: '#00E676' }
+      { lane: 'Shanghai \u2192 Europe', rate: '$4,800+', barPct: 92, color: '#FF4545' },
+      { lane: 'Shanghai \u2192 US West', rate: '$3,200+', barPct: 75, color: '#FF4545' },
+      { lane: 'Shanghai \u2192 US East', rate: '$4,100+', barPct: 85, color: '#FF4545' },
+      { lane: 'Shanghai \u2192 ME/Gulf', rate: 'RESUMING', barPct: 15, color: '#FFB300' },
+      { lane: 'Europe \u2192 US East', rate: '$1,800', barPct: 42, color: '#FFB300' },
+      { lane: 'Asia \u2192 Australia', rate: '$1,400', barPct: 32, color: '#00E676' }
     ],
-    oceanSources: [{ name: 'Drewry WCI Apr 2', url: 'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry' }, { name: 'Freightos FBX', url: 'https://fbx.freightos.com' }],
+    oceanSources: [{ name: 'Drewry WCI Apr 2 (next Apr 9)', url: 'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry' }],
     truckingRates: [
       { region: 'Midwest (avg)', rate: '$2.95+/mi flatbed', barPct: 98, trend: 'up' },
       { region: 'National (avg)', rate: '$2.47/mi van', barPct: 89, trend: 'up' },
@@ -5615,7 +5609,7 @@ var FALLBACK = {
       { region: 'West Coast', rate: '$2.29/mi van', barPct: 72, trend: 'flat' },
       { region: 'Northeast', rate: '$2.19/mi van', barPct: 68, trend: 'flat' }
     ],
-    truckSources: [{ name: 'DAT March 2026 Final', url: 'https://dynamiclogistix.com/trucking-freight-rates/' }, { name: 'Scale Funding / DAT', url: 'https://getscalefunding.com/resources/current-freight-rates/' }],
+    truckSources: [{ name: 'DAT March 2026 Final', url: 'https://dynamiclogistix.com/trucking-freight-rates/' }],
     pmiBars: [
       { label: 'New Orders', val: 54.5, value: '54.5', color: '#00E676' },
       { label: 'Production', val: 52.8, value: '52.8', color: '#00E676' },
@@ -5625,24 +5619,24 @@ var FALLBACK = {
     ],
     pmiSources: [{ name: 'ISM Manufacturing PMI Feb 2026', url: 'https://www.ismworld.org/supply-management-news-and-reports/reports/ism-report-on-business/' }],
     surcharges: [
-      { carrier: 'Hapag-Lloyd', amount: '$1,500/TEU', effective: 'Apr 1, 2026', severity: 'critical' },
-      { carrier: 'MSC', amount: '$3,000/40ft', effective: 'Mar 5, 2026', severity: 'critical' },
-      { carrier: 'Maersk', amount: 'Booking suspended + $200/TEU bunker pending', effective: 'Ongoing', severity: 'critical' },
-      { carrier: 'CMA CGM', amount: 'Gulf WRS active', effective: 'Mar 2, 2026', severity: 'elevated' },
-      { carrier: 'Evergreen', amount: 'WRS + EBS', effective: 'Mar 10, 2026', severity: 'elevated' }
+      { carrier: 'Hapag-Lloyd', amount: '$1,500/TEU (under review)', effective: 'Apr 1, 2026', severity: 'elevated' },
+      { carrier: 'MSC', amount: '$3,000/40ft (under review)', effective: 'Mar 5, 2026', severity: 'elevated' },
+      { carrier: 'Maersk', amount: '$200/TEU bunker surcharge pending', effective: 'Ceasefire TBD', severity: 'elevated' },
+      { carrier: 'CMA CGM', amount: 'Gulf WRS under reassessment', effective: 'Ceasefire TBD', severity: 'elevated' },
+      { carrier: 'All carriers', amount: 'War risk insurance still active', effective: 'Pending JWC review', severity: 'elevated' }
     ],
-    surchargeSources: [{ name: 'Container News Apr 3', url: 'https://container-news.com/wci-holds-steady-at-2287-as-carriers-push-for-bunker-surcharges/' }, { name: 'Hapag-Lloyd Advisory', url: 'https://www.hapag-lloyd.com/en/services-information/news/2026/03/shipping-from-upper-gulf--arabian-gulf--and-persian-gulf--a-war-.html' }],
+    surchargeSources: [{ name: 'Al Jazeera / Axios Apr 7', url: 'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump' }],
     ports: [
       { port: 'Shanghai, CN', teus: '3.7M/mo', yoy: '+2.1%', status: 'normal' },
       { port: 'Singapore, SG', teus: '3.1M/mo', yoy: '+4.3%', status: 'normal' },
       { port: 'Rotterdam, NL', teus: '1.1M/mo', yoy: '+1.2%', status: 'normal' },
       { port: 'Los Angeles, US', teus: '824K/mo', yoy: '+3.0%', status: 'normal' },
       { port: 'Long Beach, US', teus: '768K/mo', yoy: '+0.3%', status: 'normal' },
-      { port: 'Jebel Ali, UAE', teus: 'Suspended', yoy: 'N/A', status: 'alert' },
+      { port: 'Jebel Ali, UAE', teus: 'Resuming Soon', yoy: 'TBD', status: 'warn' },
       { port: 'Colombo, LK', teus: '650K/mo', yoy: '+22%', status: 'warn' },
       { port: 'New York/NJ, US', teus: '750K/mo', yoy: '+5%', status: 'normal' }
     ],
-    portSources: [{ name: 'Port of Long Beach', url: 'https://www.presstelegram.com/2026/03/18/long-beach-port-sees-a-few-flat-months-followed-by-a-bounce-in-2026-cargo-ceo-says/' }, { name: 'Port of LA', url: 'https://portoflosangeles.org/news/latest-news' }],
+    portSources: [{ name: 'Port of LA / Drewry', url: 'https://portoflosangeles.org/news/latest-news' }],
     reliability: [
       { carrier: 'Gemini (Maersk/HL)', pct: 89, color: '#00E676' },
       { carrier: 'Hapag-Lloyd', pct: 71, color: '#00E676' },
@@ -5653,16 +5647,16 @@ var FALLBACK = {
     ],
     relSources: [{ name: 'Sea-Intelligence Feb 2026', url: 'https://www.worldcargonews.com/news/2026/02/container-shipping-starts-2026-with-62-4-schedule-reliability/' }],
     dieselRegions: [
-      { region: 'California', price: '6.82', barPct: 100 },
-      { region: 'West Coast (ex-CA)', price: '5.69', barPct: 83 },
-      { region: 'New England', price: '5.58', barPct: 82 },
-      { region: 'Central Atlantic', price: '5.53', barPct: 81 },
-      { region: 'East Coast avg', price: '5.43', barPct: 80 },
-      { region: 'National avg', price: '5.40', barPct: 79 },
-      { region: 'Midwest', price: '5.28', barPct: 77 },
-      { region: 'Gulf Coast', price: '5.14', barPct: 75 }
+      { region: 'California', price: '7.10', barPct: 100 },
+      { region: 'West Coast (ex-CA)', price: '5.90', barPct: 83 },
+      { region: 'New England', price: '5.80', barPct: 82 },
+      { region: 'Central Atlantic', price: '5.75', barPct: 81 },
+      { region: 'East Coast avg', price: '5.65', barPct: 80 },
+      { region: 'National avg', price: '5.80+', barPct: 82 },
+      { region: 'Midwest', price: '5.50', barPct: 77 },
+      { region: 'Gulf Coast', price: '5.35', barPct: 75 }
     ],
-    dieselSources: [{ name: 'EIA Weekly Diesel Mar 31 (next Apr 7)', url: 'https://www.eia.gov/petroleum/gasdiesel/' }],
+    dieselSources: [{ name: 'EIA STEO Apr 7 forecast (next reading Apr 14)', url: 'https://www.eia.gov/outlooks/steo/' }],
     intermodal: [
       { label: 'Domestic Intermodal', pct: 72, value: '+3.2% YoY' },
       { label: 'International Box', pct: 58, value: 'Flat MoM' },
@@ -5671,10 +5665,10 @@ var FALLBACK = {
     intermodalSources: [{ name: 'AAR Weekly Rail Data', url: 'https://www.aar.org/data/weekly-rail-traffic/' }],
     highlights: [
       { label: 'Contract Van Rate', value: '$2.52/mi (Mar final)' },
-      { label: 'Spot-Contract Spread', value: '$0.05/mi — tightest since 2022' },
+      { label: 'Spot-Contract Spread', value: '$0.05/mi \u2014 tightest since 2022' },
       { label: 'LTL Rev/CWT YoY', value: '+6.6%' },
       { label: 'Flatbed L/T Ratio', value: '73.75 (Week 13)' },
-      { label: 'HARPEX (est.)', value: '1,200+ (war premium)' }
+      { label: 'Ceasefire Key Date', value: 'Islamabad Talks Apr 10' }
     ],
     trends: {
       vanSpot: [
@@ -5690,7 +5684,7 @@ var FALLBACK = {
       diesel: [
         { label: 'Aug', val: 3.68 }, { label: 'Sep', val: 3.52 }, { label: 'Oct', val: 3.48 },
         { label: 'Nov', val: 3.55 }, { label: 'Dec', val: 3.62 }, { label: 'Jan', val: 3.71 },
-        { label: 'Feb', val: 3.90 }, { label: 'Mar 31', val: 5.40 }
+        { label: 'Feb', val: 3.90 }, { label: 'Apr est', val: 5.80 }
       ],
       wci: [
         { label: 'Aug', val: 1640 }, { label: 'Sep', val: 1580 }, { label: 'Oct', val: 1520 },
@@ -5702,27 +5696,27 @@ var FALLBACK = {
 };
 
 FALLBACK.signals = [
-  {name:'SCFI',         value:'3,400+',   unit:'',     direction:'up',   change:'\u25b2 War Day 38 premium; Hormuz ~5% pre-war volume only',  source:'SSE est.', date:'Apr 6'},
-  {name:'Drewry WCI',  value:'$2,287',   unit:'/FEU', direction:'flat', change:'\u2192 Flat Apr 2; Apr 9 update pending; bunker pressures building', source:'Drewry Apr 2', date:'Apr 2'},
-  {name:'BDI',          value:'1,882',    unit:'',     direction:'down', change:'\u25bc Dry bulk softening amid demand shock',               source:'Baltic Exchange', date:'Apr 4'},
-  {name:'Brent Crude',  value:'$109.90',  unit:'/bbl', direction:'up',   change:'\u25b2 Tuesday deadline; Iran rejects ceasefire; volatile',  source:'Pintu News Apr 6', date:'Apr 6'},
-  {name:'WTI',          value:'$110-112', unit:'/bbl', direction:'up',   change:'\u25b2 Spiked $114 during Trump presser; range $108.95-$115.37', source:'Investing.com Apr 6', date:'Apr 6'},
-  {name:'US Diesel',    value:'$5.40',    unit:'/gal', direction:'up',   change:'\u25b2 Mar 31 EIA; next release Apr 7; diesel +55% YTD',    source:'EIA Mar 31', date:'Mar 31'},
-  {name:'HARPEX',       value:'1,200+',   unit:'',     direction:'up',   change:'\u25b2 War risk charter premium; bunker surcharges active',  source:'Harper Petersen est.', date:'Apr 6'},
-  {name:'Air Cargo',    value:'$6.90+',   unit:'/kg',  direction:'up',   change:'\u25b2 Jet fuel $195/bbl; EU airports rationing; +95% YoY US', source:'Freightos Air/IATA', date:'Apr 6'},
-  {name:'Van Spot',     value:'$2.47 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final; cap 93% tighter YoY; contract spread $0.05', source:'DAT Mar 2026', date:'Mar 2026'},
-  {name:'Reefer Spot',  value:'$2.88 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final; cap 120% tighter YoY; produce season pull', source:'DAT Mar 2026', date:'Mar 2026'},
-  {name:'Flatbed Spot', value:'$2.95 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final +8.5% MoM; L/T 73.75; 10-yr low truck posts', source:'DAT Mar 2026', date:'Mar 2026'},
-  {name:'Contract Van', value:'$2.52',    unit:'/mi',  direction:'up',   change:'\u25b2 Spot-contract spread $0.05/mi — tightest since 2022',  source:'DAT Mar 2026', date:'Mar 2026'},
-  {name:'OTRI',         value:'~14%',     unit:'',     direction:'up',   change:'\u25b2 Midwest critically tight; carriers favoring spot',    source:'FreightWaves Apr 2026', date:'Apr 6'},
-  {name:'LTL Rev/CWT',  value:'+6.6%',    unit:'',     direction:'up',   change:'\u25b2 YoY; GRI 5.5-7.5%',                                  source:'ODFL/Saia Q1 2026', date:'Q1 2026'}
+  {name:'SCFI',         value:'3,400+',   unit:'',     direction:'up',   change:'\u25b2 War Day 39; ceasefire announced; rates may ease on Drewry Apr 9 update', source:'SSE est.', date:'Apr 7'},
+  {name:'Drewry WCI',  value:'$2,287',   unit:'/FEU', direction:'flat', change:'\u2192 Last Apr 2; Apr 9 update expected; ceasefire may trigger rate decline', source:'Drewry Apr 2', date:'Apr 2'},
+  {name:'BDI',          value:'1,882',    unit:'',     direction:'down', change:'\u25bc Dry bulk softening; ceasefire relief expected',         source:'Baltic Exchange', date:'Apr 4'},
+  {name:'Brent Crude',  value:'~$95',     unit:'/bbl', direction:'down', change:'\u25bc -13% ceasefire crash; was $111.51 intraday; Dated Brent record $144.42', source:'Axios/Reuters Apr 7', date:'Apr 7'},
+  {name:'WTI',          value:'~$96',     unit:'/bbl', direction:'down', change:'\u25bc -14% on ceasefire; was $115.86 intraday today; Goldman Q4 base $71', source:'Axios Apr 7', date:'Apr 7'},
+  {name:'US Diesel',    value:'$5.80+',   unit:'/gal', direction:'up',   change:'\u25b2 EIA STEO Apr 7 forecast April peak; next reading Apr 14; avg $4.80/gal FY2026', source:'EIA STEO Apr 7', date:'Apr 7'},
+  {name:'HARPEX',       value:'1,200+',   unit:'',     direction:'flat', change:'\u2192 War risk premium; ceasefire may ease charter rates',    source:'Harper Petersen est.', date:'Apr 7'},
+  {name:'Air Cargo',    value:'$6.90+',   unit:'/kg',  direction:'up',   change:'\u25b2 Jet fuel $195/bbl; EU rationing; ceasefire may ease within weeks', source:'IATA / Freightos', date:'Apr 7'},
+  {name:'Van Spot',     value:'$2.47 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final locked; ceasefire diesel relief weeks away; contract spread $0.05', source:'DAT Mar 2026', date:'Mar 2026'},
+  {name:'Reefer Spot',  value:'$2.88 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final; cap 120% tighter YoY; produce season pull continues', source:'DAT Mar 2026', date:'Mar 2026'},
+  {name:'Flatbed Spot', value:'$2.95 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final +8.5% MoM; L/T 73.75; Midwest tightest in years', source:'DAT Mar 2026', date:'Mar 2026'},
+  {name:'Contract Van', value:'$2.52',    unit:'/mi',  direction:'up',   change:'\u25b2 Spread vs spot $0.05/mi; tightest since 2022; lock in now', source:'DAT Mar 2026', date:'Mar 2026'},
+  {name:'OTRI',         value:'~14%',     unit:'',     direction:'up',   change:'\u25b2 Midwest critically tight; ceasefire diesel relief weeks away', source:'FreightWaves Apr 2026', date:'Apr 7'},
+  {name:'LTL Rev/CWT',  value:'+6.6%',    unit:'',     direction:'up',   change:'\u25b2 YoY; GRI 5.5-7.5%; diesel surcharge pass-through active', source:'ODFL/Saia Q1 2026', date:'Q1 2026'}
 ];
 FALLBACK.signalSources = [
-  {name:'Pintu News Brent/WTI Apr 6 2026', url:'https://pintu.co.id/en/news/271083-world-oil-price-per-barrel-today-monday-april-6-2026'},
-  {name:'Investing.com WTI Range Apr 6', url:'https://www.investing.com/commodities/crude-oil-historical-data'},
+  {name:'Axios Ceasefire Oil Crash Apr 7', url:'https://www.axios.com/2026/04/07/oil-prices-plunge-us-iran-war-ceasefire-trump'},
+  {name:'EIA STEO April 7 2026 (diesel forecast)', url:'https://www.eia.gov/outlooks/steo/'},
+  {name:'Reuters via BOE Report Apr 7 (WTI $115.86 intraday)', url:'https://boereport.com/2026/04/07/oil-prices-climb-as-hormuz-stays-shut-ahead-of-trump-deadline/amp/'},
   {name:'Drewry WCI Apr 2 2026', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'},
-  {name:'DAT/Dynamic Logistix Mar 2026', url:'https://dynamiclogistix.com/trucking-freight-rates/'},
-  {name:'EIA Diesel Mar 31 2026 (next Apr 7)', url:'https://www.eia.gov/petroleum/gasdiesel/'}
+  {name:'DAT/Dynamic Logistix Mar 2026 Final', url:'https://dynamiclogistix.com/trucking-freight-rates/'}
 ];
 
 // ── INIT ─────────────────────────────────────────────────────
