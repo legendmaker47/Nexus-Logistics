@@ -1304,9 +1304,56 @@ var HIST_KEY='nxl_history_v1';
 // Add a new entry here each time a daily update is run.
 // Files must be in the same folder as this HTML file.
 var ARCHIVE_INDEX = [
-  { date: '2026-04-08', label: 'Wednesday, April 8, 2026', file: '2026-04-08.html', disruptions: 5, articles: 8 },
+  { date: '2026-04-08', label: 'Wednesday, April 8, 2026', disruptions: 5, articles: 8, data: {
+    signals: [
+      {name:'Brent Crude', value:'$94', unit:'/bbl', direction:'down'},
+      {name:'WTI', value:'$94.55', unit:'/bbl', direction:'down'},
+      {name:'US Diesel', value:'$5.64', unit:'/gal', direction:'up'},
+      {name:'Van Spot', value:'$2.47 LH', unit:'/mi', direction:'up'},
+      {name:'Flatbed Spot', value:'$2.95 LH', unit:'/mi', direction:'up'},
+      {name:'Reefer Spot', value:'$2.88 LH', unit:'/mi', direction:'up'},
+      {name:'Drewry WCI', value:'$2,287', unit:'/FEU', direction:'flat'},
+      {name:'ISM PMI', value:'52.7', unit:'', direction:'up'},
+      {name:'OTRI', value:'~5.7%', unit:'', direction:'up'}
+    ],
+    disruptions: [
+      {title:'Strait of Hormuz — Day 40: Ceasefire Holds', severity:'critical', description:'Day 2 of the US-Iran ceasefire. Maersk confirmed no service changes. Brent stabilizing ~$94/bbl. UK PM Starmer traveling to Gulf. Islamabad talks Friday Apr 10. Physical supply chain normalization is months away.'},
+      {title:'Red Sea — Day 124: Cape Routing Continues', severity:'elevated', description:'With ceasefire in place, immediate Houthi threat reduced but no carrier Red Sea resumptions. 38 blank sailings wks 14-18 still active.'},
+      {title:'US Diesel $5.64/gal — EIA Apr 7 Confirmed', severity:'elevated', description:'GasBuddy: pump price relief expected within 48hrs of ceasefire. Diesel lags gasoline. USPS 8% surcharge approved Apr 26.'},
+      {title:"Dalilah's Law CDL Reform — 200K-250K Driver Risk", severity:'elevated', description:'H.R. 5688 cleared House committee Mar 18. English proficiency enforcement could remove 200-250K non-domiciled drivers. FreightWaves: potential trucking super cycle.'},
+      {title:'Section 122 Tariff — $166B IEEPA Refunds Pending', severity:'elevated', description:'10% global tariff expires Jul 24. CBP CAPE portal ~70% complete targeting Apr 20 launch. $650M/month interest accruing on owed refunds.'}
+    ],
+    articles: [
+      {title:'Hormuz Day 40: Ceasefire Holds — Maersk Cautious; Islamabad Talks Friday', severity:'critical', summary:'Day 2 ceasefire. Brent ~$94/bbl. Maersk no service changes. Nikkei +5.4%, Kospi +6.9%. Iran 10-point proposal a high bar. Islamabad talks Apr 10.', sources:[{name:'Maersk Apr 8', url:'https://www.marinelink.com/news/maersk-maintains-caution-hormuz-shipping-537796'}]},
+      {title:'USPS 8% Parcel Surcharge Approved — Effective April 26', severity:'critical', summary:'PRC cleared the 8% surcharge on Priority Mail Express, Priority Mail, USPS Ground Advantage, Parcel Select. Effective April 26 through January 2027.', sources:[{name:'FreightWaves Apr 8', url:'https://www.freightwaves.com/news/postal-service-can-proceed-with-8-parcel-surcharge-regulator-says'}]},
+      {title:'DAT March Finals: Van $2.47, Flatbed $2.95, Reefer $2.88 — Tightest Spread Since 2022', severity:'critical', summary:'7th straight monthly spot gain. Contract-spot spread on van: $0.05/mi — tightest since Mar 2022. Week 13 truck posts at 10-year lows.', sources:[{name:'DAT Mar 2026', url:'https://www.dat.com/company/news-events/news-releases/dat-truckload-spot-rates-post-seventh-straight-monthly-gain'}]},
+      {title:'Drewry WCI Apr 9 Update: $2,287/FEU Unchanged', severity:'elevated', summary:'Flat for second consecutive week. Ceasefire optimism not yet reflected in rates. 38 blank sailings wks 14-18 still locked in.', sources:[{name:'Drewry Apr 9', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'}]},
+      {title:'Air Cargo Rates 22% Above Year-Ago; China-US Above $7/kg', severity:'elevated', summary:'Freightos Air Index +22% YoY. Jet fuel still 90%+ above pre-war. Qatar Airways and Emirates SkyCargo gradually restoring capacity.', sources:[{name:'Air Cargo Week Apr 7', url:'https://aircargoweek.com/how-fuel-shortages-and-war-driven-disruption-reshape-air-cargo-flows/'}]},
+      {title:'ISM PMI 52.7 — Prices Paid 78.3, Highest Since June 2022', severity:'elevated', summary:'3rd straight expansion month. Prices Paid 78.3 driven by energy and input inflation. Supplier Deliveries slowing 4th month.', sources:[{name:'ISM Apr 1 2026', url:'https://www.prnewswire.com/news-releases/manufacturing-pmi-at-52-7-march-2026-ism-manufacturing-pmi-report-302730721.html'}]},
+      {title:'$166B IEEPA Tariff Refunds: CBP CAPE Portal ~70% Built, Launch ~April 20', severity:'elevated', summary:'FedEx, Costco, Nissan, L\'Oreal among 2000+ CIT suit filers. $650M/month interest accruing. Section 122 10% replacement tariff expires Jul 24.', sources:[{name:'Flexport Mar 2026', url:'https://www.flexport.com/blog/the-supreme-courts-ieepa-tariff-ruling-next-steps-potential-refunds-and/'}]},
+      {title:"Dalilah's Law CDL Reform — 200K-250K Drivers at Risk", severity:'elevated', summary:'H.R. 5688 advanced through House committee. FreightWaves CEO: potential trucking super cycle. ATA named it #1 capacity risk of 2026.', sources:[{name:'FreightWaves Mar 2026', url:'https://www.freightwaves.com/news/category/news/trucking'}]}
+    ]
+  }}
 ];
 // ─────────────────────────────────────────────────────────
+
+// Call this each time a daily update runs to capture a snapshot into ARCHIVE_INDEX
+// Usage: histCaptureSnapshot('2026-04-09', 'Thursday, April 9, 2026')
+function histCaptureSnapshot(date, label){
+  var data = (typeof D !== 'undefined' && D) ? D : FALLBACK;
+  var snap = {
+    date: date, label: label,
+    disruptions: (data.disruptions||[]).length,
+    articles: (data.articles||[]).length,
+    data: {
+      signals: (data.signals||[]).map(function(s){ return {name:s.name,value:s.value,unit:s.unit,direction:s.direction}; }),
+      disruptions: (data.disruptions||[]).map(function(d){ return {title:d.title,severity:d.severity,description:(d.description||'').slice(0,300)}; }),
+      articles: (data.articles||[]).map(function(a){ return {title:a.title,severity:a.severity,summary:(a.summary||'').slice(0,250),sources:(a.sources||[]).slice(0,2)}; }),
+      brief: (data.brief||[]).map(function(b){ return {title:b.title}; })
+    }
+  };
+  console.log('SNAPSHOT DATA — paste into ARCHIVE_INDEX:\n', JSON.stringify(snap, null, 2));
+}
 var busy=false,D=null;
 
 // ── UTILITIES ─────────────────────────────────────────────────
@@ -1973,7 +2020,6 @@ function histView(i){
   var entry=active[i];
   if(!entry) return;
 
-  // Highlight active
   document.querySelectorAll('#hist-datelist .hitem').forEach(function(el,idx){
     el.style.background = idx===i ? 'rgba(0,200,255,.08)' : '';
   });
@@ -1981,24 +2027,104 @@ function histView(i){
   var v=document.getElementById('hist-viewer');
   if(!v) return;
 
-  var meta=[];
-  if(entry.disruptions) meta.push(entry.disruptions+' disruptions');
-  if(entry.articles) meta.push(entry.articles+' articles');
+  var d=entry.data||{};
+  var arts=Array.isArray(d.articles)?d.articles:[];
+  var dis=Array.isArray(d.disruptions)?d.disruptions:[];
+  var sigs=Array.isArray(d.signals)?d.signals:[];
+  var brf=Array.isArray(d.brief)?d.brief:[];
 
-  v.innerHTML='<div style="background:var(--bg2);border:1px solid var(--b1);border-radius:7px;overflow:hidden">'
-    +'<div style="background:var(--bg3);border-bottom:1px solid var(--b1);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between">'
-      +'<div>'
-        +'<div style="font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1)">'+esc(entry.label||entry.date)+'</div>'
-        +(meta.length?'<div style="font-family:var(--fm);font-size:9.5px;color:var(--t3);margin-top:3px">'+meta.join(' &nbsp;·&nbsp; ')+'</div>':'')
-      +'</div>'
-      +'<div style="font-family:var(--fh);font-size:10px;color:var(--t3)">ARCHIVED SNAPSHOT</div>'
-    +'</div>'
-    +'<div style="padding:2rem;text-align:center">'
-      +'<div style="font-family:var(--fm);font-size:11px;color:var(--t2);margin-bottom:1.2rem">This snapshot is stored as a separate file. Click below to open the full briefing for this date.</div>'
-      +'<a href="'+esc(entry.file)+'" target="_blank" style="display:inline-block;background:var(--acc);color:#060C18;font-family:var(--fh);font-size:11px;font-weight:700;padding:.6rem 1.4rem;border-radius:5px;text-decoration:none">📄 Open '+esc(entry.label||entry.date)+' →</a>'
-      +'<div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:.8rem">Opens in a new tab · Full intelligence briefing for that day</div>'
-    +'</div>'
-  +'</div>';
+  function sevCol(s){return s==='critical'?'var(--red)':s==='elevated'?'var(--amb)':'var(--grn)';}
+  function dirCol(dir){return dir==='up'?'var(--red)':dir==='down'?'var(--grn)':'var(--t3)';}
+  function dirArrow(dir){return dir==='up'?'▲ ':dir==='down'?'▼ ':'→ ';}
+
+  var h='<div style="background:var(--bg2);border:1px solid var(--b1);border-radius:7px;overflow:hidden">';
+
+  // Header
+  h+='<div style="background:var(--bg3);border-bottom:1px solid var(--b1);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between">';
+  h+='<div>';
+  h+='<div style="font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1)">'+esc(entry.label||entry.date)+'</div>';
+  h+='<div style="font-family:var(--fm);font-size:9.5px;color:var(--t3);margin-top:3px">';
+  h+=dis.length+' disruptions &nbsp;·&nbsp; '+arts.length+' articles &nbsp;·&nbsp; '+sigs.length+' signals';
+  h+='</div></div>';
+  h+='<span style="font-family:var(--fh);font-size:9px;letter-spacing:.08em;color:var(--t3)">ARCHIVED SNAPSHOT</span>';
+  h+='</div>';
+
+  h+='<div style="padding:1.2rem;display:flex;flex-direction:column;gap:1.4rem">';
+
+  // Signals strip
+  if(sigs.length){
+    h+='<div>';
+    h+='<div style="font-family:var(--fh);font-size:9px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">MARKET SIGNALS</div>';
+    h+='<div style="display:flex;flex-wrap:wrap;gap:6px">';
+    h+=sigs.map(function(s){
+      return '<div style="background:var(--bg3);border:1px solid var(--b1);border-radius:5px;padding:5px 10px;min-width:90px">'
+        +'<div style="font-family:var(--fm);font-size:8px;color:var(--t3);margin-bottom:2px">'+esc(s.name)+'</div>'
+        +'<div style="font-family:var(--fh);font-size:12px;font-weight:700;color:'+dirCol(s.direction)+'">'+esc(s.value||'—')+'</div>'
+        +'<div style="font-family:var(--fm);font-size:8px;color:var(--t3)">'+esc(s.unit||'')+'</div>'
+        +'</div>';
+    }).join('');
+    h+='</div></div>';
+  }
+
+  // Disruptions
+  if(dis.length){
+    h+='<div>';
+    h+='<div style="font-family:var(--fh);font-size:9px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">DISRUPTIONS</div>';
+    h+=dis.map(function(d){
+      var col=sevCol(d.severity);
+      return '<div style="border-left:3px solid '+col+';background:var(--bg3);border-radius:0 5px 5px 0;padding:.65rem 1rem;margin-bottom:.5rem">'
+        +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">'
+        +'<span style="font-family:var(--fm);font-size:8px;font-weight:700;color:'+col+';background:rgba(0,0,0,.2);padding:1px 6px;border-radius:3px">'+esc((d.severity||'').toUpperCase())+'</span>'
+        +'<span style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1)">'+esc(d.title)+'</span>'
+        +'</div>'
+        +'<div style="font-family:var(--fm);font-size:9.5px;color:var(--t3);line-height:1.6">'+esc((d.description||'').slice(0,200))+(d.description&&d.description.length>200?'…':'')+'</div>'
+        +'</div>';
+    }).join('');
+    h+='</div>';
+  }
+
+  // Articles
+  if(arts.length){
+    h+='<div>';
+    h+='<div style="font-family:var(--fh);font-size:9px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">ARTICLES ('+arts.length+')</div>';
+    h+=arts.map(function(a){
+      var col=sevCol(a.severity||'routine');
+      var srcs=(a.sources||[]).slice(0,2);
+      return '<div style="background:var(--bg3);border:1px solid var(--b1);border-radius:6px;padding:.75rem 1rem;margin-bottom:.5rem">'
+        +'<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:.3rem">'
+        +'<span style="flex-shrink:0;font-family:var(--fm);font-size:8px;font-weight:700;color:'+col+';background:rgba(0,0,0,.25);padding:2px 7px;border-radius:3px;margin-top:1px">'+esc((a.severity||'routine').toUpperCase())+'</span>'
+        +'<div style="font-family:var(--fh);font-size:11px;font-weight:700;color:var(--t1);line-height:1.35">'+esc(a.title)+'</div>'
+        +'</div>'
+        +(a.summary?'<div style="font-family:var(--fm);font-size:9.5px;color:var(--t2);line-height:1.65;margin-bottom:.4rem">'+esc(a.summary.slice(0,220))+(a.summary.length>220?'…':'')+'</div>':'')
+        +(srcs.length?'<div style="display:flex;gap:6px;flex-wrap:wrap">'
+          +srcs.map(function(s){return s.url
+            ?'<a href="'+esc(s.url)+'" target="_blank" style="font-family:var(--fm);font-size:8.5px;color:var(--acc);text-decoration:none">↗ '+esc(s.name)+'</a>'
+            :'<span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">'+esc(s.name)+'</span>';
+          }).join('')+'</div>':'')
+        +'</div>';
+    }).join('');
+    h+='</div>';
+  }
+
+  // Brief items
+  if(brf.length){
+    h+='<div>';
+    h+='<div style="font-family:var(--fh);font-size:9px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">DAILY BRIEF ('+brf.length+')</div>';
+    h+=brf.slice(0,5).map(function(b){
+      return '<div style="padding:.5rem 0;border-bottom:1px solid var(--b1);display:flex;align-items:flex-start;gap:8px">'
+        +'<span style="color:var(--acc);flex-shrink:0;margin-top:1px">›</span>'
+        +'<div style="font-family:var(--fm);font-size:10.5px;font-weight:600;color:var(--t1)">'+esc(b.title)+'</div>'
+        +'</div>';
+    }).join('');
+    h+='</div>';
+  }
+
+  if(!arts.length&&!dis.length&&!sigs.length){
+    h+='<div style="text-align:center;padding:1.5rem;font-family:var(--fm);font-size:11px;color:var(--t3)">No detailed data stored for this snapshot.</div>';
+  }
+
+  h+='</div></div>';
+  v.innerHTML=h;
 }
 
 // ── ARCHIVE TAB ───────────────────────────────────────────────
