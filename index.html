@@ -207,21 +207,6 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
 @media(max-width:650px){}
 
 /* ── HISTORY ── */
-.hist-date-item{padding:.6rem 1rem;font-family:var(--fm);font-size:11px;cursor:pointer;border-bottom:1px solid var(--b1);transition:background .15s;display:flex;flex-direction:column;gap:2px}
-.hist-date-item:hover{background:var(--bg3)}
-.hist-date-item.active{background:rgba(0,200,255,.1);border-left:3px solid var(--acc)}
-.hist-date-item.active .hist-d-label{color:var(--acc)}
-.hist-d-label{color:var(--t1);font-weight:500}
-.hist-d-sub{color:var(--t3);font-size:9.5px}
-.hist-tabs{display:flex;border-bottom:1px solid var(--b1);margin-bottom:1.2rem;background:var(--bg2);border-radius:7px 7px 0 0;overflow:hidden}
-.hist-tab{background:none;border:none;border-bottom:2px solid transparent;color:var(--t3);font-family:var(--fm);font-size:10.5px;padding:.6rem 1rem;cursor:pointer;white-space:nowrap;transition:color .15s;letter-spacing:.04em}
-.hist-tab:hover{color:var(--t2)}
-.hist-tab.on{color:var(--t1);border-bottom-color:var(--acc);background:var(--bg3)}
-.hist-panel{display:none;padding:1rem;background:var(--bg2);border:1px solid var(--b1);border-top:none;border-radius:0 0 7px 7px}
-.hist-panel.on{display:block}
-.hist-header{background:var(--bg3);border:1px solid var(--b1);border-radius:7px 7px 0 0;padding:.8rem 1rem}
-
-
 /* ── FREIGHT WATCH CHARTS ─────────────────────────────────── */
 .fw-grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.1rem;margin-bottom:1rem}
 .fw-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1rem}
@@ -382,7 +367,7 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
   nav,footer,.sbar,.ticker,.rpt-toolbar,.rpt-btn,.rpt-ci-exclude-btn,
   .rpt-ci-restore-btn,.rpt-excluded-list,#s5-tab-prospects,#s5-tab-excluded,
   #tb-report,#tb-home,#tb-brief,#tb-freight,#tb-dis,#tb-sigs,
-  #tb-ci,#tb-history,#tb-about,.tab,.nav-tabs,.nav-r,.prog,
+  #tb-ci,#tb-about,.tab,.nav-tabs,.nav-r,.prog,
   .lpill,#rbtn,#rpt-priority-results,#rpt-priority-search,
   .rpt-priority-add-ui{display:none!important}
   /* Hide ALL pages except the report */
@@ -476,7 +461,6 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
     
     <button class="tab" id="tb-ci" onclick="go('ci')">Customer Intel</button>
     <button class="tab" id="tb-report" onclick="go('report')">Daily Report</button>
-    <button class="tab" id="tb-history" onclick="go('history')">Archive</button>
     
     <button class="tab" id="tb-about" onclick="go('about')">About</button>
   </div>
@@ -829,7 +813,6 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
         <div class="srow"><div class="sname">Update frequency</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Daily at 8–9 AM Eastern</div></div>
         <div class="srow"><div class="sname">Verticals covered</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">9</div></div>
         <div class="srow"><div class="sname">Source links</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Yes — per item</div></div>
-        <div class="srow"><div class="sname">Archive</div><div style="font-family:var(--fm);font-size:9.5px;color:var(--acc)">Daily snapshots</div></div>
       </div>
       <div class="card">
         <div style="font-family:var(--fh);font-size:13px;font-weight:700;margin-bottom:.9rem">Sources We Monitor</div>
@@ -840,36 +823,7 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
 </div>
 
 <!-- ═══ LANE INTELLIGENCE ══════════════════════════════ -->
-<div class="page" id="pg-history">
-  <div class="sh">
-    <div><div class="st">Archive & Network</div><div class="ss">INTELLIGENCE ARCHIVE · ARTICLE LIBRARY</div></div>
-    <div style="display:flex;gap:8px;align-items:center">
-      <button id="arch-tab-snap" onclick="archTab('snapshots',this)" style="background:var(--acc);color:#060C18;border:none;border-radius:4px;padding:5px 14px;font-family:var(--fm);font-size:10px;font-weight:500;cursor:pointer">Daily Snapshots</button>
-      <span class="tspill" id="hist-count">0 saved</span>
-    </div>
-  </div>
 
-  <!-- PANEL: DAILY SNAPSHOTS -->
-  <div id="arch-panel-snapshots">
-    <div style="display:grid;grid-template-columns:220px 1fr;gap:1.1rem;align-items:start">
-      <div style="background:var(--bg2);border:1px solid var(--b1);border-radius:7px;overflow:hidden;position:sticky;top:68px">
-        <div style="background:var(--bg3);border-bottom:1px solid var(--b1);padding:.65rem 1rem;display:flex;align-items:center;justify-content:space-between">
-          <span style="font-family:var(--fh);font-size:11px;font-weight:700">Daily Snapshots</span>
-          <span id="hist-count" style="font-family:var(--fm);font-size:9px;color:var(--t3)">0 saved</span>
-        </div>
-        <div id="hist-datelist" style="max-height:calc(100vh - 180px);overflow-y:auto"></div>
-      </div>
-      <div id="hist-viewer">
-        <div style="background:var(--bg2);border:1px solid var(--b1);border-radius:7px;padding:2.5rem;text-align:center">
-          <div style="font-family:var(--fh);font-size:15px;font-weight:700;color:var(--t2);margin-bottom:.5rem">📅 Select a Date</div>
-          <div style="font-family:var(--fm);font-size:11px;color:var(--t3)">Choose a snapshot from the list to view that day's full intelligence briefing.<br><br>Each daily update is saved as a separate dated file — every visitor sees the same archive.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-</div>
 
 
 <!-- ═══ CUSTOMER INTELLIGENCE ══════════════════════════ -->
@@ -1053,35 +1007,42 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
   <div style="margin-top:1.4rem;background:var(--bg2);border:1px solid var(--b1);border-radius:8px;padding:1.2rem 1.4rem">
     <div style="font-family:var(--fh);font-size:11px;font-weight:700;color:var(--acc);letter-spacing:.04em;margin-bottom:.7rem">HOW SCORES ARE CALCULATED</div>
     <div style="font-family:var(--fm);font-size:11px;color:var(--t2);line-height:1.85;margin-bottom:1rem">
-      Every company in this database is scored 0–100 based on four factors that indicate how likely they are to be a strong, active freight customer right now. Higher scores mean more signals pointing to active freight procurement — not just company size.
+      Every company is scored 0–100 across five factors that indicate how likely they are to be a strong, active freight customer right now. Scores are recalculated live — higher scores mean more verified signals pointing to active freight procurement.
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem 2rem;margin-bottom:1rem">
       <div style="display:flex;align-items:flex-start;gap:10px">
-        <div style="flex-shrink:0;width:36px;height:36px;border-radius:6px;background:rgba(0,200,255,.1);border:1px solid rgba(0,200,255,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:var(--acc)">42</div>
+        <div style="flex-shrink:0;width:36px;height:36px;border-radius:6px;background:rgba(0,200,255,.1);border:1px solid rgba(0,200,255,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:var(--acc)">40</div>
         <div>
-          <div style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1);margin-bottom:2px">Signal Strength <span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">(up to 42 pts)</span></div>
-          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">Number of confirmed buying signals — job postings for logistics roles, earnings calls citing freight costs, capacity expansions, new facilities, and hiring activity. Each signal adds 7 points.</div>
+          <div style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1);margin-bottom:2px">Signal Strength <span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">(up to 40 pts)</span></div>
+          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">Number of confirmed buying signals — logistics job postings, earnings calls citing freight costs, capacity expansions, new facilities, fleet growth. Each signal adds 8 points, up to 5 signals (40 pts max).</div>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:10px">
         <div style="flex-shrink:0;width:36px;height:36px;border-radius:6px;background:rgba(0,230,118,.1);border:1px solid rgba(0,230,118,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:var(--grn)">20</div>
         <div>
           <div style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1);margin-bottom:2px">Intelligence Recency <span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">(up to 20 pts)</span></div>
-          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">How recently the intelligence was verified. Updated within 24 hours earns full points; within 7 days earns 15; within 30 days earns 10. Older data scores 3 points.</div>
+          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">How recently the intelligence was verified. Within 24 hours earns 20 pts; within 7 days earns 15; within 30 days earns 10. Older data scores 3 pts.</div>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:10px">
-        <div style="flex-shrink:0;width:36px;height:36px;border-radius:6px;background:rgba(255,179,0,.1);border:1px solid rgba(255,179,0,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:var(--amb)">15</div>
+        <div style="flex-shrink:0;width:36px;height:36px;border-radius:6px;background:rgba(255,179,0,.1);border:1px solid rgba(255,179,0,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:var(--amb)">20</div>
         <div>
-          <div style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1);margin-bottom:2px">Freight Type Specificity <span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">(up to 15 pts)</span></div>
-          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">Specialized freight modes score higher because they require dedicated carrier relationships. Reefer, Hazmat, and Oversized earn 15 pts. Flatbed earns 12. Dry Van and others earn 8.</div>
+          <div style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1);margin-bottom:2px">Freight Type Specificity <span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">(up to 20 pts)</span></div>
+          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">Specialized freight modes score higher — they require dedicated carrier relationships. Reefer, Hazmat, and Oversized earn 20 pts. Flatbed earns 16. Dry Van and others earn 10.</div>
         </div>
       </div>
       <div style="display:flex;align-items:flex-start;gap:10px">
         <div style="flex-shrink:0;width:36px;height:36px;border-radius:6px;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:var(--gld)">15</div>
         <div>
           <div style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1);margin-bottom:2px">Source Quality <span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">(up to 15 pts)</span></div>
-          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">Companies sourced from SEC filings, 10-K reports, or earnings calls earn full marks — these are verified financial disclosures. Multiple corroborating sources earn 10 pts. Single sources earn 5.</div>
+          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">SEC filings, 10-K reports, or earnings call citations earn 15 pts — verified financial disclosures. Multiple corroborating sources earn 10. Single source earns 5.</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:10px">
+        <div style="flex-shrink:0;width:36px;height:36px;border-radius:6px;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:#A78BFA">5</div>
+        <div>
+          <div style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1);margin-bottom:2px">Contact Verified <span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">(up to 5 pts)</span></div>
+          <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">A verified phone number on file earns 5 points — confirming the contact chain is warm and reachable, not just a cold database entry.</div>
         </div>
       </div>
     </div>
@@ -1297,114 +1258,6 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
 
 
 <script>var CACHE_KEY='nxl_v9',CACHE_TTL=11*60*60*1000,KEY_STORE='nxl_apikey';
-
-
-// ── SAVED SNAPSHOTS ───────────────────────────────────────────
-// Each daily update prepends a new entry to this array.
-// Snapshots older than 30 days are removed at that time.
-// This array is the single source of truth — same for every visitor.
-var SAVED_SNAPSHOTS = [
-  {
-    date: '2026-04-08', label: 'Wednesday, April 8, 2026',
-    disruptions: 5, articles: 8,
-    data: {
-      signals: [
-        {name:'Brent Crude',  value:'$94',      unit:'/bbl', direction:'down'},
-        {name:'WTI',          value:'$94.55',   unit:'/bbl', direction:'down'},
-        {name:'US Diesel',    value:'$5.64',    unit:'/gal', direction:'up'},
-        {name:'Van Spot',     value:'$2.47 LH', unit:'/mi',  direction:'up'},
-        {name:'Flatbed Spot', value:'$2.95 LH', unit:'/mi',  direction:'up'},
-        {name:'Reefer Spot',  value:'$2.88 LH', unit:'/mi',  direction:'up'},
-        {name:'Drewry WCI',   value:'$2,287',   unit:'/FEU', direction:'flat'},
-        {name:'ISM PMI',      value:'52.7',     unit:'',     direction:'up'},
-        {name:'OTRI',         value:'~5.7%',    unit:'',     direction:'up'},
-        {name:'Air Cargo',    value:'+22% YoY', unit:'',     direction:'up'}
-      ],
-      disruptions: [
-        {title:'Strait of Hormuz — Day 41: Ceasefire Holds; Tanker Traffic Near Zero', severity:'critical',
-         description:'Day 3 of US-Iran ceasefire. Only 10-15 vessels/day transiting — near conflict-era pace. Iran vetting ships. Maersk: no service changes. Islamabad talks Apr 10. Infrastructure damage means months of recovery regardless of strait status.'},
-        {title:'Red Sea — Day 125: Cape Routing Continues', severity:'elevated',
-         description:'No carrier Red Sea resumptions despite ceasefire. 38 blank sailings weeks 14-18 still active. Houthis have not stood down.'},
-        {title:'US Diesel $5.64/gal — EIA Apr 7 Confirmed', severity:'elevated',
-         description:'EIA Apr 7 confirmed. GasBuddy forecasts pump relief within 48hrs; diesel lags gasoline. USPS 8% surcharge effective Apr 26. Next EIA reading Apr 14.'},
-        {title:"Dalilah's Law CDL Reform — 200K-250K Driver Risk", severity:'elevated',
-         description:"H.R. 5688 cleared House committee Mar 18. Could remove 200-250K non-domiciled drivers. FreightWaves: potential trucking super cycle trigger."},
-        {title:'Section 122 Tariff — $166B IEEPA Refunds Pending', severity:'elevated',
-         description:'10% global tariff expires Jul 24. CBP CAPE portal ~70% complete targeting Apr 20 launch. $650M/month interest accruing.'}
-      ],
-      articles: [
-        {title:'Hormuz Day 41: Tanker Traffic Barely Moving — Iran Vetting Ships; Islamabad Talks Tomorrow', severity:'critical',
-         summary:'Despite ceasefire, only 10-15 vessels/day. Iran and Oman may charge transit fees — breaking Hormuz\'s historic toll-free status. Eurasia Group: 2-6 months for supply normalization.',
-         sources:[{name:'Axios Apr 8', url:'https://www.axios.com/2026/04/08/iran-ceasefire-oil-shipping-impact-prices'},{name:'Euronews Apr 8', url:'https://www.euronews.com/business/2026/04/08/shipping-companies-see-opportunities-but-seek-clarity-on-strait-of-hormuz-reopening'}]},
-        {title:'Maersk: No Service Changes — Costing $55M/Week; Backlog Growing', severity:'critical',
-         summary:'Maersk sees "transit opportunities" but no maritime certainty. $55M/week cost. Tanker insurance must be reestablished before meaningful traffic resumes.',
-         sources:[{name:'Euronews Apr 8', url:'https://www.euronews.com/business/2026/04/08/shipping-companies-see-opportunities-but-seek-clarity-on-strait-of-hormuz-reopening'}]},
-        {title:'Drewry WCI Apr 9: $2,287/FEU Unchanged — No Rate Relief Yet', severity:'elevated',
-         summary:'Flat for second consecutive week. Ceasefire optimism not yet reflected in rates. 38 blank sailings wks 14-18 still locked.',
-         sources:[{name:'Drewry Apr 9', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'}]},
-        {title:'Oil Supply Won\'t Normalize for Months Even With Open Strait', severity:'critical',
-         summary:'Eurasia Group & RSM US: tanker operators need 2+ months to resume. Vessels near Singapore take 8 weeks to deliver to Asia. Qatar LNG damage may take years.',
-         sources:[{name:'CBS News Apr 7', url:'https://www.cbsnews.com/news/iran-war-strait-of-hormuz-oil-prices-trump/'}]},
-        {title:'USPS 8% Parcel Surcharge Approved — Effective April 26', severity:'elevated',
-         summary:'PRC cleared 8% surcharge on Priority Mail Express, Priority Mail, USPS Ground Advantage, Parcel Select. Through January 2027. Q2 e-commerce costs up 12-20%.',
-         sources:[{name:'FreightWaves Apr 8', url:'https://www.freightwaves.com/news/postal-service-can-proceed-with-8-parcel-surcharge-regulator-says'}]},
-        {title:'Agriculture Freight Holding — USDA: 33 Gulf Export Vessels Loaded', severity:'routine',
-         summary:'US grain export activity running ahead of last year despite Hormuz turmoil. Ocean freight to Japan eased slightly. Farm input costs remain elevated.',
-         sources:[{name:'RFD News Apr 9', url:'https://www.rfdtv.com/ceasefire-eases-oil-markets-but-farm-costs-stay-elevated'}]},
-        {title:'FreightWaves: Tender Rejections 13%+ in Some Lanes; OTRI 11.5%', severity:'elevated',
-         summary:'Lane-level rejections exceeding 13%. Nationwide OTRI at 11.5% — highest sustained level since 2022. Pallet PPI and AF&PA packaging data showing early Q2 tightening.',
-         sources:[{name:'FreightWaves Apr 9', url:'https://www.freightwaves.com/'}]},
-        {title:'DAT: "Shippers Aren\'t Buying a Discount, They\'re Buying Risk"', severity:'elevated',
-         summary:'Dean Croke: shippers deprioritizing rock-bottom rates for reliable capacity as carrier survivability becomes a real concern. Several carriers filed for bankruptcy in early 2026.',
-         sources:[{name:'Supply Chain Dive Jan 2026', url:'https://www.supplychaindive.com/news/2026-logistics-outlook-ai-bankruptcies-ocean-air-last-mile-rail-trucking-operational-volatility/810429/'}]}
-      ],
-      brief: [
-        {title:'Hormuz Day 41: Ceasefire holds but tanker traffic near zero — Iran vetting ships; Islamabad talks tomorrow'},
-        {title:'Maersk no service changes — $55M/week cost; backlog of stranded vessels growing'},
-        {title:'Drewry WCI Apr 9: $2,287/FEU unchanged — no rate relief yet despite ceasefire'},
-        {title:'Oil supply normalization 2-6 months away — infrastructure damage, tanker restart timelines'},
-        {title:'USPS 8% parcel surcharge approved — effective April 26 through January 2027'},
-        {title:'FreightWaves: Tender rejections 13%+ in some lanes; OTRI 11.5% nationwide'},
-        {title:'Agriculture freight holding — USDA: 33 Gulf export vessels loaded, Japan rates easing'},
-        {title:'DAT: Shippers buying reliability not discounts — carrier survivability now a real risk'}
-      ]
-    }
-  }
-];
-// ─────────────────────────────────────────────────────────────
-
-function snapDateMs(dateStr){
-  // Parse YYYY-MM-DD as local midnight — avoids UTC timezone shift
-  var p=dateStr.split('-');
-  return new Date(+p[0],+p[1]-1,+p[2]).getTime();
-}
-function snapCompress(snap, full){
-  // full=true (recent 7 days): return all data intact
-  // full=false (days 8-30): trim to top 5 signals, 3 disruptions, 3 articles, 5 brief
-  if(full || !snap.data) return snap;
-  var d=snap.data;
-  return {
-    date:snap.date, label:snap.label,
-    disruptions:snap.disruptions, articles:snap.articles,
-    data:{
-      signals:    (d.signals||[]).slice(0,5),
-      disruptions:(d.disruptions||[]).slice(0,3),
-      articles:   (d.articles||[]).slice(0,3),
-      brief:      (d.brief||[]).slice(0,5)
-    }
-  };
-}
-function snapLoad(){
-  var cutoff = Date.now() - 30*24*60*60*1000;
-  var recent  = Date.now() -  7*24*60*60*1000;
-  return (SAVED_SNAPSHOTS||[])
-    .filter(function(e){ return snapDateMs(e.date) >= cutoff; })
-    .map(function(e){ return snapCompress(e, snapDateMs(e.date) >= recent); });
-}
-function snapSave(d){ /* no-op — snapshots are hardcoded in SAVED_SNAPSHOTS above */ }
-
-var busy=false,D=null;
-
 // ── UTILITIES ─────────────────────────────────────────────────
 function $(id){return document.getElementById(id);}
 function ih(id,h){var e=$(id);if(e)e.innerHTML=h;}
@@ -1421,6 +1274,14 @@ function srcHTML(sources){
   return'<div class="srcs"><div class="srcs-lbl">Sources</div>'+
     sources.map(function(s){return'<a class="src-a" href="'+ss(s.url)+'" target="_blank" rel="noopener">'+ss(s.name)+'</a>';}).join('')+'</div>';
 }
+
+
+// ── SAVED SNAPSHOTS ───────────────────────────────────────────
+// Each daily update prepends a new entry to this array.
+// Snapshots older than 30 days are removed at that time.
+// This array is the single source of truth — same for every visitor.
+// ─────────────────────────────────────────────────────────────
+
 
 // ── SPARKLINE / CHART HELPERS ──────────────────────────────────
 function spark(data,w,h,col){
@@ -1513,7 +1374,6 @@ function kpi(label,val,chg,col,src){
 // ── NAVIGATION ────────────────────────────────────────────────
 function go(tab){
   if(tab==='report') setTimeout(rptInit,50);
-  if(tab==='history') setTimeout(histRefreshUI,50);
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('on');});
   document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
   var pg=$('pg-'+tab);if(pg)pg.classList.add('on');
@@ -2004,133 +1864,7 @@ function renderAll(d){
   tx('s-dis',Array.isArray(d.disruptions)?d.disruptions.length:'—');
 }
 
-// ── HISTORY / ARCHIVE ─────────────────────────────────────────
-function histRefreshUI(){
-  var list=document.getElementById('hist-datelist');
-  var countEl=document.getElementById('hist-count');
-  if(!list) return;
 
-  var active = snapLoad();
-
-  if(!active.length){
-    list.innerHTML='<div style="padding:1.5rem;text-align:center;font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.7">No snapshots yet.<br><br>Snapshots save automatically each time the intelligence updates. Check back after the next daily update.</div>';
-    if(countEl) countEl.textContent='0 saved';
-    return;
-  }
-
-  if(countEl) countEl.textContent=active.length+' snapshot'+(active.length===1?'':'s');
-
-  list.innerHTML=active.map(function(e,i){
-    var daysLeft=Math.ceil((snapDateMs(e.date)+(30*24*60*60*1000)-Date.now())/(24*60*60*1000));
-    var expiring=daysLeft<=7;
-    var meta=[];
-    if(e.disruptions) meta.push(e.disruptions+' disruptions');
-    if(e.articles) meta.push(e.articles+' articles');
-    return '<div class="hitem" onclick="histView('+i+')" style="padding:.75rem 1rem;border-bottom:1px solid var(--b1);cursor:pointer;transition:background .1s" onmouseover="this.style.background=\'rgba(0,200,255,.05)\'" onmouseout="this.style.background=\'\'">'
-      +'<div style="font-family:var(--fh);font-size:11px;font-weight:600;color:var(--t1)">'+esc(e.label||e.date)+'</div>'
-      +(meta.length?'<div style="font-family:var(--fm);font-size:9px;color:var(--t3);margin-top:2px">'+meta.join(' &nbsp;·&nbsp; ')+'</div>':'')
-      +'<div style="font-family:var(--fm);font-size:8.5px;margin-top:3px;color:'+(expiring?'var(--red)':'var(--t3)')+'">⏱ '+(expiring?daysLeft+'d left — expiring soon':daysLeft+'d remaining')+'</div>'
-      +'</div>';
-  }).join('');
-}
-
-function histView(i){
-  var active=snapLoad();
-  var entry=active[i];
-  if(!entry) return;
-
-  document.querySelectorAll('#hist-datelist .hitem').forEach(function(el,idx){
-    el.style.background = idx===i ? 'rgba(0,200,255,.08)' : '';
-  });
-
-  var v=document.getElementById('hist-viewer');
-  if(!v) return;
-
-  var d=entry.data||{};
-  var arts=Array.isArray(d.articles)?d.articles:[];
-  var dis=Array.isArray(d.disruptions)?d.disruptions:[];
-  var sigs=Array.isArray(d.signals)?d.signals:[];
-  var brf=Array.isArray(d.brief)?d.brief:[];
-
-  function sevCol(s){return s==='critical'?'var(--red)':s==='elevated'?'var(--amb)':'var(--grn)';}
-  function dirCol(dir){return dir==='up'?'var(--red)':dir==='down'?'var(--grn)':'var(--t3)';}
-
-  var h='<div style="background:var(--bg2);border:1px solid var(--b1);border-radius:7px;overflow:hidden">';
-
-  // Header
-  h+='<div style="background:var(--bg3);border-bottom:1px solid var(--b1);padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between">';
-  h+='<div><div style="font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1)">'+esc(entry.label||entry.date)+'</div>';
-  h+='<div style="font-family:var(--fm);font-size:9.5px;color:var(--t3);margin-top:3px">'+dis.length+' disruptions &nbsp;·&nbsp; '+arts.length+' articles &nbsp;·&nbsp; '+sigs.length+' signals</div></div>';
-  h+='<span style="font-family:var(--fh);font-size:9px;letter-spacing:.08em;color:var(--t3)">ARCHIVED SNAPSHOT</span>';
-  h+='</div>';
-
-  h+='<div style="padding:1.2rem;display:flex;flex-direction:column;gap:1.4rem">';
-
-  // Signals
-  if(sigs.length){
-    h+='<div><div style="font-family:var(--fh);font-size:9px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">MARKET SIGNALS</div>';
-    h+='<div style="display:flex;flex-wrap:wrap;gap:6px">';
-    h+=sigs.map(function(s){
-      return '<div style="background:var(--bg3);border:1px solid var(--b1);border-radius:5px;padding:5px 10px;min-width:90px">'
-        +'<div style="font-family:var(--fm);font-size:8px;color:var(--t3);margin-bottom:2px">'+esc(s.name)+'</div>'
-        +'<div style="font-family:var(--fh);font-size:12px;font-weight:700;color:'+dirCol(s.direction)+'">'+esc(s.value||'—')+'<span style="font-family:var(--fm);font-size:8px;color:var(--t3)"> '+esc(s.unit||'')+'</span></div>'
-        +'</div>';
-    }).join('');
-    h+='</div></div>';
-  }
-
-  // Disruptions
-  if(dis.length){
-    h+='<div><div style="font-family:var(--fh);font-size:9px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">DISRUPTIONS</div>';
-    h+=dis.map(function(x){
-      var col=sevCol(x.severity);
-      return '<div style="border-left:3px solid '+col+';background:var(--bg3);border-radius:0 5px 5px 0;padding:.65rem 1rem;margin-bottom:.5rem">'
-        +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:3px">'
-        +'<span style="font-family:var(--fm);font-size:8px;font-weight:700;color:'+col+';background:rgba(0,0,0,.2);padding:1px 6px;border-radius:3px">'+esc((x.severity||'').toUpperCase())+'</span>'
-        +'<span style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1)">'+esc(x.title)+'</span></div>'
-        +'<div style="font-family:var(--fm);font-size:9.5px;color:var(--t3);line-height:1.6">'+esc((x.description||'').slice(0,200))+(x.description&&x.description.length>200?'…':'')+'</div>'
-        +'</div>';
-    }).join('');
-    h+='</div>';
-  }
-
-  // Articles
-  if(arts.length){
-    h+='<div><div style="font-family:var(--fh);font-size:9px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">ARTICLES ('+arts.length+')</div>';
-    h+=arts.map(function(a){
-      var col=sevCol(a.severity||'routine');
-      var srcs=(a.sources||[]).slice(0,2);
-      return '<div style="background:var(--bg3);border:1px solid var(--b1);border-radius:6px;padding:.75rem 1rem;margin-bottom:.5rem">'
-        +'<div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:.3rem">'
-        +'<span style="flex-shrink:0;font-family:var(--fm);font-size:8px;font-weight:700;color:'+col+';background:rgba(0,0,0,.25);padding:2px 7px;border-radius:3px;margin-top:1px">'+esc((a.severity||'routine').toUpperCase())+'</span>'
-        +'<div style="font-family:var(--fh);font-size:11px;font-weight:700;color:var(--t1);line-height:1.35">'+esc(a.title)+'</div></div>'
-        +(a.summary?'<div style="font-family:var(--fm);font-size:9.5px;color:var(--t2);line-height:1.65;margin-bottom:.4rem">'+esc(a.summary.slice(0,220))+(a.summary.length>220?'…':'')+'</div>':'')
-        +(srcs.length?'<div style="display:flex;gap:6px;flex-wrap:wrap">'+srcs.map(function(s){return s.url
-          ?'<a href="'+esc(s.url)+'" target="_blank" style="font-family:var(--fm);font-size:8.5px;color:var(--acc);text-decoration:none">↗ '+esc(s.name)+'</a>'
-          :'<span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">'+esc(s.name)+'</span>';}).join('')+'</div>':'')
-        +'</div>';
-    }).join('');
-    h+='</div>';
-  }
-
-  // Brief
-  if(brf.length){
-    h+='<div><div style="font-family:var(--fh);font-size:9px;font-weight:700;color:var(--acc);letter-spacing:.1em;margin-bottom:.6rem">DAILY BRIEF HEADLINES</div>';
-    h+=brf.map(function(b){
-      return '<div style="padding:.45rem 0;border-bottom:1px solid var(--b1);display:flex;align-items:flex-start;gap:8px">'
-        +'<span style="color:var(--acc);flex-shrink:0">›</span>'
-        +'<div style="font-family:var(--fm);font-size:10.5px;color:var(--t1)">'+esc(b.title)+'</div></div>';
-    }).join('');
-    h+='</div>';
-  }
-
-  if(!arts.length&&!dis.length&&!sigs.length){
-    h+='<div style="text-align:center;padding:1.5rem;font-family:var(--fm);font-size:11px;color:var(--t3)">No detailed data stored for this snapshot.</div>';
-  }
-
-  h+='</div></div>';
-  v.innerHTML=h;
-}
 function histView(i){
   var active=snapLoad();
   var entry=active[i];
@@ -2243,22 +1977,6 @@ function histView(i){
   v.innerHTML=h;
 }
 
-// ── ARCHIVE TAB ───────────────────────────────────────────────
-function archTab(tab,btn){
-  ['snapshots'].forEach(function(p){
-    var el=document.getElementById('arch-panel-'+p);if(el)el.style.display=p===tab?'':'none';
-  });
-  document.querySelectorAll('#pg-history button[id^="arch-tab"]').forEach(function(b){
-    b.style.background='var(--bg3)';b.style.color='var(--t2)';b.style.border='1px solid var(--b2)';
-  });
-  if(btn){btn.style.background='var(--acc)';btn.style.color='#060C18';btn.style.border='none';}
-  if(tab==='history') setTimeout(histRefreshUI,50);
-  if(tab==='sources'){
-    var g=$('net-grid-inner');
-    var src=$('net-grid');
-    if(g&&src)g.innerHTML=src.innerHTML;
-  }
-}
 
 // ── NETWORK FILTER ────────────────────────────────────────────
 function netFilter(cat,btn){
@@ -2476,7 +2194,6 @@ function doUpdate(manual){
     renderAll(D);
     stamp(new Date());
     histSave(D);
-    histRefreshUI();
 
     try{localStorage.setItem(CACHE_KEY,JSON.stringify({d:D,ts:new Date().toISOString()}));}catch(e){}
     setProg(0,'');
@@ -4902,27 +4619,27 @@ function ciRelTime(ts){
 function ciCalcScore(company){
   var score = 0;
   var s = company.signals||[];
-  // Signal count (up to 40 pts)
-  score += Math.min(s.length * 7, 42);
-  // Recency (up to 20 pts)
-  var age = (Date.now() - (company.updated||0)) / 86400000; // days
-  if(age < 1) score += 20;
-  else if(age < 7) score += 15;
+  // 1. Signal Strength (up to 40 pts) — each confirmed signal adds 8 pts, max 5 signals
+  score += Math.min(s.length * 8, 40);
+  // 2. Intelligence Recency (up to 20 pts)
+  var age = (Date.now() - (company.updated||0)) / 86400000;
+  if(age < 1)  score += 20;
+  else if(age < 7)  score += 15;
   else if(age < 30) score += 10;
   else score += 3;
-  // Freight type specificity (up to 15 pts)
+  // 3. Freight Type Specificity (up to 20 pts)
   var highSpecialty = ['Refrigerated / Reefer','Hazmat / Chemical','Specialized / Oversized'];
-  if(highSpecialty.indexOf(company.freightType) >= 0) score += 15;
-  else if(company.freightType === 'Flatbed / Heavy Equipment') score += 12;
-  else score += 8;
-  // Source quality (up to 15 pts)
+  if(highSpecialty.indexOf(company.freightType) >= 0) score += 20;
+  else if(company.freightType === 'Flatbed / Heavy Equipment') score += 16;
+  else score += 10;
+  // 4. Source Quality (up to 15 pts)
   var src = company.sources||[];
   if(src.some(function(x){ return x.url&&(x.url.includes('sec.gov')||x.url.includes('10-K')||x.url.includes('earnings')); })) score += 15;
   else if(src.length >= 2) score += 10;
   else score += 5;
-  // Contact info bonus (up to 8 pts)
-  if(company.phone) score += 4;
-    return Math.min(Math.round(score), 100);
+  // 5. Contact Verified (up to 5 pts)
+  if(company.phone) score += 5;
+  return Math.min(Math.round(score), 100);
 }
 
 // ── INIT ──────────────────────────────────────────────────────
@@ -5458,134 +5175,127 @@ function ciToggleAuto(){
 // ── FALLBACK DATA ─────────────────────────────────────────────
 
 var FALLBACK = {
-  date: 'Thursday, April 9, 2026',
+  date: 'Friday, April 10, 2026',
   articles: [
     {
-      title: 'FreightWaves: Iran Plans $2M Toll Booth on Hormuz — Containers Still Trapped Despite Ceasefire',
-      summary: 'FreightWaves and Just Security report Iran has imposed a $2 million transit fee per vessel — an illegal "Tehran toll booth." Xeneta senior analyst: "The monetization of passage through the strait is an unsettling reality." Russia and China vetoed a UN Security Council resolution to reopen the waterway, increasing the likelihood this toll structure becomes permanent. 21 ships transited over the weekend but Xeneta has confirmed zero inbound/outbound container vessel transits since the ceasefire. 2,000 commercial vessels remain stranded near the strait.',
-      severity: 'critical', category: 'ocean / geopolitical', region: 'Strait of Hormuz', date: 'Apr 8, 2026',
-      sources: [{name:'FreightWaves Apr 8', url:'https://www.freightwaves.com/news/new-tolls-could-add-1-a-barrel-to-hormuz-oil'},{name:'Just Security Apr 8', url:'https://www.justsecurity.org/135899/strait-hormuz-tolls-crisis/'}]
+      title: 'Hormuz Day 42: Shipping Still at Standstill — 7 Ships/Day vs 135 Pre-War; 600 Vessels Trapped; Islamabad Talks Today',
+      summary: 'Al Jazeera/CNBC Apr 10: only 7 ships transited Hormuz on Thursday — still 5% of pre-war daily traffic. Lloyd List Intelligence reports 600+ vessels including 325 tankers stranded in the Gulf. Kpler: traffic remains under 10% of typical capacity even with ceasefire. Trump accused Iran of doing a "very poor job, dishonorable" of allowing oil through. Iran FM Araghchi accused US of violations pointing to Lebanon. Islamabad talks begin today — ceasefire expires April 22. Shipping analysts warn a round voyage in the Gulf cannot be completed within the 15-day window.',
+      severity: 'critical', category: 'ocean / geopolitical', region: 'Strait of Hormuz', date: 'Apr 10, 2026',
+      sources: [{name:'Al Jazeera Apr 10', url:'https://www.aljazeera.com/economy/2026/4/10/shipping-in-strait-of-hormuz-at-a-trickle-despite-us-iran-ceasefire'},{name:'India Shipping News Apr 9', url:'https://indiashippingnews.com/hormuz-reopens-but-shipping-remains-locked-in-a-confidence-deficit/'}]
     },
     {
-      title: 'Transport Topics: Fuel Volatility Rewrites Freight Cost Models — Diesel Up 38.6% Since War Start',
-      summary: 'Transport Topics reports diesel prices surged 38.6% since the Iran war began, reaching $5.40/gal by March 30. DAT\'s Ken Adamo: spot contracts now face upward repricing in Q2 via surcharge and linehaul changes. Fuel surcharges adding ~40 cents/mi to contract truckload rates. Contract bids expected to come back higher across all sectors starting Q2. Acceptance rates on contract loads rising as carriers prefer fuel-cost recovery certainty of contract freight over spot.',
-      severity: 'critical', category: 'trucking / fuel', region: 'USA', date: 'Apr 8, 2026',
-      sources: [{name:'Transport Topics Apr 8', url:'https://www.ttnews.com/articles/iran-war-fuel-trucking'},{name:'CCJ Apr 8', url:'https://www.ccjdigital.com/business/article/15821521/why-your-freight-costs-are-rising-even-when-volumes-stay-flat'}]
+      title: 'Brent Crude ~$96/bbl Friday — Saudi Arabia Loses 600K bbl/day Capacity After Pipeline Strike; Oil Down 10% on Week',
+      summary: 'Trading Economics Apr 10: Brent ~$96/bbl Friday morning — down more than 10% on the week after the ceasefire-driven crash. Saudi Arabia confirmed attacks on oil facilities reduced capacity by roughly 600,000 barrels/day and cut the East-West Pipeline by ~700,000 bpd — the critical bypass route around Hormuz. Brent on track for largest weekly decline since 2020. EIA STEO Apr 7 forecasts Brent peaking at $115/bbl Q2 and diesel above $5.80/gal in April. Next EIA weekly diesel reading: April 14.',
+      severity: 'critical', category: 'energy / fuel', region: 'Global / Saudi Arabia', date: 'Apr 10, 2026',
+      sources: [{name:'Trading Economics Apr 10', url:'https://tradingeconomics.com/commodity/brent-crude-oil'},{name:'EIA STEO Apr 7', url:'https://www.eia.gov/outlooks/steo/'}]
     },
     {
-      title: 'FreightWaves: 34,000 Shipping Routes Diverted — India\'s JNPT Port Up 700%; Gulf Cargo Flows Restructuring',
-      summary: 'Project44 report: more than 34,000 ships diverted routes in the first four weeks of Hormuz disruption. India\'s Jawaharlal Nehru Port volumes surged 700%+ vs February baselines as shippers pivot east. Saudi Arabia and Singapore emerging as key diversion destinations. UAE\'s share of diverted cargo fell from 42.6% to 33.1% in four weeks. Dwell times rising across India, Singapore, and China with no sign of stabilization. Port congestion rippling from Persian Gulf to Asian transshipment hubs.',
-      severity: 'critical', category: 'ocean / ports', region: 'Global', date: 'Apr 8, 2026',
-      sources: [{name:'FreightWaves Apr 6', url:'https://www.freightwaves.com/news/34000-shipping-routes-diverted-from-hormuz-disruption-report'}]
+      title: 'India Shipping News: Hormuz Confidence Deficit — War-Risk Premiums 0.2-0.4%; Round Voyage Cannot Complete in 15-Day Window',
+      summary: 'India Shipping News Apr 9: war-risk premiums surged from 0.125% to 0.2-0.4% of hull value per voyage — adding $250,000+ per VLCC transit. The critical operational constraint: a vessel departing today, transiting Hormuz, completing Gulf port operations, and returning uses every single day of the 15-day ceasefire with zero margin. Joint War Committee extended high-risk listings to include Oman waters. London insurance market underwriting appetite remains restricted. Kpler: max 10-15 passages/day even if ceasefire holds.',
+      severity: 'critical', category: 'ocean / insurance', region: 'Strait of Hormuz', date: 'Apr 10, 2026',
+      sources: [{name:'India Shipping News Apr 9', url:'https://indiashippingnews.com/hormuz-reopens-but-shipping-remains-locked-in-a-confidence-deficit/'}]
     },
     {
-      title: 'Semafor: UAE Trucking Volumes Up 30% as Overland Routes Replace Closed Jebel Ali Port',
-      summary: 'UAE trucking firm TruKKer handling 1,200+ loads/day sees volumes surge 30% as customers reroute cargo through Fujairah and Oman instead of Jebel Ali. New Saudi-UAE truck corridors formalized. Diesel jumped 72% overnight in UAE. Predictive algorithms now "useless" as TruKKer fixes rates to prevent price gouging. A 2-day overland journey now replaces what was a short port delivery. Aluminum producers can\'t import alumina; petrochemicals piling up in Gulf ports.',
-      severity: 'elevated', category: 'trucking / Middle East', region: 'UAE / Gulf', date: 'Apr 8, 2026',
-      sources: [{name:'Semafor Apr 8', url:'https://www.semafor.com/article/04/08/2026/hormuz-closure-turns-truckers-into-logistics-saviors'}]
+      title: 'J.M. Rodgers April 2026 Freight Market Update: Emergency Fuel Surcharges Adding Complexity; Port Congestion Persisting',
+      summary: 'J.M. Rodgers Apr 2026: emergency fuel surcharges adding complexity as carriers were denied waivers on the 30-day notice requirement. Bunker supply disrupted by Hormuz closure — carriers may shift costs into BAF causing more frequent monthly changes. Congestion persists at Shanghai, Ningbo, Qingdao, Singapore, Nhava Sheva, and Mundra. Vietnam facing allocation pressure despite strong export demand. 2026-27 contract cycle negotiations underway under significant uncertainty. Air freight markets constrained with elevated rates.',
+      severity: 'elevated', category: 'ocean / rates', region: 'Global', date: 'Apr 10, 2026',
+      sources: [{name:'J.M. Rodgers Apr 2026', url:'https://www.jmrodgers.com/freight-market-update-april-2026/'}]
     },
     {
-      title: 'Xeneta: Asia-US Ocean Spot Rates Up 29% Since Hormuz Closure; Fuel at Singapore Bunkering Hub Double Pre-Crisis',
-      summary: 'Xeneta chief analyst Peter Sand: Far East to US West Coast spot rates climbed 29% since end of February despite the Pacific route being thousands of miles from the conflict. Far East to North Europe and Mediterranean up 31% and 30% respectively. Fuel at Singapore — world\'s top bunkering hub — remains available but at double pre-crisis prices, trending slowly down after an initial 200% spike. Rotterdam bunker prices continuing to rise. Ship-to-ship fuel transfers in Far East adding cost and complexity.',
-      severity: 'elevated', category: 'ocean / rates', region: 'Global', date: 'Apr 8, 2026',
-      sources: [{name:'FreightWaves Apr 1', url:'https://www.freightwaves.com/news/strait-of-hormuz-closure-pushes-asia-us-ocean-rates-up-29'}]
+      title: 'FreightWaves: Tender Rejections Near 14% — Highest Since 2022; Truckload Spot Rates $2.80/mi Including Fuel',
+      summary: 'FreightWaves SONAR: truckload spot rates including fuel holding near $2.80/mi nationally — up 23% from $2.33 a year ago. Outbound tender rejections hovering near 14% — highest since the post-COVID unwind. Carriers rejecting loads and pushing spot pricing higher creating routing guide headaches. Capacity attrition accelerating with FMCSA audits on non-domiciled CDLs starting to show measurable impacts. DAT: van spot $2.47, flatbed $2.95, reefer $2.88 March finals — 7th straight monthly gain.',
+      severity: 'critical', category: 'trucking / capacity', region: 'USA', date: 'Apr 10, 2026',
+      sources: [{name:'FreightWaves SONAR Apr 2026', url:'https://www.freightwaves.com/news/truckload-volumes-and-spot-rates-hit-multi-year-highs'},{name:'Trucking Dive / DAT', url:'https://www.truckingdive.com/news/trucking-spot-contract-rates-us-bank-dat-2026-spread/816351/'}]
     },
     {
-      title: 'EIA STEO Apr 7: Diesel Forecast to Peak Above $5.80/gal in April; 9.1M bbl/day Gulf Production Shut In',
-      summary: 'EIA Short-Term Energy Outlook (Apr 7): diesel prices forecast to peak above $5.80/gal in April before easing. Brent averaged $103/bbl in March, expected to peak at $115/bbl in Q2. Gulf states collectively shut in 9.1 million barrels/day of crude production in April — up from 7.5M in March. Production shut-ins expected to fall to 6.7M bbl/day in May if conflict doesn\'t persist beyond April. Brent-WTI spread averaged $12/bbl in March, forecast to peak at $15/bbl in April.',
-      severity: 'critical', category: 'energy / fuel', region: 'Global', date: 'Apr 8, 2026',
-      sources: [{name:'EIA STEO Apr 7 2026', url:'https://www.eia.gov/outlooks/steo/'}]
+      title: 'EIA 1Q26 Review: Brent Rose From $61 to $118/bbl in One Quarter — Largest Inflation-Adjusted Increase Since 1988',
+      summary: 'EIA quarterly petroleum review Apr 9: Brent crude rose from $61/bbl at start of 2026 to $118/bbl at end of Q1 — the largest price increase on an inflation-adjusted basis since 1988. Diesel hit $5.40/gal on March 30. Distillate crack spreads at New York Harbor averaged $1.42/gal in March — highest since 2022 and more than double the 5-year average. US refinery inputs exceeded the 5-year range as high distillate margins drove record utilization. Brent-WTI spread peaked at $25/bbl on March 31.',
+      severity: 'critical', category: 'energy / fuel', region: 'USA / Global', date: 'Apr 10, 2026',
+      sources: [{name:'EIA Apr 9 2026', url:'https://www.eia.gov/todayinenergy/detail.php?id=67424'},{name:'Hydrocarbon Engineering Apr 9', url:'https://www.hydrocarbonengineering.com/refining/09042026/eia-crude-oil-and-petroleum-product-prices-increased-sharply-in-1q26/'}]
     },
     {
-      title: 'Bruegel / Bloomberg: Iran Demands $2M Per Vessel Hormuz Toll — Yuan and Crypto Payments Accepted',
-      summary: 'Bloomberg (Apr 1) reported Iran allowing select vessels through for fees paid in Chinese yuan or crypto, escorted by Iranian Navy. Bruegel analysis (Apr 8): a Hormuz toll paid to Iran is now part of its 10-point ceasefire plan. IRGC toll revenues raise Western sanctions compliance concerns for ship owners. Bruegel: the world economy is "largely indifferent to a Hormuz toll as long as oil supply is restored." Iran and Oman reportedly discussing a postwar permanent toll structure similar to the Suez Canal model.',
-      severity: 'elevated', category: 'ocean / trade / geopolitical', region: 'Strait of Hormuz', date: 'Apr 8, 2026',
-      sources: [{name:'Bruegel Apr 8', url:'https://www.bruegel.org/analysis/could-hormuz-toll-solve-oil-crisis-and-who-pays'},{name:'Bloomberg Apr 1', url:'https://www.bloomberg.com/news/articles/2026-04-01/strait-of-hormuz-ships-paying-iran-yuan-and-crypto-tolls-for-safe-passage'}]
+      title: 'Air Cargo News: 8 in 10 Forwarders Report Reduced Shipping Volumes; Air Freight Markets Constrained with Elevated Rates',
+      summary: 'Air Cargo News Apr 8: 80% of freight forwarders report reduced shipping volumes due to cumulative policy uncertainty and Middle East disruption. Air freight markets remain constrained with elevated rates and limited capacity as airlines prioritize higher-yielding shipments. 30% of Asia-Europe air cargo routed via Middle East now disrupted. Forwarders dealing with overlapping challenges: Supreme Court tariff ruling complexity, fuel surcharges, and Hormuz disruption all hitting simultaneously.',
+      severity: 'elevated', category: 'air cargo', region: 'Global', date: 'Apr 10, 2026',
+      sources: [{name:'Air Cargo News Apr 8', url:'https://www.aircargonews.net/insights/2026/04/afa-column-managing-uncertainty-in-north-americas-air-cargo-supply-chain/'}]
     },
     {
-      title: 'CCJ / DAT: Freight Costs Rising Even as Volumes Stay Flat — Spot-Contract Spread Compresses to $0.11/mi',
-      summary: 'Commercial Carrier Journal analysis: DAT March 2026 data showed spot load postings declining even as rates rose — a supply-driven recovery, not demand-driven. Spot linehaul climbed from $1.57/mi in May 2025 to $2.01/mi through February 2026, a 28% gain in under a year. The spot-contract spread compressed from $0.39/mi a year ago to just $0.11/mi — tightest since 2022. Fuel surcharges adding up to 40 cents/mi to contract rates. DAT: contract bids will reprice higher in Q2 across all sectors.',
-      severity: 'elevated', category: 'trucking / rates', region: 'USA', date: 'Apr 8, 2026',
-      sources: [{name:'CCJ Apr 8', url:'https://www.ccjdigital.com/business/article/15821521/why-your-freight-costs-are-rising-even-when-volumes-stay-flat'},{name:'DC Velocity Apr 2', url:'https://www.dcvelocity.com/transportation/trucking/truck-freight-rates-tick-up-slightly-to-start-2026'}]
+      title: 'Supply Chain Dive: Amazon-USPS Deal Cuts 20% Volume; CAPE Tariff Refund Portal on Track for April 20 Launch',
+      summary: 'Supply Chain Dive Apr 7: Amazon and USPS reached an agreement resulting in a 20% reduction in Amazon volume delivered by USPS. Separately, CAPE portal (CBP automated IEEPA tariff refund system) on track to begin accepting refund requests by April 20 per CIT filing. USPS warned it could run out of cash within a year without major changes. 8% parcel surcharge effective April 26 through January 2027. UPS limiting driver buyouts to 7,500 under Teamsters deal.',
+      severity: 'elevated', category: 'parcel / trade', region: 'USA', date: 'Apr 10, 2026',
+      sources: [{name:'Supply Chain Dive Apr 7', url:'https://www.supplychaindive.com/topic/logistics/'},{name:'Flexport / CIT Apr 2', url:'https://www.supplychaindive.com/topic/logistics/'}]
     }
   ],
   disruptions: [
     {
-      title: 'Strait of Hormuz — Day 40: Ceasefire + Iran $2M Tollbooth; Containers Still Trapped; Islamabad Talks Apr 10',
-      description: 'US-Iran ceasefire holds but Iran has imposed a $2 million per-vessel transit fee enforced by the IRGC — an illegal tollbooth per international maritime law. Russia and China vetoed a UN Security Council resolution to reopen the waterway, making the toll structure more likely permanent. Xeneta confirms zero inbound/outbound container vessel transits since the ceasefire. 2,000 commercial vessels stranded. Sanctions compliance risk: Western ship owners paying IRGC tolls may violate existing sanctions. Islamabad talks Friday Apr 10 are the next critical milestone. Physical supply chain normalization is months away regardless of strait status — Gulf energy infrastructure damage requires 2-6 months to repair.',
-      severity: 'critical', type: 'maritime', region: 'Strait of Hormuz / Persian Gulf', dayCount: 40,
-      trend: 'escalating',
-      rateImpact: 'Brent ~$94; WTI ~$94.55; Diesel $5.64/gal EIA; Asia-US ocean +29%; carrier surcharges active',
-      transitImpact: 'Zero container transits confirmed post-ceasefire; 2,000 vessels stranded; Cape routing standard',
-      carriers: ['Maersk (cautious — no changes)', 'MSC', 'Hapag-Lloyd', 'CMA CGM', 'NYK Line (monitoring)'],
-      tags: ['Hormuz Toll', 'Ceasefire Day 40', 'Containers Trapped', 'Islamabad Apr 10'],
-      cascadeEffects: [
-        { icon: '💰', sector: 'Transit Toll', detail: 'Iran imposing $2M per vessel — yuan/crypto payments; IRGC enforcement; sanctions risk for Western operators', impact: 'CRITICAL' },
-        { icon: '🚢', sector: 'Carrier Response', detail: 'Xeneta: zero container transits confirmed post-ceasefire; Maersk no service changes; surcharges active', impact: 'CRITICAL' },
-        { icon: '⚡', sector: 'Energy Supply', detail: '9.1M bbl/day shut in Apr; Gulf infrastructure damage = months of recovery regardless of strait', impact: 'CRITICAL' },
-        { icon: '⚓', sector: 'Route Diversions', detail: '34,000 routes diverted in 4 weeks; India JNPT +700%; UAE share falling; Asian hubs congesting', impact: 'CRITICAL' },
-        { icon: '🕊', sector: 'Ceasefire Status', detail: 'Day 40 holding; Islamabad talks Apr 10; Iran 10-point demands remain a high bar', impact: 'ELEVATED' },
-        { icon: '⚖️', sector: 'UN Veto', detail: 'Russia/China vetoed UN resolution to reopen Hormuz — toll structure increasingly likely to become permanent', impact: 'ELEVATED' }
-      ],
-      sources: [{ name: 'FreightWaves Apr 8', url: 'https://www.freightwaves.com/news/new-tolls-could-add-1-a-barrel-to-hormuz-oil' }, { name: 'Just Security Apr 8', url: 'https://www.justsecurity.org/135899/strait-hormuz-tolls-crisis/' }]
-    },
-    {
-      title: 'Red Sea — Day 124: Cape Routing Continues; Houthis Have Not Stood Down',
-      description: 'No carrier Red Sea resumptions despite the US-Iran ceasefire. Houthis remain active and have not announced a stand-down. Cape of Good Hope routing is still the standard for all major carriers. 38 confirmed blank sailings for weeks 14-18 remain in carrier schedules. Sea-Intelligence data shows global schedule reliability at 62-64%, well below the pre-COVID 75% benchmark. Any Red Sea return requires sustained security confirmation and renewed P&I insurance coverage.',
-      severity: 'elevated', type: 'maritime', region: 'Red Sea / Gulf of Aden', dayCount: 124,
+      title: 'Strait of Hormuz — Day 42: Shipping at Standstill Despite Ceasefire; 600 Vessels Trapped; Islamabad Talks Begin',
+      description: 'Day 42 of Hormuz disruption. Only 7 vessels transited Thursday vs 135/day pre-war. Lloyd List Intelligence: 600+ vessels including 325 tankers trapped in Gulf. Kpler: max 10-15 passages/day even if ceasefire holds. War-risk premiums 0.2-0.4% hull value — adding $250K+ per VLCC voyage. Critical: a round voyage through Gulf uses every day of the 15-day window with zero margin. Saudi Arabia lost 600K bbl/day capacity after pipeline strikes. Islamabad talks begin today — ceasefire expires April 22.',
+      severity: 'critical', type: 'maritime', region: 'Strait of Hormuz / Persian Gulf', dayCount: 42,
       trend: 'stable',
-      rateImpact: 'Cape routing adds 10-14 days Asia-Europe; 38 blank sailings wks 14-18 still locked in',
-      transitImpact: 'No carrier resumptions; route normalization weeks away at minimum',
-      carriers: ['All major carriers — Cape routing'],
-      tags: ['Red Sea', 'Houthis', 'Cape Routing', 'Blank Sailings'],
+      rateImpact: 'Brent ~$96; down 10%+ on week; diesel $5.64/gal EIA; Europe-Gulf lanes +25%; war-risk premiums surging',
+      transitImpact: '7 ships/day vs 135 pre-war; 600 vessels trapped; IRGC corridors only; 15-day window entrapment risk',
+      tags: ['Hormuz Day 42', 'Islamabad Talks', '600 Vessels Trapped', 'War Risk Premium'],
       cascadeEffects: [
-        { icon: '🚢', sector: 'Asia-Europe Ocean', detail: 'Cape routing continues; 38 blank sailings wks 14-18 active; no rate relief yet', impact: 'ELEVATED' },
-        { icon: '⏱', sector: 'Schedule Reliability', detail: 'Global reliability at 62-64%; far below 75% pre-COVID benchmark; vessel bunching risk remains', impact: 'ELEVATED' }
+        {icon:'\u26F3', sector:'Transit Reality', detail:'7 ships/day vs 135 pre-war; 600 vessels trapped; IRGC corridors; entrapment risk if ceasefire collapses', impact:'CRITICAL'},
+        {icon:'\uD83D\uDCB0', sector:'War Risk Premiums', detail:'0.2-0.4% hull value per voyage; $250K+ per VLCC; Joint War Committee extended high-risk area to Oman', impact:'CRITICAL'},
+        {icon:'\u26A1', sector:'Saudi Pipeline Strike', detail:'600K bbl/day production lost; East-West Pipeline (Hormuz bypass) cut by 700K bpd', impact:'CRITICAL'},
+        {icon:'\uD83D\uDD4A', sector:'Islamabad Talks', detail:'Talks begin today; Vance leads US; ceasefire expires April 22; Iran arrives with complete distrust', impact:'ELEVATED'},
+        {icon:'\uD83D\uDCE6', sector:'Container Backlog', detail:'Hundreds of thousands of containers at India/Oman/Pakistan ports needing return to Persian Gulf', impact:'ELEVATED'}
       ],
-      sources: [{ name: 'FreightWaves Apr 6', url: 'https://www.freightwaves.com/news/34000-shipping-routes-diverted-from-hormuz-disruption-report' }]
+      sources: [{name:'Al Jazeera Apr 10', url:'https://www.aljazeera.com/economy/2026/4/10/shipping-in-strait-of-hormuz-at-a-trickle-despite-us-iran-ceasefire'},{name:'India Shipping News Apr 9', url:'https://indiashippingnews.com/hormuz-reopens-but-shipping-remains-locked-in-a-confidence-deficit/'}]
     },
     {
-      title: 'US Diesel $5.64/gal — EIA Apr 7 Confirmed; Forecast Peaks Above $5.80 in April',
-      description: 'EIA confirmed national average on-highway diesel at $5.64/gal for the week of April 7 — nearing the 2022 all-time high of $5.82. EIA STEO (Apr 7) forecasts diesel peaking above $5.80/gal in April before easing as Gulf production gradually recovers. Ceasefire crude oil crash (Brent -16%) will take 2-4 weeks to flow through to retail diesel. GasBuddy\'s Patrick De Haan: gasoline could ease a few cents/day within 48 hrs; diesel will lag. USPS 8% parcel surcharge effective April 26. Next EIA weekly reading: April 14.',
-      severity: 'elevated', type: 'trucking', region: 'USA', dayCount: 40,
+      title: 'Red Sea — Day 126: Cape Routing Continues; Houthis Have Not Stood Down',
+      description: 'Red Sea disruption enters Day 126 with no carrier resumptions. Houthis have not stood down despite the US-Iran ceasefire. Cape of Good Hope routing remains standard. Drewry: 46 blank sailings weeks 15-19 from 705 scheduled departures. Sea-Intelligence: global schedule reliability at 62-64%, below the 75% pre-COVID benchmark. War-risk insurers have not reset Red Sea coverage.',
+      severity: 'elevated', type: 'maritime', region: 'Red Sea / Gulf of Aden', dayCount: 126,
+      trend: 'stable',
+      rateImpact: 'Cape routing adds 10-14 days Asia-Europe; 46 blank sailings wks 15-19 locked in',
+      transitImpact: 'No carrier resumptions; Cape routing standard; schedule reliability 62-64%',
+      tags: ['Red Sea Day 126', 'Houthis', 'Cape Routing', '46 Blank Sailings'],
+      cascadeEffects: [
+        {icon:'\uD83D\uDEA2', sector:'Asia-Europe Routing', detail:'Cape routing continues; 46 blank sailings wks 15-19; schedule reliability 62-64%', impact:'ELEVATED'}
+      ],
+      sources: [{name:'Drewry Apr 3', url:'https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices'}]
+    },
+    {
+      title: 'US Diesel $5.64/gal EIA Apr 7 — Next Reading April 14; Forecast >$5.80/gal Peak; USPS 8% Surcharge April 26',
+      description: 'EIA Apr 7 confirmed diesel at $5.64/gal. EIA STEO Apr 7 forecasts diesel peaking above $5.80/gal in April before easing. Ceasefire crude crash will take 2-4 weeks to flow through to retail diesel. USPS 8% parcel surcharge effective April 26 through January 2027. UPS third fuel hike of 2026. Amazon-USPS deal cuts 20% postal parcel volume. Next EIA weekly reading: April 14.',
+      severity: 'elevated', type: 'trucking', region: 'USA', dayCount: 42,
       trend: 'de-escalating',
-      rateImpact: 'Diesel $5.64/gal EIA Apr 7; forecast $5.80+ April peak; FSC adding ~40 cents/mi to contract rates',
-      transitImpact: 'Carrier exits accelerating; truck posts at 10-yr lows; USPS 8% surcharge Apr 26',
-      carriers: ['UPS (3rd fuel hike 2026)', 'FedEx', 'USPS (Apr 26)'],
-      tags: ['Diesel', 'EIA', 'Fuel Surcharge', 'USPS Apr 26'],
+      rateImpact: 'Diesel $5.64/gal; forecast $5.80+ April peak; FSC adding ~40 cents/mi to contract rates',
+      transitImpact: 'Carrier exits accelerating; all major parcel carriers with active surcharges',
+      tags: ['Diesel $5.64', 'EIA Apr 14', 'USPS April 26', 'Fuel Surcharge'],
       cascadeEffects: [
-        { icon: '⛽', sector: 'Diesel Retail', detail: '$5.64/gal EIA Apr 7; forecast $5.80+ peak; ceasefire relief in 2-4 weeks; diesel lags gasoline', impact: 'ELEVATED' },
-        { icon: '📮', sector: 'Parcel Carriers', detail: 'USPS 8% surcharge approved Apr 26; UPS/FedEx FSC 21-34% of base rate; third UPS hike of 2026', impact: 'ELEVATED' }
+        {icon:'\u26FD', sector:'Retail Diesel', detail:'$5.64/gal EIA Apr 7; forecast $5.80+ April peak; relief in 2-4 weeks as ceasefire flows through', impact:'ELEVATED'},
+        {icon:'\uD83D\uDCEE', sector:'Parcel Carriers', detail:'USPS 8% approved Apr 26; UPS third fuel hike; FedEx FSC 21-34%; Amazon-USPS deal cuts 20% volume', impact:'ELEVATED'}
       ],
-      sources: [{ name: 'EIA STEO Apr 7', url: 'https://www.eia.gov/outlooks/steo/' }, { name: 'NBC Apr 8', url: 'https://www.nbcnews.com/business/markets/oil-prices-stocks-trump-iran-ceasefire-rcna267182' }]
+      sources: [{name:'EIA Apr 7', url:'https://www.eia.gov/outlooks/steo/'}]
     },
     {
-      title: "Dalilah\'s Law CDL Reform — 200K-250K Driver Capacity Risk; Senate Watch",
-      description: "H.R. 5688 cleared the House Transportation & Infrastructure Committee on March 18. English proficiency and CDL reform provisions could remove 200,000-250,000 non-domiciled drivers from the US trucking market if enacted. FreightWaves CEO Craig Fuller: potential trucking super cycle trigger with overnight rate surges. ATA President Chris Spear at TMC Nashville: the #1 capacity risk in 2026. Combined with 3 years of carrier attrition during the freight recession, any meaningful driver exit would amplify the cycle already turning.",
-      severity: 'elevated', type: 'trucking', region: 'USA', dayCount: 21,
+      title: "Dalilah's Law CDL Reform — 200K-250K Driver Risk; FMCSA CDL Audits Already Showing Measurable Capacity Impact",
+      description: "H.R. 5688 cleared House committee March 18. FMCSA audits of non-domiciled CDLs begun mid-2025 are now showing measurable impacts on available capacity per FreightWaves SONAR. Outbound tender rejections near 14% nationally. Spot rates $2.80/mi including fuel. Combined with the CDL reform bill, this could remove 200K-250K drivers — the trigger for a trucking super cycle. ATA named it the number 1 capacity risk of 2026.",
+      severity: 'elevated', type: 'trucking', region: 'USA', dayCount: 23,
       trend: 'escalating',
-      rateImpact: 'Potential overnight rate spike; spot already at $2.47/mi van March final',
-      transitImpact: 'Route guide compliance would deteriorate rapidly if bill passes',
-      carriers: ['All asset-based carriers', 'Brokerage community'],
-      tags: ["Dalilah\'s Law", 'CDL Reform', 'Driver Capacity', 'Regulatory Risk'],
+      rateImpact: 'Tender rejections 14%; spot $2.80/mi including fuel; capacity attrition accelerating',
+      transitImpact: 'Route guide compliance deteriorating; routing guide pushback intensifying for shippers',
+      tags: ["Dalilah's Law", 'FMCSA CDL Audits', '14% Rejections', 'Super Cycle'],
       cascadeEffects: [
-        { icon: '🚛', sector: 'Capacity', detail: '200K-250K drivers at risk; 3yr attrition + regulatory shock = super cycle conditions', impact: 'ELEVATED' }
+        {icon:'\uD83D\uDE9B', sector:'Capacity', detail:'FMCSA CDL audits showing measurable impact; rejections 14%; 200K-250K more at risk if bill passes', impact:'ELEVATED'}
       ],
-      sources: [{ name: 'FreightWaves Mar 2026', url: 'https://www.freightwaves.com/news/category/news/trucking' }]
+      sources: [{name:'FreightWaves SONAR Apr 2026', url:'https://www.freightwaves.com/news/truckload-volumes-and-spot-rates-hit-multi-year-highs'}]
     },
     {
-      title: '$166B IEEPA Tariff Refunds — CBP CAPE Portal Targeting April 20 Launch; $650M/Month Interest Accruing',
-      description: 'CBP\'s CAPE automated refund system for $166B in IEEPA tariffs (53M entries, 333,000 importers) is ~70% complete per March 12 CIT filing, targeting an April 20 launch. Interest accruing at ~$650M/month on owed refunds. FedEx, Costco, L\'Oreal, and Nissan among 2,000+ companies with active CIT suits. Trump\'s Section 122 replacement tariff (10%) expires July 24 — he has signaled raising it to 15%. Companies should continue filing protests and reviewing entry data while awaiting the CAPE portal.',
-      severity: 'elevated', type: 'trade', region: 'USA / Global', dayCount: 47,
+      title: '$166B IEEPA Tariff Refunds — CAPE Portal on Track for April 20; $650M/Month Interest Accruing',
+      description: 'CBP CAPE portal on track to begin accepting IEEPA tariff refund requests by April 20 per Supply Chain Dive Apr 7 citing CIT filing. $166B in refunds pending covering 53M entries and 333,000 importers. Interest accruing at $650M/month. Amazon-USPS deal results in 20% reduction in Amazon volume for USPS. Section 122 10% replacement tariff expires July 24.',
+      severity: 'elevated', type: 'trade', region: 'USA / Global', dayCount: 49,
       trend: 'stable',
-      rateImpact: '10% Section 122 tariff on most imports; $166B refunds pending; potential 15% increase',
-      transitImpact: 'Sourcing decisions in flux; nearshoring accelerating; CAPE portal launch ~Apr 20',
-      carriers: ['FedEx (filed CIT action)', 'All importers with IEEPA entries'],
-      tags: ['IEEPA Refunds', 'CAPE Portal', 'Section 122', 'Tariffs'],
+      rateImpact: '10% Section 122 tariff on most imports; $166B refunds pending; parcel market restructuring',
+      transitImpact: 'CAPE portal launch approximately Apr 20; Amazon-USPS volume shift reshaping last mile',
+      tags: ['IEEPA Refunds', 'CAPE Portal Apr 20', 'Amazon USPS', 'Section 122'],
       cascadeEffects: [
-        { icon: '⚖️', sector: 'Refunds', detail: 'CAPE portal ~70% complete; ~Apr 20 launch; $650M/month interest accruing; 2,000+ CIT suits', impact: 'ELEVATED' }
+        {icon:'\u2696', sector:'Refunds', detail:'CAPE portal approximately Apr 20; $650M/month interest; Amazon-USPS deal cuts 20% postal volume', impact:'ELEVATED'}
       ],
-      sources: [{ name: 'Flexport Mar 2026', url: 'https://www.flexport.com/blog/the-supreme-courts-ieepa-tariff-ruling-next-steps-potential-refunds-and/' }, { name: 'PwC Feb 2026', url: 'https://www.pwc.com/us/en/services/tax/library/pwc-sc-decision-on-ieepa-tariffs-reshapes-trade-auth-and-introduces-potential-refund-op.html' }]
+      sources: [{name:'Supply Chain Dive Apr 7', url:'https://www.supplychaindive.com/topic/logistics/'}]
     }
   ],
   sectors: [
@@ -5646,77 +5356,77 @@ var FALLBACK = {
   ],
   brief: [
     {
-      title: 'Iran imposes $2M Hormuz toll — illegal "Tehran tollbooth"; containers still trapped; Russia/China veto UN resolution',
-      body: 'FreightWaves and Just Security: Iran has imposed a $2 million per-vessel transit fee enforced by the IRGC. Xeneta confirms zero container vessel transits since ceasefire. Russia and China vetoed a UN Security Council resolution to reopen the waterway, making the toll structure more likely to persist. 2,000 commercial vessels stranded near the strait. Compliance risk: Western ship owners paying IRGC tolls may face sanctions violations.',
-      priority: 'critical', category: 'ocean / geopolitical', age: 'Apr 8',
-      tags: ['Hormuz Toll', 'IRGC', 'Ceasefire', 'Containers Trapped'],
-      sources: [{name:'FreightWaves Apr 8', url:'https://www.freightwaves.com/news/new-tolls-could-add-1-a-barrel-to-hormuz-oil'},{name:'Just Security Apr 8', url:'https://www.justsecurity.org/135899/strait-hormuz-tolls-crisis/'}]
+      title: 'Hormuz Day 42: 7 ships/day vs 135 pre-war — 600 vessels trapped; Islamabad talks today; ceasefire expires Apr 22',
+      body: 'Al Jazeera Apr 10: Kpler reports just 7 vessels transited Hormuz on Thursday — still under 5% of pre-war daily traffic. Lloyd List Intelligence: 600+ vessels including 325 tankers stranded in Gulf. Trump accused Iran of doing a "very poor job, dishonorable" of allowing oil through. Iran FM accused US of ceasefire violations. Islamabad talks begin today led by VP Vance. April 22 is the hard deadline. Shipping analysts warn a round voyage through the Gulf cannot be completed within the 15-day window.',
+      priority: 'critical', category: 'ocean / geopolitical', age: 'Apr 10',
+      tags: ['Hormuz Day 42', 'Islamabad Talks', '600 Vessels Trapped', 'Ceasefire'],
+      sources: [{name:'Al Jazeera Apr 10', url:'https://www.aljazeera.com/economy/2026/4/10/shipping-in-strait-of-hormuz-at-a-trickle-despite-us-iran-ceasefire'}]
     },
     {
-      title: 'Diesel up 38.6% since Iran war started — TT: contract bids repricing higher in Q2; fuel surcharges add 40 cents/mi',
-      body: 'Transport Topics: diesel reached $5.40/gal by March 30, up 38.6% since Feb 28. DAT\'s Adamo: carriers on contract freight get more reliable fuel-cost recovery than spot, so acceptance rates rising. Q2 contract bids will come back higher across all sectors via surcharge and linehaul changes. EIA STEO forecasts diesel peaking above $5.80/gal in April before easing as Hormuz supply gradually recovers through H2 2026.',
-      priority: 'critical', category: 'trucking / fuel', age: 'Apr 8',
-      tags: ['Diesel', 'Fuel Surcharge', 'Contract Rates', 'EIA'],
-      sources: [{name:'Transport Topics Apr 8', url:'https://www.ttnews.com/articles/iran-war-fuel-trucking'},{name:'EIA STEO Apr 7', url:'https://www.eia.gov/outlooks/steo/'}]
+      title: 'Brent ~$96/bbl — Saudi Arabia loses 600K bbl/day capacity after pipeline strike; oil down 10%+ on the week',
+      body: 'Trading Economics Apr 10: Brent ~$96/bbl — tracking for largest weekly decline since 2020 after the ceasefire crash. Saudi Arabia confirmed attacks on oil facilities cut production capacity by ~600K bbl/day and struck the East-West Pipeline (the key bypass around Hormuz) by ~700K bpd. EIA STEO: Brent peaks $115/bbl Q2; Gulf states shut in 9.1M bbl/day production in April. Next EIA diesel reading: April 14.',
+      priority: 'critical', category: 'energy / fuel', age: 'Apr 10',
+      tags: ['Brent $96', 'Saudi Pipeline Strike', 'EIA Forecast', 'Diesel'],
+      sources: [{name:'Trading Economics Apr 10', url:'https://tradingeconomics.com/commodity/brent-crude-oil'}]
     },
     {
-      title: '34,000 routes diverted in 4 weeks — India JNPT port up 700%; UAE share dropping; Asian hubs congesting',
-      body: 'Project44 report via FreightWaves: 34,000+ ship route diversions in the first four weeks of Hormuz disruption — Week 4 was the highest diversion volume of the period. India\'s JNPT in Navi Mumbai up 700%+ vs February as the primary replacement transshipment hub. UAE share of diverted cargo fell from 42.6% to 33.1%. Dwell times rising across India, Singapore, and China with no stabilization in sight.',
-      priority: 'critical', category: 'ocean / ports', age: 'Apr 8',
-      tags: ['Route Diversions', 'India JNPT', 'Port Congestion', 'Project44'],
-      sources: [{name:'FreightWaves Apr 6', url:'https://www.freightwaves.com/news/34000-shipping-routes-diverted-from-hormuz-disruption-report'}]
+      title: 'War-risk premiums 0.2-0.4% of hull value per voyage — round voyage cannot complete in 15-day ceasefire window',
+      body: 'India Shipping News: war-risk premiums surged from 0.125% to 0.2-0.4% of hull value per voyage — adding $250,000+ per VLCC transit. Operational constraint: vessel departing today, transiting Hormuz, completing Gulf ops, and returning uses every day of the 15-day window with zero margin for delay. Joint War Committee extended high-risk listings to Oman waters. London insurance underwriting appetite remains restricted — no insurer reset until Islamabad produces a durable framework.',
+      priority: 'critical', category: 'ocean / insurance', age: 'Apr 10',
+      tags: ['War Risk Premium', 'VLCC', 'Insurance', 'Entrapment Risk'],
+      sources: [{name:'India Shipping News Apr 9', url:'https://indiashippingnews.com/hormuz-reopens-but-shipping-remains-locked-in-a-confidence-deficit/'}]
     },
     {
-      title: 'EIA: Gulf states shut in 9.1M bbl/day in April — Brent to peak $115/bbl in Q2; diesel above $5.80 forecast',
-      body: 'EIA Short-Term Energy Outlook (Apr 7): production shut-ins rose from 7.5M bbl/day in March to 9.1M bbl/day in April across Iraq, Saudi Arabia, Kuwait, UAE, Qatar, and Bahrain. Brent averaged $103/bbl in March, forecast to peak at $115/bbl in Q2. Diesel forecast to peak above $5.80/gal in April, average $4.80/gal for full year 2026. Production shut-ins expected to fall only if conflict doesn\'t persist past April.',
-      priority: 'critical', category: 'energy', age: 'Apr 8',
-      tags: ['EIA', 'Production Shut-ins', 'Brent', 'Diesel Forecast'],
-      sources: [{name:'EIA STEO Apr 7 2026', url:'https://www.eia.gov/outlooks/steo/'}]
+      title: 'EIA 1Q26 Review: Brent rose from $61 to $118/bbl — largest inflation-adjusted quarterly increase since 1988',
+      body: 'EIA quarterly petroleum review Apr 9: Brent rose from $61/bbl at start of 2026 to $118/bbl at end of Q1 — the largest price increase on an inflation-adjusted basis since 1988. Diesel hit $5.40/gal March 30. Distillate crack spreads averaged $1.42/gal in March — highest since 2022. Brent-WTI spread peaked at $25/bbl on March 31. US refinery inputs exceeded the 5-year range as high distillate margins drove record utilization.',
+      priority: 'critical', category: 'energy', age: 'Apr 10',
+      tags: ['EIA 1Q26', 'Brent $118', 'Diesel $5.40', 'Crack Spreads'],
+      sources: [{name:'EIA Apr 9 2026', url:'https://www.eia.gov/todayinenergy/detail.php?id=67424'}]
     },
     {
-      title: 'UAE trucking up 30% as TruKKer reroutes cargo overland from Fujairah/Oman; Jebel Ali effectively cut off',
-      body: 'Semafor: TruKKer handling 1,200+ loads/day sees 30% surge as Dubai\'s Jebel Ali — now cut off from global freighters — forces cargo to Fujairah and Oman then overland. Saudi Arabia now allowing UAE trucks to enter empty — practically unheard of prewar. New freight corridors Oman-UAE formalized. A 2-day overland journey now replaces short port runs. Aluminum producers can\'t import alumina; petrochemicals piling up in Gulf ports.',
-      priority: 'elevated', category: 'trucking / Middle East', age: 'Apr 8',
-      tags: ['UAE Trucking', 'TruKKer', 'Jebel Ali', 'Overland Routes'],
-      sources: [{name:'Semafor Apr 8', url:'https://www.semafor.com/article/04/08/2026/hormuz-closure-turns-truckers-into-logistics-saviors'}]
+      title: 'FreightWaves SONAR: tender rejections near 14% — highest since 2022; truckload spot $2.80/mi including fuel',
+      body: 'FreightWaves SONAR: truckload spot rates including fuel near $2.80/mi nationally — up 23% YoY from $2.33. Outbound tender rejections near 14% — highest since the post-COVID unwind. Carriers rejecting loads and pushing spot pricing higher. Capacity attrition accelerating from FMCSA CDL audits beginning to show measurable impacts. DAT March finals: van $2.47, flatbed $2.95, reefer $2.88 — 7th straight monthly spot gain. Spot-contract spread $0.11/mi — tightest since 2022.',
+      priority: 'critical', category: 'trucking / capacity', age: 'Apr 10',
+      tags: ['OTRI 14%', 'Spot $2.80', 'Capacity Attrition', 'FMCSA CDL'],
+      sources: [{name:'FreightWaves SONAR Apr 2026', url:'https://www.freightwaves.com/news/truckload-volumes-and-spot-rates-hit-multi-year-highs'}]
     },
     {
-      title: 'Xeneta: Asia-US spot rates up 29%; Singapore bunker fuel at double pre-crisis price after 200% spike',
-      body: 'Xeneta\'s Peter Sand: Far East to US West Coast rates climbed 29% since Feb 28 despite the Pacific being far from the conflict — confirming no shipper is insulated. Far East to North Europe +31%, Mediterranean +30%. Singapore bunker fuel available but at 2x pre-crisis price, trending slowly down after an initial 200% spike. Rotterdam prices still rising. Blank sailings being drawn up as next capacity lever if slow steaming fails to hold the line.',
-      priority: 'elevated', category: 'ocean / rates', age: 'Apr 8',
-      tags: ['Xeneta', 'Spot Rates', 'Singapore Bunker', 'Asia-US'],
-      sources: [{name:'FreightWaves / Xeneta Apr 1', url:'https://www.freightwaves.com/news/strait-of-hormuz-closure-pushes-asia-us-ocean-rates-up-29'}]
+      title: 'J.M. Rodgers Apr 2026: emergency fuel surcharges denied 30-day waiver; port congestion persisting at 9 major hubs',
+      body: 'J.M. Rodgers Apr 2026: carriers were denied waivers on the standard 30-day notice period for emergency fuel surcharges — costs shifting into BAF causing more frequent unpredictable monthly changes. Congestion persists at Shanghai, Ningbo, Qingdao, Singapore, Nhava Sheva, and Mundra. Vietnam facing allocation pressure. 2026-27 contract negotiations underway under maximum uncertainty. Air freight markets constrained with elevated rates and limited capacity.',
+      priority: 'elevated', category: 'ocean / rates', age: 'Apr 10',
+      tags: ['Fuel Surcharge', 'BAF', 'Port Congestion', 'Contract Season'],
+      sources: [{name:'J.M. Rodgers Apr 2026', url:'https://www.jmrodgers.com/freight-market-update-april-2026/'}]
     },
     {
-      title: 'Spot-contract spread compresses to $0.11/mi — DAT: supply-driven recovery, not demand; Q2 bids repricing',
-      body: 'CCJ citing DAT/U.S. Bank: spot linehaul rose from $1.57/mi in May 2025 to $2.01/mi through Feb 2026 (+28%) but load postings declined — confirming a supply-driven market, not a demand recovery. Contract-spot spread compressed from $0.39/mi to $0.11/mi. Contract bids will reprice higher in Q2. Publicly traded carriers in Q4 2025 earnings described demand as "stable but soft." Fuel surcharges adding up to 40 cents/mi to contract truckload costs.',
-      priority: 'elevated', category: 'trucking / rates', age: 'Apr 8',
-      tags: ['DAT', 'Spot Rates', 'Contract Rates', 'Q2 Repricing'],
-      sources: [{name:'CCJ Apr 8', url:'https://www.ccjdigital.com/business/article/15821521/why-your-freight-costs-are-rising-even-when-volumes-stay-flat'}]
+      title: 'Air Cargo News: 80% of forwarders report reduced volumes; air freight constrained with elevated rates',
+      body: 'Air Cargo News Apr 8: 80% of freight forwarders report reduced shipping volumes due to cumulative uncertainty — tariff complexity, fuel surcharges, and Hormuz disruption all hitting simultaneously. Air freight markets constrained with elevated rates as airlines prioritize higher-yielding shipments. 30% of Asia-Europe air cargo routed via Middle East now disrupted by Hormuz closure. Freightos Air Index +22% YoY; China-US above $7/kg.',
+      priority: 'elevated', category: 'air cargo', age: 'Apr 10',
+      tags: ['Air Cargo', 'Forwarder Volumes', 'Hormuz Disruption', 'Freightos'],
+      sources: [{name:'Air Cargo News Apr 8', url:'https://www.aircargonews.net/insights/2026/04/afa-column-managing-uncertainty-in-north-americas-air-cargo-supply-chain/'}]
     },
     {
-      title: 'USPS 8% parcel surcharge approved — effective April 26 through January 2027; UPS third fuel hike of 2026',
-      body: 'PRC cleared the USPS 8% fuel surcharge on Priority Mail Express, Priority Mail, USPS Ground Advantage, and Parcel Select — effective April 26 through January 2027. USPS lost $9B last fiscal year. UPS imposed its third 2026 fuel surcharge hike on March 9; FedEx FSC at 21-34% of base. E-commerce shippers should budget 12-20% total Q2 shipping cost increase. Next EIA diesel reading: April 14.',
-      priority: 'elevated', category: 'parcel / last mile', age: 'Apr 8',
-      tags: ['USPS', 'Fuel Surcharge', 'April 26', 'Parcel'],
-      sources: [{name:'FreightWaves Apr 8', url:'https://www.freightwaves.com/news/postal-service-can-proceed-with-8-parcel-surcharge-regulator-says'}]
+      title: 'Drewry WCI $2,287/FEU unchanged — 46 blank sailings wks 15-19; Intra-Asia IACI +28% to $865/FEU',
+      body: 'Drewry WCI held at $2,287/FEU (Apr 2, flat for second straight week). 46 blank sailings confirmed weeks 15-19 from 705 scheduled departures per Drewry Apr 3. Intra-Asia IACI +28% in first week of April to $865/FEU. Red Sea Diversion Tracker: Cape routing still dominant. Singapore bunker inventories under pressure — 50%+ of Singapore supply historically sourced via Hormuz. Carriers denied waivers for emergency fuel surcharges on standard 30-day notice period.',
+      priority: 'elevated', category: 'ocean / rates', age: 'Apr 10',
+      tags: ['WCI $2287', '46 Blank Sailings', 'Intra-Asia +28%', 'Singapore Bunker'],
+      sources: [{name:'Drewry Apr 3', url:'https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices'}]
     },
     {
-      title: 'Bruegel: Iran Hormuz toll is part of 10-point ceasefire plan; Iran/Oman discussing Suez-style permanent toll',
-      body: 'Bruegel analysis (Apr 8): Iran\'s 10-point ceasefire proposal includes continuous Iranian control of Hormuz with a transit toll. Iran and Oman reportedly discussing a postwar permanent Suez-style toll structure. Bloomberg (Apr 1): payments in Chinese yuan or crypto, escorted by Iranian Navy. IRGC toll revenues raise sanctions compliance concerns for Western ship owners. Bruegel: world economy largely indifferent to the toll as long as oil supply resumes.',
-      priority: 'elevated', category: 'ocean / trade policy', age: 'Apr 8',
-      tags: ['Hormuz Toll', 'Iran Ceasefire Plan', 'Suez Model', 'Bruegel'],
-      sources: [{name:'Bruegel Apr 8', url:'https://www.bruegel.org/analysis/could-hormuz-toll-solve-oil-crisis-and-who-pays'}]
+      title: 'Amazon-USPS deal cuts 20% volume; CAPE tariff refund portal on track for April 20; USPS 8% surcharge April 26',
+      body: 'Supply Chain Dive Apr 7: Amazon-USPS deal results in 20% reduction in Amazon volume delivered by USPS. CAPE portal on track for April 20 launch per CIT filing — $166B in IEEPA refunds pending, $650M/month interest accruing. USPS 8% parcel surcharge effective April 26 through January 2027. UPS limiting driver buyouts to 7,500 under Teamsters deal. FedEx separating freight and parcel businesses. E-commerce shippers should budget 12-20% Q2 shipping cost increases.',
+      priority: 'elevated', category: 'parcel / trade', age: 'Apr 10',
+      tags: ['Amazon USPS', 'CAPE Portal Apr 20', 'USPS April 26', 'IEEPA Refunds'],
+      sources: [{name:'Supply Chain Dive Apr 7', url:'https://www.supplychaindive.com/topic/logistics/'}]
     },
     {
-      title: 'Islamabad talks Apr 10 — ceasefire Day 40; Brent ~$94; GasBuddy: pump relief in 48 hrs; diesel lags gasoline',
-      body: 'US-Iran ceasefire entered Day 40. Brent stabilized ~$94/bbl (WTI $94.55) after Tuesday\'s 16% crash. Islamabad talks scheduled Friday Apr 10 are the next critical milestone. Iran\'s 10-point demands remain a high bar. GasBuddy\'s Patrick De Haan: retail gasoline prices could ease a few cents/day within 48 hours; diesel will lag by several days. Next EIA diesel reading Apr 14. Jefferies: "uncertainty has likely peaked" but oil stays above pre-war levels for months.',
-      priority: 'elevated', category: 'energy / geopolitical', age: 'Apr 8',
-      tags: ['Ceasefire', 'Islamabad', 'Brent', 'Diesel Relief'],
-      sources: [{name:'Axios Apr 8', url:'https://www.axios.com/2026/04/08/iran-ceasefire-oil-shipping-impact-prices'},{name:'NBC Apr 8', url:'https://www.nbcnews.com/business/markets/oil-prices-stocks-trump-iran-ceasefire-rcna267182'}]
+      title: 'Red Sea Day 126: no carrier resumptions — Houthis not stood down; 46 blank sailings wks 15-19 locked',
+      body: 'Red Sea routing enters Day 126. No carrier has announced Red Sea resumptions despite the US-Iran ceasefire. Houthis have not stood down. Cape of Good Hope routing remains the standard. Drewry Apr 3: 46 blank sailings weeks 15-19 from 705 departures. Sea-Intelligence: global schedule reliability 62-64% — well below the 75% pre-COVID benchmark. War-risk insurers have not reset Red Sea coverage. Any resumption requires sustained security confirmation.',
+      priority: 'elevated', category: 'ocean / Red Sea', age: 'Apr 10',
+      tags: ['Red Sea Day 126', 'Houthis', 'Cape Routing', '46 Blank Sailings'],
+      sources: [{name:'Drewry Apr 3', url:'https://www.drewry.co.uk/trackers-and-indices/latest-trackers-and-indices'}]
     }
   ],
-  briefCounts: { critical: 3, elevated: 2, routine: 0 },
+  briefCounts: { critical:5, elevated:5, routine:0 },
   freight: {
     oceanRates: [
       { lane: 'Shanghai \u2192 Europe', rate: '$4,800+', barPct: 92, color: '#FF4545' },
@@ -5773,14 +5483,14 @@ var FALLBACK = {
     ],
     relSources: [{ name: 'Sea-Intelligence Feb 2026', url: 'https://www.worldcargonews.com/news/2026/02/container-shipping-starts-2026-with-62-4-schedule-reliability/' }],
     dieselRegions: [
-      { region: 'California', price: '6.82', barPct: 100 },
-      { region: 'West Coast (ex-CA)', price: '5.85', barPct: 86 },
-      { region: 'New England', price: '5.76', barPct: 84 },
-      { region: 'Central Atlantic', price: '5.71', barPct: 84 },
-      { region: 'National avg', price: '5.64', barPct: 83 },
-      { region: 'East Coast avg', price: '5.68', barPct: 83 },
-      { region: 'Midwest', price: '5.45', barPct: 80 },
-      { region: 'Gulf Coast', price: '5.30', barPct: 78 }
+      {region:'National Avg',   price:'5.64', barPct:82},
+      {region:'California',     price:'7.22', barPct:100},
+      {region:'New England',    price:'5.89', barPct:86},
+      {region:'Central Atlantic',price:'5.71', barPct:83},
+      {region:'Gulf Coast',     price:'5.41', barPct:79},
+      {region:'Midwest',        price:'5.48', barPct:80},
+      {region:'Rocky Mountain', price:'5.52', barPct:81},
+      {region:'West Coast ex CA',price:'5.94', barPct:87}
     ],
     dieselSources: [{ name: 'EIA Apr 7 Weekly Confirmed · Next Reading Apr 14', url: 'https://www.eia.gov/petroleum/gasdiesel/' }],
     intermodal: [
@@ -5790,14 +5500,14 @@ var FALLBACK = {
     ],
     intermodalSources: [{ name: 'AAR Weekly Rail Data', url: 'https://www.aar.org/data/weekly-rail-traffic/' }],
     highlights: [
-      { label: 'Iran Hormuz Toll', value: '$2M per vessel — IRGC tollbooth' },
-      { label: 'Contract Van Rate', value: '$2.52/mi — spread $0.05 (tightest since 2022)' },
-      { label: 'Route Diversions', value: '34,000 ships diverted in 4 weeks (project44)' },
-      { label: 'Gulf Shut-ins Apr', value: '9.1M bbl/day — Iraq, Saudi, UAE, Kuwait, Qatar' },
-      { label: 'Diesel EIA Apr 7', value: '$5.64/gal; forecast $5.80+ peak April' },
-      { label: 'Islamabad Talks', value: 'Apr 10 — Ceasefire Day 40 milestone' },
-      { label: 'USPS Surcharge', value: '8% parcel surcharge effective April 26' },
-      { label: 'India JNPT Volumes', value: '+700% vs February — new Gulf diversion hub' }
+      { label: 'Hormuz Day 42', value: '7 ships/day vs 135 pre-war — 600 vessels trapped in Gulf' },
+      { label: 'Islamabad Talks', value: 'Day 1 — Vance leads US team; ceasefire expires April 22' },
+      { label: 'Brent Crude Apr 10', value: '~$96/bbl — down 10%+ on week; Saudi pipeline hit -600K bbl/day' },
+      { label: 'Diesel EIA Apr 7', value: '$5.64/gal; forecast >$5.80 April peak; next reading Apr 14' },
+      { label: 'OTRI Rejections', value: '~14% nationally — highest since post-COVID 2022 (FreightWaves)' },
+      { label: 'Spot All-In Rate', value: '$2.80/mi including fuel — up 23% YoY (SONAR)' },
+      { label: 'CAPE Portal', value: 'Tariff refund portal on track for April 20 launch — $166B pending' },
+      { label: 'War-Risk Premium', value: '0.2-0.4% hull value/voyage — $250K+ per VLCC transit' }
     ],
     trends: {
       vanSpot: [
@@ -5828,21 +5538,22 @@ var FALLBACK = {
 };
 
 FALLBACK.signals = [
-  {name:'Brent Crude',  value:'$94',      unit:'/bbl', direction:'down', change:'\u25bc -16% ceasefire crash; Iran $2M toll threat; Jefferies: oil stays above pre-war for months', source:'CNBC/Axios Apr 8', date:'Apr 8'},
-  {name:'WTI',          value:'$94.55',   unit:'/bbl', direction:'down', change:'\u25bc -16% on ceasefire; stabilizing; S&P 500 futures +2.7%; global stocks surging Apr 8', source:'NBC/CNBC Apr 8', date:'Apr 8'},
-  {name:'US Diesel',    value:'$5.64',    unit:'/gal', direction:'up',   change:'\u25b2 EIA Apr 7 confirmed; forecast $5.80+ April peak per EIA STEO; next reading Apr 14', source:'EIA Apr 7', date:'Apr 8'},
-  {name:'Van Spot',     value:'$2.47 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final — 7th straight monthly gain; contract spread $0.05/mi tightest since Mar 2022', source:'DAT Mar 2026 Final', date:'Apr 8'},
-  {name:'Flatbed Spot', value:'$2.95 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final +8.5% MoM; highest since Apr 2025; L/T 73.75; Wk 13 truck posts 10-yr low', source:'DAT Mar 2026 Final', date:'Apr 8'},
-  {name:'Reefer Spot',  value:'$2.88 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final; cap 120% tighter YoY; produce season accelerating; Florida lanes tightening', source:'DAT Mar 2026 Final', date:'Apr 8'},
-  {name:'Contract Van', value:'$2.52',    unit:'/mi',  direction:'up',   change:'\u25b2 Spread vs spot $0.05/mi tightest since Mar 2022; Q2 bids repricing higher — surcharges + linehaul', source:'DAT/CCJ Apr 8', date:'Apr 8'},
-  {name:'Drewry WCI',  value:'$2,287',   unit:'/FEU', direction:'flat', change:'\u2192 Apr 2 last; Apr 9 update today; ceasefire optimism not reflected yet; 38 blank sailings wks 14-18', source:'Drewry Apr 2', date:'Apr 9 pending'},
-  {name:'Asia-US Spot', value:'+29%',     unit:'',     direction:'up',   change:'\u25b2 Xeneta: Far East-US West Coast +29% since Feb 28; North Europe +31%; Mediterranean +30%', source:'Xeneta / FreightWaves Apr 1', date:'Apr 8'},
-  {name:'SCFI',         value:'3,400+',   unit:'',     direction:'up',   change:'\u25b2 War Day 40; toll threat adds uncertainty; Drewry Apr 9 update may show early rate signals', source:'SSE est.', date:'Apr 8'},
-  {name:'OTRI',         value:'~5.7%',    unit:'',     direction:'up',   change:'\u25b2 Up from sub-4% a year ago; first-tender acceptance at 85% vs 92% last year per Uber Freight', source:'FreightWaves/Uber Freight Apr 2026', date:'Apr 8'},
-  {name:'ISM PMI',      value:'52.7',     unit:'',     direction:'up',   change:'\u25b2 March 2026 final; 3rd straight expansion month; Prices Paid 78.3 — highest since Jun 2022', source:'ISM Apr 1', date:'Apr 8'},
-  {name:'Air Cargo',    value:'+22% YoY', unit:'',     direction:'up',   change:'\u25b2 Freightos Air Index +22% YoY; China-US above $7/kg; jet fuel still 90%+ above pre-war levels', source:'Freightos / Air Cargo Week Apr 7', date:'Apr 8'},
-  {name:'BDI',          value:'1,882',    unit:'',     direction:'down', change:'\u25bc Dry bulk softening on ceasefire relief; infrastructure damage limits near-term supply recovery', source:'Baltic Exchange', date:'Apr 8'}
+  {name:'Brent Crude',  value:'$96',      unit:'/bbl', direction:'down', change:'\u25bc ~$96 Fri Apr 10; down 10%+ on week after ceasefire crash; Saudi pipeline strike adds complexity; Islamabad talks today', source:'Trading Economics Apr 10', date:'Apr 10'},
+  {name:'WTI',          value:'$93.50',   unit:'/bbl', direction:'down', change:'\u25bc Tracking Brent lower; Brent-WTI spread narrowed from $25/bbl peak (Mar 31) as US crude inventories remain strong', source:'EIA / CNBC Apr 10', date:'Apr 10'},
+  {name:'US Diesel',    value:'$5.64',    unit:'/gal', direction:'up',   change:'\u25b2 EIA Apr 7 confirmed; forecast >$5.80 April peak per STEO; next reading Apr 14; ceasefire relief in 2-4 weeks', source:'EIA Apr 7', date:'Apr 10'},
+  {name:'Van Spot',     value:'$2.47 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final; 7th straight monthly gain; spot incl. fuel ~$2.80/mi; spread vs contract $0.11 tightest since 2022', source:'DAT Mar 2026 Final', date:'Apr 10'},
+  {name:'Flatbed Spot', value:'$2.95 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final; L/T 73.75; construction season + energy infrastructure demand; week 13 truck posts 10-yr low', source:'DAT Mar 2026 Final', date:'Apr 10'},
+  {name:'Reefer Spot',  value:'$2.88 LH', unit:'/mi',  direction:'up',   change:'\u25b2 March final; produce season accelerating; Florida/California lanes tightening; capacity 120% tighter YoY', source:'DAT Mar 2026 Final', date:'Apr 10'},
+  {name:'Contract Van', value:'$2.52',    unit:'/mi',  direction:'up',   change:'\u25b2 Q2 bids repricing higher via surcharge + linehaul; window to lock favorable terms probably closed per DAT', source:'DAT / U.S. Bank Apr 3', date:'Apr 10'},
+  {name:'Drewry WCI',   value:'$2,287',   unit:'/FEU', direction:'flat', change:'\u2192 Apr 2 (flat 2nd straight week); 46 blank sailings wks 15-19; Intra-Asia IACI +28% to $865/FEU', source:'Drewry Apr 2', date:'Apr 10'},
+  {name:'Asia-US Spot', value:'+29%',     unit:'',     direction:'up',   change:'\u25b2 Xeneta: Far East-US West Coast +29% since Feb 28; North Europe +31%; Mediterranean +30% YoY', source:'Xeneta / FreightWaves', date:'Apr 10'},
+  {name:'OTRI',         value:'~14%',     unit:'',     direction:'up',   change:'\u25b2 FreightWaves SONAR: highest since post-COVID unwind 2022; carriers rejecting loads and pushing spot pricing higher', source:'FreightWaves SONAR Apr 10', date:'Apr 10'},
+  {name:'Air Cargo',    value:'+22% YoY', unit:'',     direction:'up',   change:'\u25b2 Freightos Air Index; China-US above $7/kg; 80% of forwarders report reduced volumes; capacity constrained', source:'Freightos / Air Cargo News Apr 8', date:'Apr 10'},
+  {name:'ISM PMI',      value:'52.7',     unit:'',     direction:'up',   change:'\u25b2 March 2026; 3rd straight expansion; Prices Paid 78.3 — highest since Jun 2022; Supplier Deliveries slowing', source:'ISM Apr 1', date:'Apr 10'},
+  {name:'Spot All-In',  value:'$2.80',    unit:'/mi',  direction:'up',   change:'\u25b2 FreightWaves SONAR national truckload index incl. fuel; up 23% YoY from $2.33; OTRI near 14%', source:'FreightWaves SONAR Apr 10', date:'Apr 10'},
+  {name:'BDI',          value:'1,850',    unit:'',     direction:'down', change:'\u25bc Dry bulk softening on ceasefire relief; Saudi pipeline damage adds complexity to Gulf energy flows', source:'Baltic Exchange', date:'Apr 10'}
 ];
+
 
 
 FALLBACK.signalSources = [
@@ -5867,7 +5578,6 @@ function init(){
       var ageMin=Math.round((Date.now()-new Date(serverData.ts).getTime())/60000);
       stamp(new Date(serverData.ts));
       setStatus('Server cache loaded ('+ageMin+'m old) \u00b7 Updated by server at 8–9 AM Eastern','Next: 8–9 AM Eastern','sbar-l');
-      histRefreshUI();
     }else{
       var fromCache=tryCache();
       if(!fromCache){
@@ -5880,7 +5590,6 @@ function init(){
         try{var o=JSON.parse(localStorage.getItem(CACHE_KEY)||'{}');cacheAge=Date.now()-new Date(o.ts||0).getTime();}catch(e){}
         if(key&&cacheAge>5*60*60*1000)doUpdate(false);
       }
-      histRefreshUI();
     }
     scheduleNext();
   });
@@ -6075,7 +5784,7 @@ function rptRender(){
   var crit=dis.filter(function(d){return d.severity==='critical';}).length;
   function sig(n){return sigs.find(function(s){return s.name===n;})||{value:'\u2014',change:'',direction:'flat'};}
   var exec=$('rpt-exec-summary');
-  if(exec)exec.innerHTML='<b style="font-family:var(--fh);font-size:12px">'+today+'</b><br><br>Hormuz Day 41 — Ceasefire announced. Brent <b>'+esc(sig('Brent Crude').value)+'/bbl</b> (crashed 13% on news). Diesel <b>'+esc(sig('US Diesel').value)+'/gal</b> (EIA Apr peak forecast). Tender rejections <b>'+esc(sig('OTRI').value)+'</b>. Van spot <b>'+esc(sig('Van Spot').value)+'/mi</b> (Mar final). <b>'+crit+' critical disruptions</b> active.<br><br><b>Pipeline:</b> '+prospects.length+' qualified companies'+(rptExcluded.length?' ('+rptExcluded.length+' excluded as existing partners)':'')+'.';
+  if(exec)exec.innerHTML='<b style="font-family:var(--fh);font-size:12px">'+today+'</b><br><br>Hormuz Day 42 — Ceasefire announced. Brent <b>'+esc(sig('Brent Crude').value)+'/bbl</b> (crashed 13% on news). Diesel <b>'+esc(sig('US Diesel').value)+'/gal</b> (EIA Apr peak forecast). Tender rejections <b>'+esc(sig('OTRI').value)+'</b>. Van spot <b>'+esc(sig('Van Spot').value)+'/mi</b> (Mar final). <b>'+crit+' critical disruptions</b> active.<br><br><b>Pipeline:</b> '+prospects.length+' qualified companies'+(rptExcluded.length?' ('+rptExcluded.length+' excluded as existing partners)':'')+'.';
   var kpiEl=$('rpt-kpis');
   if(kpiEl){var kd=[{v:esc(sig('Brent Crude').value),l:'BRENT CRUDE',c:sig('Brent Crude').direction==='down'?'var(--grn)':'var(--red)'},{v:esc(sig('US Diesel').value),l:'US DIESEL /GAL',c:'var(--red)'},{v:esc(sig('Van Spot').value),l:'VAN SPOT LH/MI',c:'var(--grn)'},{v:esc(sig('Flatbed Spot').value),l:'FLATBED LH/MI',c:'var(--grn)'},{v:esc(sig('Reefer Spot').value),l:'REEFER LH/MI',c:'var(--amb)'},{v:esc(sig('OTRI').value),l:'TENDER REJECTION',c:'var(--amb)'},{v:esc(sig('SCFI').value),l:'SCFI INDEX',c:'var(--red)'},{v:esc(sig('Drewry WCI').value),l:'DREWRY WCI',c:'var(--red)'}];kpiEl.innerHTML=kd.map(function(k){return'<div class="rpt-kpi"><div class="rpt-kpi-v" style="color:'+k.c+'">'+k.v+'</div><div class="rpt-kpi-l">'+k.l+'</div></div>';}).join('');}
   var sparkEl=$('rpt-sparks'),td=((data.freight&&data.freight.trends)||{});
@@ -6165,7 +5874,7 @@ function rptRender(){
 
     // ── SECTION A: MARKET CONTEXT ─────────────────────────
     h+='<div style="background:rgba(255,69,69,.07);border:1px solid rgba(255,69,69,.2);border-radius:6px;padding:.9rem 1.1rem;margin-bottom:1rem">';
-    h+='<div style="font-family:var(--fh);font-size:11px;font-weight:800;color:var(--red);margin-bottom:.5rem">\u26a0\ufe0f Market Conditions \u2014 '+(data.date||today)+' \u00b7 Hormuz Day 41 \u00b7 Ceasefire Announced</div>';
+    h+='<div style="font-family:var(--fh);font-size:11px;font-weight:800;color:var(--red);margin-bottom:.5rem">\u26a0\ufe0f Market Conditions \u2014 '+(data.date||today)+' \u00b7 Hormuz Day 42 \u00b7 Ceasefire Announced</div>';
     h+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1.5rem">';
     h+='<div>\u26bd Brent Crude: <b>'+esc(brentVal)+'</b> — UN Security Council votes today on Hormuz resolution</div>';
     h+='<div>\u26fd Diesel: <b>'+esc(dieselVal)+'</b> — largest 3-wk spike ever recorded; +$1.31 in 3 weeks</div>';
