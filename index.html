@@ -1004,7 +1004,10 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
   <div class="ci-empty" id="ci-empty" style="display:none">No companies match your filters.</div>
 
   <!-- Score explanation -->
-  <div style="margin-top:1.4rem;background:var(--bg2);border:1px solid var(--b1);border-radius:8px;padding:1.2rem 1.4rem">
+  <div style="margin-top:1.2rem;display:flex;justify-content:center">
+    <button onclick="var p=document.getElementById('ci-score-panel');p.style.display=p.style.display==='none'?'block':'none'" style="width:28px;height:28px;border-radius:50%;background:var(--bg3);border:1px solid var(--b2);color:var(--t3);font-family:var(--fh);font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s,color .15s" onmouseover="this.style.borderColor='var(--acc)';this.style.color='var(--acc)'" onmouseout="this.style.borderColor='var(--b2)';this.style.color='var(--t3)'">?</button>
+  </div>
+  <div id="ci-score-panel" style="display:none;margin-top:.8rem;background:var(--bg2);border:1px solid var(--b1);border-radius:8px;padding:1.2rem 1.4rem">
     <div style="font-family:var(--fh);font-size:11px;font-weight:700;color:var(--acc);letter-spacing:.04em;margin-bottom:.7rem">HOW SCORES ARE CALCULATED</div>
     <div style="font-family:var(--fm);font-size:11px;color:var(--t2);line-height:1.85;margin-bottom:1rem">
       Every company is scored 0–100 across five factors that indicate how likely they are to be a strong, active freight customer right now. Scores are recalculated live — higher scores mean more verified signals pointing to active freight procurement.
@@ -1038,7 +1041,9 @@ footer{background:var(--bg2);border-top:1px solid var(--b1);padding:1.2rem 1.5re
           <div style="font-family:var(--fm);font-size:10px;color:var(--t3);line-height:1.6">SEC filings, 10-K reports, or earnings call citations earn 15 pts — verified financial disclosures. Multiple corroborating sources earn 10. Single source earns 5.</div>
         </div>
       </div>
-      <div style="display:flex;align-items:flex-start;gap:10px">
+    </div>
+    <div style="display:flex;justify-content:center;margin-bottom:1rem">
+      <div style="display:flex;align-items:flex-start;gap:10px;width:100%">
         <div style="flex-shrink:0;width:36px;height:36px;border-radius:6px;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.2);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:800;color:#A78BFA">5</div>
         <div>
           <div style="font-family:var(--fh);font-size:10.5px;font-weight:700;color:var(--t1);margin-bottom:2px">Contact Verified <span style="font-family:var(--fm);font-size:8.5px;color:var(--t3)">(up to 5 pts)</span></div>
@@ -1518,14 +1523,14 @@ function renderFreight(f){
 
     // § 1 KPI STRIP
     out+='<div class="fw-kpi-strip" style="margin-bottom:1.2rem">';
-    out+=kpi('SCFI','3,400+','↔ Ceasefire announced; Drewry WCI Apr 9 update may show rate easing','var(--amb)','SSE est. Apr 7');
+    out+=kpi('SCFI','~3,400','\u25b2 SSE war-premium estimate; pre-war Week 13 baseline was 1,826; Hormuz disruption driving elevated rates; Apr 11 official reading due','var(--amb)','SSE / MacroMicro Apr 10');
     out+=kpi('Drewry WCI','$2,287/FEU','→ Apr 2 last; ceasefire may ease rates; Apr 9 update today','var(--amb)','Drewry Apr 2');
-    out+=kpi('Van Spot','$2.47/mi LH','▲ March final; cap 93% tighter YoY; spread $0.05/mi','var(--grn)','DAT Mar 2026');
-    out+=kpi('Diesel','$5.64/gal','▲ EIA Apr 7 confirmed; ceasefire may bring few cents/day relief; diesel lags gasoline; next reading Apr 14','var(--red)','EIA Apr 7 Confirmed');
-    out+=kpi('Flatbed Spot','$2.95/mi LH','▲ March final +8.5% MoM; L/T 73.75; 10-yr low truck posts','var(--grn)','DAT Mar 2026');
-    out+=kpi('Reefer Spot','$2.88/mi LH','▲ March final; cap 120% tighter YoY; produce pull','var(--grn)','DAT Mar 2026');
-    out+=kpi('Brent Crude','~$94/bbl','▼ -16% ceasefire crash stabilizing; WTI $94.55; Nikkei +5.4%, Kospi +6.9%; UK PM Starmer to Gulf','var(--grn)','Apr 9 2026');
-    out+=kpi('ISM PMI','52.7','3rd expansion month; Prices Paid 78.3 (Jun 2022 high); Supplier Deliveries slowing 4th month; Iran war cited','var(--grn)','Mar 2026 Final · Apr 1');
+    out+=kpi('Van Spot','$2.47/mi LH','▲ March final — 7th straight monthly gain; all-in spot ~$2.80/mi; spread vs contract $0.11/mi tightest since 2022','var(--grn)','DAT Mar 2026 Final');
+    out+=kpi('Diesel','$5.64/gal','▲ EIA Apr 7 confirmed; forecast >$5.80 April peak per EIA STEO; ceasefire crude crash takes 2-4 wks to flow through; next reading Apr 14','var(--red)','EIA Apr 7 · Next Apr 14');
+    out+=kpi('Flatbed Spot','$2.95/mi LH','▲ March final; L/T 73.75; construction season + energy infrastructure demand; 10-yr low Week 13 truck posts','var(--grn)','DAT Mar 2026 Final');
+    out+=kpi('Reefer Spot','$2.88/mi LH','▲ March final; produce season accelerating; Florida/California lanes tightening; capacity 120% tighter YoY','var(--grn)','DAT Mar 2026 Final');
+    out+=kpi('Brent Crude','~$96/bbl','▼ Down 10%+ on week; Saudi pipeline strike cuts 600K bbl/day; Islamabad talks today; ceasefire expires Apr 22','var(--grn)','Apr 10 2026');
+    out+=kpi('ISM PMI','52.7','3rd straight expansion; Prices Paid 78.3 — highest since Jun 2022; Supplier Deliveries slowing 4th month; input inflation accelerating','var(--grn)','ISM Mar 2026 Final · Apr 1');
     out+='</div>';
 
     // § 2 SPARKLINES
@@ -5551,19 +5556,21 @@ FALLBACK.signals = [
   {name:'Air Cargo',    value:'+22% YoY', unit:'',     direction:'up',   change:'\u25b2 Freightos Air Index; China-US above $7/kg; 80% of forwarders report reduced volumes; capacity constrained', source:'Freightos / Air Cargo News Apr 8', date:'Apr 10'},
   {name:'ISM PMI',      value:'52.7',     unit:'',     direction:'up',   change:'\u25b2 March 2026; 3rd straight expansion; Prices Paid 78.3 — highest since Jun 2022; Supplier Deliveries slowing', source:'ISM Apr 1', date:'Apr 10'},
   {name:'Spot All-In',  value:'$2.80',    unit:'/mi',  direction:'up',   change:'\u25b2 FreightWaves SONAR national truckload index incl. fuel; up 23% YoY from $2.33; OTRI near 14%', source:'FreightWaves SONAR Apr 10', date:'Apr 10'},
-  {name:'BDI',          value:'1,850',    unit:'',     direction:'down', change:'\u25bc Dry bulk softening on ceasefire relief; Saudi pipeline damage adds complexity to Gulf energy flows', source:'Baltic Exchange', date:'Apr 10'}
+  {name:'BDI',          value:'1,850',    unit:'',     direction:'down', change:'\u25bc Dry bulk softening on ceasefire relief; Saudi pipeline damage adds complexity to Gulf energy flows', source:'Baltic Exchange', date:'Apr 10'},
+  {name:'SCFI',          value:'~3,400',   unit:'',     direction:'up',   change:'\u25b2 SSE war-premium estimate; Week 13 pre-war baseline was 1,826; Hormuz crisis drove sharp spike; Apr 11 official reading due', source:'SSE / MacroMicro', date:'Apr 10'}
 ];
 
 
 
 FALLBACK.signalSources = [
-  {name:'DAT Freight & Analytics — Mar 2026 Final Rates', url:'https://dynamiclogistix.com/trucking-freight-rates/'},
+  {name:'DAT Freight & Analytics — Mar 2026 Final Rates', url:'https://www.dat.com/trendlines'},
   {name:'EIA Short-Term Energy Outlook Apr 7 2026', url:'https://www.eia.gov/outlooks/steo/'},
-  {name:'Drewry World Container Index Apr 2', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'},
+  {name:'EIA 1Q26 Petroleum Price Review — Apr 9 2026', url:'https://www.eia.gov/todayinenergy/detail.php?id=67424'},
+  {name:'Trading Economics — Brent Crude Apr 10 2026', url:'https://tradingeconomics.com/commodity/brent-crude-oil'},
+  {name:'Drewry World Container Index — Apr 2 2026', url:'https://www.drewry.co.uk/supply-chain-advisors/supply-chain-expertise/world-container-index-assessed-by-drewry'},
   {name:'ISM Manufacturing PMI March 2026 — Apr 1 Release', url:'https://www.prnewswire.com/news-releases/manufacturing-pmi-at-52-7-march-2026-ism-manufacturing-pmi-report-302730721.html'},
-  {name:'Freightos Air Index / Air Cargo Week Apr 7', url:'https://aircargoweek.com/how-fuel-shortages-and-war-driven-disruption-reshape-air-cargo-flows/'},
-  {name:'Uber Freight Q1 2026 Market Update', url:'https://www.uberfreight.com/en-US/blog/freight-market-update'},
-  {name:'FreightWaves SONAR OTRI / Trucking Dive Apr 2026', url:'https://www.truckingdive.com/news/trucking-spot-contract-rates-us-bank-dat-2026-spread/816351/'}
+  {name:'FreightWaves SONAR OTRI / Trucking Dive Apr 2026', url:'https://www.truckingdive.com/news/trucking-spot-contract-rates-us-bank-dat-2026-spread/816351/'},
+  {name:'Freightos Air Index / Air Cargo News Apr 8', url:'https://www.aircargonews.net/insights/2026/04/afa-column-managing-uncertainty-in-north-americas-air-cargo-supply-chain/'}
 ];
 
 
